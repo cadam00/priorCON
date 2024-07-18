@@ -4,3 +4,13 @@
 ^doc$
 ^Meta$
 ^revdep$
+^\.github$
+^basic_output\.png$
+^connectivity_output\.png$
+^biblio\.bib$
+^cost_raster\.png$
+^features\.png$
+^priorCOM_fig2\.png$
+^priorCOM_fig3\.png$
+^priorCOM_fig4\.png$
+^priorCOM_flowchart\.png$
