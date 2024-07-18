@@ -1,0 +1,30 @@
+Package: priorCOM
+Type: Package
+Title: Graph Community Detection Methods into Systematic Conservation Planning
+Version: 0.1.0
+Author: Christos Adam [aut, cre],
+        Nikolaos Nagkoulis [aut],
+        Aggeliki Doxa [aut]
+Maintainer: Christos Adam <econp266@econ.soc.uoc.gr>
+Description: Graph community detection methods into systematic conservation planning.
+License: GPL-3
+Encoding: UTF-8
+LazyData: true
+Imports: 
+    prioritizr (>= 8.0.4),
+    terra (>= 1.7.78),
+    highs (>= 0.1.10),
+    tools,
+    tmap (>= 3.3.4),
+    sf (>= 1.0.16),
+    sfnetworks (>= 0.6.4),
+    brainGraph (>= 3.1.0),
+    igraph (>= 2.0.3)
+RoxygenNote: 7.3.2
+Suggests: 
+    knitr,
+    rmarkdown,
+    bookdown,
+    testthat (>= 3.0.0)
+Config/testthat/edition: 3
+VignetteBuilder: knitr

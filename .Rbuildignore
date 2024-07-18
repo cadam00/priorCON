@@ -1,0 +1,6 @@
+^.*\.Rproj$
+^\.Rproj\.user$
+^dev$
+^doc$
+^Meta$
+^revdep$
