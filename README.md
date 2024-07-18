@@ -204,7 +204,8 @@ set.seed(42)
 pre_graphs <- get_metrics(combined_edge_list, which_community = "s_core")
 ```
 
-### Step 3 Prioritization: Two alternative functions can be used for the
+### Step 3 Prioritization:
+Two alternative functions can be used for the
 prioritization step: i) the `connectivity_scenario()` function, which
 includes connectivity into the optimization procedure and ii) the
 `basic_scenario()` function, which does not include connectivity. The
