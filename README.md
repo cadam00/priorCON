@@ -178,7 +178,7 @@ library(terra)
    )
 ```
 
-Step 2 Connectivity Metrics Estimation:
+### Step 2 Connectivity Metrics Estimation:
 
 Function `get_metrics()` is used to calculate graph metrics values. The
 edge lists created from the previous step, or inserted directly from the
@@ -204,7 +204,7 @@ set.seed(42)
 pre_graphs <- get_metrics(combined_edge_list, which_community = "s_core")
 ```
 
-Step 3 Prioritization: Two alternative functions can be used for the
+### Step 3 Prioritization: Two alternative functions can be used for the
 prioritization step: i) the `connectivity_scenario()` function, which
 includes connectivity into the optimization procedure and ii) the
 `basic_scenario()` function, which does not include connectivity. The
@@ -293,7 +293,7 @@ connectivity_solution <- connectivity_scenario(
                          )
 ```
 
-Step 4: Post-processing:
+### Step 4: Post-processing:
 
 The results obtained from **prioritizr** are presented using matrices
 and plots, allowing the user to compare the outcomes of incorporating
