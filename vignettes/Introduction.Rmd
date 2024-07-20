@@ -74,14 +74,14 @@ The package provides 4 steps to perform the analysis:
 
 The functions of steps 1 and 2 can be used within the spatial conservation planning workflow as described here but also independently to create and obtain the graph metrics that might be also useful within other research contexts. In the next sections we provide an illustrative example to explain in more detail how the functions operate.
 
-## **Installation**
+<!-- ## **Installation** -->
 
-All the functions of the package **priorCON** at the development version can be installed in R via
+<!-- All the functions of the package **priorCON** at the development version can be installed in R via -->
 
-```{r}
-if (!require(remotes)) install.packages("remotes")
-remotes::install_github("cadam00/priorCON")
-```
+<!-- ```{r} -->
+<!-- if (!require(remotes)) install.packages("remotes") -->
+<!-- remotes::install_github("cadam00/priorCON") -->
+<!-- ``` -->
 
 ## **Illustration example**
 
