@@ -376,7 +376,7 @@ Eric A. Treml, Caitlin D. Kuempel, Hugh P. Possingham, and Maria Beger.
 Operationalizing ecological connectivity in
 spatial conservation planning with Marxan Connect</span>.” *Methods in
 Ecology and Evolution* 11 (4): 570–79.
-[https://doi.org/10.1111/2041-210X.13349](https://doi.org/10.1111/2041-210X.13349).
+[https://doi.org/10.1111/2041-210X.13349](https://besjournals.onlinelibrary.wiley.com/doi/10.1111/2041-210X.13349).
 
 Hanson, Jeffrey O, Richard Schuster, Nina Morrell, Matthew
 Strimas-Mackey, Brandon P M Edwards, Matthew E Watts, Peter Arcese,
