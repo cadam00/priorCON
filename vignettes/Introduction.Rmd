@@ -79,8 +79,11 @@ The functions of steps 1 and 2 can be used within the spatial conservation plann
 <!-- All the functions of the package **priorCON** at the development version can be installed in R via -->
 
 <!-- ```{r} -->
+
 <!-- if (!require(remotes)) install.packages("remotes") -->
+
 <!-- remotes::install_github("cadam00/priorCON") -->
+
 <!-- ``` -->
 
 ## **Illustration example**
