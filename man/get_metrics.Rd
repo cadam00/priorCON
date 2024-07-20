@@ -20,7 +20,7 @@ The default is \code{"s_core"}.
 }
 
 \details{
-Function \link[priorCOM]{get_metrics} is used to calculate graph metrics values.
+Function \link[priorCON]{get_metrics} is used to calculate graph metrics values.
 The edge lists created from the previous step, or inserted directly from the user are used
 in this step to create graphs. The directed graphs are transformed to undirected. The
 function is based on the \pkg{igraph} package which is used to create clusters using
@@ -28,7 +28,7 @@ Louvain and Walktrap and calculate the following metrics: Eigenvector Centrality
 Betweenness Centrality and Degree. S-core is calculated using the package
 \pkg{brainGraph}.
 
-\code{connect_mat} is either the output of \link[priorCOM]{preprocess_graphs} or
+\code{connect_mat} is either the output of \link[priorCON]{preprocess_graphs} or
 a custom edge list \code{data.frame} object, with the following
 columns:
 \itemize{
@@ -42,14 +42,14 @@ columns:
 }
 
 \value{
-A list containing input for \link[priorCOM]{basic_scenario} or 
-\link[priorCOM]{connectivity_scenario}.
+A list containing input for \link[priorCON]{basic_scenario} or 
+\link[priorCON]{connectivity_scenario}.
 }
 
 \seealso{
 \code{
-\link[priorCOM]{preprocess_graphs},
-\link[priorCOM]{get_metrics}
+\link[priorCON]{preprocess_graphs},
+\link[priorCON]{get_metrics}
 }
 }
 
@@ -69,7 +69,7 @@ Data. \doi{10.32614/CRAN.package.brainGraph}.
 \examples{
 # Read connectivity files from folder and combine them
 combined_edge_list <- preprocess_graphs(system.file("external",
-                                        package="priorCOM"),
+                                        package="priorCON"),
                                         header = FALSE, sep =";")
 
 # Set seed for reproducibility

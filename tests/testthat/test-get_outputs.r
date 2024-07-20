@@ -1,8 +1,8 @@
 test_that("get_outputs works", {
-  library(priorCOM)
+  library(priorCON)
   # Read connectivity files from folder and combine them
   combined_edge_list <- preprocess_graphs(system.file("external",
-                                                      package="priorCOM"),
+                                                      package="priorCON"),
                                           header = FALSE, sep =";")
 
   # Set seed for reproducibility

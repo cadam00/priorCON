@@ -1,17 +1,17 @@
-# **Introduction to the priorCOM Package (tutorial)**
+# **Introduction to the priorCON Package (tutorial)**
 
-The **priorCOM** package offers an innovative tool-set that incorporates
+The **priorCON** package offers an innovative tool-set that incorporates
 graph community detection methods into systematic conservation planning.
 This package is designed to enhance spatial prioritization by focusing
 on the protection of areas with high ecological connectivity. Unlike
 traditional approaches that prioritize individual planning units,
-**priorCOM** focuses on clusters of features that exhibit strong
-ecological linkages. The **priorCOM** package is built upon the
+**priorCON** focuses on clusters of features that exhibit strong
+ecological linkages. The **priorCON** package is built upon the
 **prioritizr** package ([Hanson et al. 2024](#ref-prioritizr)), using
 commercial and open-source exact algorithm solvers that ensure optimal
 solutions to prioritization problems.
 
-**Features of priorCOM**
+**Features of priorCON**
 
 -   **Graph Community Detection**: The package utilizes connectivity
     metrics to identify clusters of habitat patches with high
@@ -29,10 +29,10 @@ solutions to prioritization problems.
 
 This workflow is shown on Fig. [1](#ref-Figure1).
 
-<img src="priorCOM_flowchart.png" alt="Flow chart of the priorCOM prioritization analysis. priorCOM functions are indicated in grey boxes" width="100%" />
+<img src="priorCON_flowchart.png" alt="Flow chart of the priorCON prioritization analysis. priorCON functions are indicated in grey boxes" width="100%" />
 <p class="caption">
-<span id="ref-Figure1"></span>Fig. 1: Flow chart of the <b>priorCOM</b>
-prioritization analysis. <b>priorCOM</b> functions are indicated in grey boxes
+<span id="ref-Figure1"></span>Fig. 1: Flow chart of the <b>priorCON</b>
+prioritization analysis. <b>priorCON</b> functions are indicated in grey boxes
 </p>
 
 This tutorial will guide you through the key functions of the package,
@@ -67,11 +67,11 @@ example to explain in more detail how the functions operate.
 
 ## **Installation**
 
-All the functions of the package **priorCOM** can be installed in R via
+All the functions of the package **priorCON** can be installed in R via
 
 ``` r
 if (!require(remotes)) install.packages("remotes")
-remotes::install_github("cadam00/priorCOM")
+remotes::install_github("cadam00/priorCON")
 ```
 
 ## **Illustration example**
@@ -100,7 +100,7 @@ formats are given below. In case that an edge list is available, this
 step can be skipped.
 
 <p align="center">
-  <img src="priorCOM_fig2.png" alt="Weighted directed graph (left): Circles represent nodes and arrows represent weighted edges. The tabular representation of the graph represents the edge list (right)." width="50%" />
+  <img src="priorCON_fig2.png" alt="Weighted directed graph (left): Circles represent nodes and arrows represent weighted edges. The tabular representation of the graph represents the edge list (right)." width="50%" />
 </p>
 <p class="caption">
 <span id="ref-Figure2"></span>Fig. 2: Weighted directed graph (left):
@@ -137,7 +137,7 @@ tutorial. The data need to be stored in this way in order for the
 algorithm to read them properly.
 
 <p align="center">
-    <img src="priorCOM_fig3.png" alt="Connectivity folder" width="50%"  />
+    <img src="priorCON_fig3.png" alt="Connectivity folder" width="50%"  />
 </p>
 <p class="caption">
 <span id="ref-Figure3"></span>Fig. 3: Connectivity folder
@@ -153,7 +153,7 @@ order for the algorithm to match the coordinates with the points (Fig.
 <a href="#ref-Figure4">4</a>).
 
 <p align="center">
-    <img src="priorCOM_fig4.png" alt="The 001.txt file contains the following information: Each row represents the probability of movement between point 001 and any other destination points." width="50%"/>
+    <img src="priorCON_fig4.png" alt="The 001.txt file contains the following information: Each row represents the probability of movement between point 001 and any other destination points." width="50%"/>
 </p>
 <p class="caption">
 <span id="ref-Figure4"></span>Fig. 4: The 001.txt file contains the
@@ -167,13 +167,13 @@ list dataset is available, this preprocessing step can be skipped.
 
 ``` r
 # Import packages
-library(priorCOM)
+library(priorCON)
 library(tmap)
 library(terra)
 
 # Read connectivity files from folder and combine them
   combined_edge_list <- preprocess_graphs(
-    system.file("external",package="priorCOM"),
+    system.file("external",package="priorCON"),
     header = FALSE, sep =";"
    )
 ```

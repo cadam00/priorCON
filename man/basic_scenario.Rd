@@ -10,11 +10,11 @@ Solve an ordinary \pkg{prioritizr} prioritization problem.
 \arguments{
 \item{cost_raster}{
 \code{SpatRaster} object used as cost for prioritization.
-Its coordinates must correspond to the input given at \link[priorCOM]{preprocess_graphs}.
+Its coordinates must correspond to the input given at \link[priorCON]{preprocess_graphs}.
 }
 \item{features_rasters}{
 features \code{SpatRaster} object used for prioritization.
-Its coordinates must correspond to the input given at \link[priorCOM]{preprocess_graphs}.
+Its coordinates must correspond to the input given at \link[priorCON]{preprocess_graphs}.
 }
 \item{budget_perc}{
 \code{numeric} value \eqn{[0,1]}. It represents the budget percentage of the cost to be
@@ -32,7 +32,7 @@ installation.
 }
 
 \value{
-A list containing input for \link[priorCOM]{get_outputs}.
+A list containing input for \link[priorCON]{get_outputs}.
 }
 
 \references{
@@ -48,14 +48,14 @@ Method. \emph{Mathematical Programming Computation} 10 (1): 119–42.
 
 \seealso{
 \code{
-\link[priorCOM]{preprocess_graphs},
-\link[priorCOM]{get_metrics}
+\link[priorCON]{preprocess_graphs},
+\link[priorCON]{get_metrics}
 }
 }
 
 \examples{
 # Read connectivity files from folder and combine them
-combined_edge_list <- preprocess_graphs(system.file("external", package="priorCOM"),
+combined_edge_list <- preprocess_graphs(system.file("external", package="priorCON"),
                                         header = FALSE, sep =";")
 
 # Set seed for reproducibility

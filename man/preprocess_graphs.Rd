@@ -24,7 +24,7 @@ This is an auxiliary function for creating an edge list \code{data.frame}
 object from multiple files, like the ones provided from softwares estimating
 Lagrangian models.
 
-Function \link[priorCOM]{preprocess_graphs} takes as input a list of .txt/.csv
+Function \link[priorCON]{preprocess_graphs} takes as input a list of .txt/.csv
 objects. Each object represents the connections between a node and all the other
 nodes. For the model to read the data, it is necessary to have all the .txt/.csv
 objects in one folder. There are two ways to incorporate connectivity data,
@@ -47,8 +47,8 @@ connectivity dataset. This dataset can be included in a separate folder
 }
 
 \if{html}{
-  \figure{priorCOM_fig3.png}{options: width="100\%"}}
-\if{latex}{\figure{priorCOM_fig3.pdf}{options: width=5.5in}}
+  \figure{priorCON_fig3.png}{options: width="100\%"}}
+\if{latex}{\figure{priorCON_fig3.pdf}{options: width=5.5in}}
 
 A typical Lagrangian output is a set of files representing the likelihood of a
 point moving from an origin (source) to a destination (target). This can be
@@ -59,8 +59,8 @@ the numbering of the points, in order for the algorithm to match the coordinates
 with the points.
 
 \if{html}{
-  \figure{priorCOM_fig4.png}{options: width="100\%"}}
-\if{latex}{\figure{priorCOM_fig4.pdf}{options: width=5.5in}}
+  \figure{priorCON_fig4.png}{options: width="100\%"}}
+\if{latex}{\figure{priorCON_fig4.pdf}{options: width=5.5in}}
 }
 
 \value{
@@ -77,14 +77,14 @@ an edge list \code{data.frame} object, with the following columns:
 
 \seealso{
 \code{
-\link[priorCOM]{preprocess_graphs},
-\link[priorCOM]{get_metrics}
+\link[priorCON]{preprocess_graphs},
+\link[priorCON]{get_metrics}
 }
 }
 \examples{
 # Read connectivity files from folder and combine them
 combined_edge_list <- preprocess_graphs(system.file("external",
-                                        package="priorCOM"),
+                                        package="priorCON"),
                                         header = FALSE, sep =";")
 head(combined_edge_list)
 

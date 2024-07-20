@@ -1,7 +1,7 @@
 get_cost_raster <- function()
-  terra::rast(system.file("rasters/cost_raster.tif", package="priorCOM"))
+  terra::rast(system.file("rasters/cost_raster.tif", package="priorCON"))
 get_features_raster <- function()
-  terra::rast(system.file("rasters/features_raster.tif", package="priorCOM"))
+  terra::rast(system.file("rasters/features_raster.tif", package="priorCON"))
 
 #normalize
 .normf <- function(x){

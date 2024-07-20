@@ -1,8 +1,8 @@
 test_that("connectivity_scenario works", {
-  library(priorCOM)
+  library(priorCON)
   # Read connectivity files from folder and combine them
   combined_edge_list <- preprocess_graphs(system.file("external",
-                                          package="priorCOM"),
+                                          package="priorCON"),
                                           header = FALSE, sep =";")
 
   # Set seed for reproducibility
@@ -73,7 +73,7 @@ test_that("normf works", {
 
   # Normalize them
   # Now both have the same values and in [0-1] scale
-  norm_r <- priorCOM:::.normf(r)
+  norm_r <- priorCON:::.normf(r)
   expect_equal(terra::values(norm_r),
                matrix((rep(1:25,2) - 1) / (25 - 1),
                ncol=2,
@@ -82,7 +82,7 @@ test_that("normf works", {
   # Case that max(r) == min(r)
   # It must return the input raster for the first layer
   r[[1]] <- r[[1]] / r[[1]]
-  norm_r <- priorCOM:::.normf(r)
+  norm_r <- priorCON:::.normf(r)
   expect_equal(terra::values(norm_r),
                matrix(c(rep(1,25), ((1:25) - 1) / (25 - 1)),
                ncol=2,

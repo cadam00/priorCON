@@ -1,5 +1,5 @@
 ---
-title: "Introduction to priorCOM"
+title: "Introduction to priorCON"
 author: "Christos Adam, Nikolaos Nagkoulis, Aggeliki Doxa"
 output:
   
@@ -26,7 +26,7 @@ link-citations: yes
 header-includes:
  \usepackage{float}
 vignette: >
-  %\VignetteIndexEntry{Introduction to priorCOM}
+  %\VignetteIndexEntry{Introduction to priorCON}
   \usepackage[utf8]{inputenc}
   %\VignetteEngine{knitr::rmarkdown}
 #header-includes:
@@ -38,11 +38,11 @@ vignette: >
 knitr::opts_chunk$set(echo = TRUE, eval=FALSE, fig.pos = "H", out.extra = "")
 ```
 
-# **Introduction to the priorCOM Package (tutorial)**
+# **Introduction to the priorCON Package (tutorial)**
 
-The **priorCOM** package offers an innovative tool-set that incorporates graph community detection methods into systematic conservation planning. This package is designed to enhance spatial prioritization by focusing on the protection of areas with high ecological connectivity. Unlike traditional approaches that prioritize individual planning units, **priorCOM** focuses on clusters of features that exhibit strong ecological linkages. The **priorCOM** package is built upon the **prioritizr** package [@prioritizr], using commercial and open-source exact algorithm solvers that ensure optimal solutions to prioritization problems.
+The **priorCON** package offers an innovative tool-set that incorporates graph community detection methods into systematic conservation planning. This package is designed to enhance spatial prioritization by focusing on the protection of areas with high ecological connectivity. Unlike traditional approaches that prioritize individual planning units, **priorCON** focuses on clusters of features that exhibit strong ecological linkages. The **priorCON** package is built upon the **prioritizr** package [@prioritizr], using commercial and open-source exact algorithm solvers that ensure optimal solutions to prioritization problems.
 
-**Features of priorCOM**
+**Features of priorCON**
 
 -   **Graph Community Detection**: The package utilizes connectivity metrics to identify clusters of habitat patches with high connectivity values.
 
@@ -54,8 +54,8 @@ The **priorCOM** package offers an innovative tool-set that incorporates graph c
 
 This workflow is shown on Fig. \@ref(fig:Figure1).
 
-```{r Figure1, eval=TRUE, echo=FALSE, fig.cap="Flow chart of the priorCOM prioritization analysis. priorCOM functions are indicated in grey boxes", out.width = '100%', fig.align = "center"}
-knitr::include_graphics("priorCOM_flowchart.png")
+```{r Figure1, eval=TRUE, echo=FALSE, fig.cap="Flow chart of the priorCON prioritization analysis. priorCON functions are indicated in grey boxes", out.width = '100%', fig.align = "center"}
+knitr::include_graphics("priorCON_flowchart.png")
 ```
 
 This tutorial will guide you through the key functions of the package, from data preparation to generating informative outputs to address conservation connectivity challenges in diverse ecosystems.
@@ -76,11 +76,11 @@ The functions of steps 1 and 2 can be used within the spatial conservation plann
 
 ## **Installation**
 
-All the functions of the package **priorCOM** can be installed in R via
+All the functions of the package **priorCON** can be installed in R via
 
 ```{r}
 if (!require(remotes)) install.packages("remotes")
-remotes::install_github("cadam00/priorCOM")
+remotes::install_github("cadam00/priorCON")
 ```
 
 ## **Illustration example**
@@ -92,7 +92,7 @@ Let us consider the following dataset as an illustrative example. The area exami
 The input of an edge list is required in most graph theoretic approaches. Fig. \@ref(fig:Figure2) represents a typical directed weighted graph. In the edge list, the first two columns utilize the nodes IDs to represent edges and the last column corresponds to the value of the edges. This value actually represents the connectivity value between the corresponding nodes and may represent for instance values resulting from particle drift models, migration probabilities or other. This preprocessing step can be conducted using the function `preprocess_graphs()` and serves in reading and transforming the initial input data into an edge list. Further details on the initial data formats are given below. In case that an edge list is available, this step can be skipped.
 
 ```{r Figure2, eval=TRUE, echo=FALSE, fig.cap="Weighted directed graph (left): Circles represent nodes and arrows represent weighted edges. The tabular representation of the graph represents the edge list (right).", out.width = '100%', fig.align = "center"}
-knitr::include_graphics("priorCOM_fig2.png")
+knitr::include_graphics("priorCON_fig2.png")
 ```
 
 Function `preprocess_graphs()` takes as input a list of .txt/.csv objects. Each object represents the connections between a node and all the other nodes. For the model to read the data, it is necessary to have all the .txt/.csv objects in one folder. There are two ways to incorporate connectivity data, based on their linkage to features:
@@ -104,26 +104,26 @@ Function `preprocess_graphs()` takes as input a list of .txt/.csv objects. Each 
 In our example we use connectivity values that are not directly connected with a specific species, therefore we illustrate Case 2. Fig. \@ref(fig:Figure3) represents the structure used in the tutorial. The data need to be stored in this way in order for the algorithm to read them properly.
 
 ```{r Figure3, eval=TRUE, echo=FALSE, fig.cap="Connectivity folder", out.width = '100%', fig.align = "center"}
-knitr::include_graphics("priorCOM_fig3.png")
+knitr::include_graphics("priorCON_fig3.png")
 ```
 
 A typical Lagrangian output is a set of files representing the likelihood of a point moving from an origin (source) to a destination (target). This can be represented using a list of .txt files (as many as the origin points) including information for the destination probability. The .txt files need to be named in an increasing order. The name of the files need to correspond to the numbering of the points, in order for the algorithm to match the coordinates with the points (Fig. \@ref(fig:Figure4)).
 
 ```{r Figure4, eval=TRUE, echo=FALSE, fig.cap="The 001.txt file contains the following information: Each row represents the probability of movement between point 001 and any other destination points.", out.width = '100%', fig.align = "center"}
-knitr::include_graphics("priorCOM_fig4.png")
+knitr::include_graphics("priorCON_fig4.png")
 ```
 
 As long as the data are set in this way, the preprocessing algorithm can run and transform the format of the inputs to an edge list. If an edge list dataset is available, this preprocessing step can be skipped.
 
 ```{r}
 # Import packages
-library(priorCOM)
+library(priorCON)
 library(tmap)
 library(terra)
 
 # Read connectivity files from folder and combine them
   combined_edge_list <- preprocess_graphs(
-    system.file("external",package="priorCOM"),
+    system.file("external",package="priorCON"),
     header = FALSE, sep =";"
    )
 ```

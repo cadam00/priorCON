@@ -1,6 +1,6 @@
 test_that("preprocess_graphs works", {
-  combined_edge_list <- priorCOM::preprocess_graphs(system.file("external",
-                                          package="priorCOM"),
+  combined_edge_list <- priorCON::preprocess_graphs(system.file("external",
+                                          package="priorCON"),
                                           header = FALSE, sep =";")
   expect_equal(
   head(combined_edge_list),

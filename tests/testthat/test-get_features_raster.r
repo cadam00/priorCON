@@ -1,5 +1,5 @@
 test_that("get_features_raster works", {
-  features_raster <- priorCOM::get_features_raster()
+  features_raster <- priorCON::get_features_raster()
   expect_equal(terra::values(features_raster)[1:10],
             c(NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,1.00008297,1.00008738)
   )

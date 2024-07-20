@@ -1,5 +1,5 @@
 test_that("basic_scenario works", {
-  library(priorCOM)
+  library(priorCON)
   
   # Set seed for reproducibility
   set.seed(42, "Mersenne-Twister", sample.kind="Rejection")

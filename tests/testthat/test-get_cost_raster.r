@@ -1,5 +1,5 @@
 test_that("get_cost_raster works", {
-  cost_raster <- priorCOM::get_cost_raster()
+  cost_raster <- priorCON::get_cost_raster()
   expect_equal(terra::values(cost_raster)[1:10],
             c(NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,1,1)
             )

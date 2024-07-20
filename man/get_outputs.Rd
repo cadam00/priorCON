@@ -5,19 +5,19 @@
 get_outputs(solution, feature, pre_graphs, loose = FALSE, patch = FALSE)
 }
 \description{
-Evaluate outputs from \link[priorCOM]{basic_scenario} or
-\link[priorCOM]{connectivity_scenario} functions for a selected feature.
+Evaluate outputs from \link[priorCON]{basic_scenario} or
+\link[priorCON]{connectivity_scenario} functions for a selected feature.
 }
 \arguments{
 \item{solution}{
-output from \link[priorCOM]{basic_scenario} or
-\link[priorCOM]{connectivity_scenario} functions.
+output from \link[priorCON]{basic_scenario} or
+\link[priorCON]{connectivity_scenario} functions.
 }
 \item{feature}{
 \code{character} with a single feature name used for plots.
 }
 \item{pre_graphs}{
-output of \link[priorCOM]{get_metrics} function.
+output of \link[priorCON]{get_metrics} function.
 }
 \item{loose}{
 use loose or strict graph community connectivity definition. See more in
@@ -53,8 +53,8 @@ connections held at the third column.
 
 \seealso{
 \code{
-\link[priorCOM]{basic_scenario},
-\link[priorCOM]{connectivity_scenario}
+\link[priorCON]{basic_scenario},
+\link[priorCON]{connectivity_scenario}
 }
 }
 
@@ -72,7 +72,7 @@ in R. \emph{Chapman and Hall/CRC}. \doi{10.1201/9780429459016}
 
 \examples{
 # Read connectivity files from folder and combine them
-combined_edge_list <- preprocess_graphs(system.file("external", package="priorCOM"),
+combined_edge_list <- preprocess_graphs(system.file("external", package="priorCON"),
                                         header = FALSE, sep =";")
 
 # Set seed for reproducibility

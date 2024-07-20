@@ -1,4 +1,4 @@
-# priorCOM 0.1.0
+# priorCON 0.1.0
 
 ## Major changes
 
