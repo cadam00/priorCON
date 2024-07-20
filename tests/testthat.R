@@ -7,6 +7,6 @@
 # * https://testthat.r-lib.org/articles/special-files.html
 
 library(testthat)
-library(priorCOM)
+library(priorCON)
 
-test_check("priorCOM")
+test_check("priorCON")
