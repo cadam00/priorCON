@@ -76,7 +76,7 @@ The functions of steps 1 and 2 can be used within the spatial conservation plann
 
 ## **Installation**
 
-All the functions of the package **priorCON** can be installed in R via
+All the functions of the package **priorCON** at the development version can be installed in R via
 
 ```{r}
 if (!require(remotes)) install.packages("remotes")

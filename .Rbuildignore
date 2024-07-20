@@ -10,8 +10,8 @@
 ^biblio\.bib$
 ^cost_raster\.png$
 ^features\.png$
-^priorCOΝ_fig2\.png$
-^priorCOΝ_fig3\.png$
-^priorCOΝ_fig4\.png$
-^priorCOΝ_flowchart\.png$
+^priorCON_fig2\.png$
+^priorCON_fig3\.png$
+^priorCON_fig4\.png$
+^priorCON_flowchart\.png$
 ^LICENSE$

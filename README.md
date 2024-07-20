@@ -67,7 +67,8 @@ example to explain in more detail how the functions operate.
 
 ## **Installation**
 
-All the functions of the package **priorCON** can be installed in R via
+All the functions of the package **priorCON** at the development version
+can be installed in R via
 
 ``` r
 if (!require(remotes)) install.packages("remotes")
