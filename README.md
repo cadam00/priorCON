@@ -362,13 +362,13 @@ print(connectivity_outputs$connectivity_table)
 Csárdi, Gábor, and Tamás Nepusz. 2006.
 “<span class="nocase" id="ref-csardi2006igraph">The igraph
 software package for complex network research</span>.” *InterJournal*
-Complex Systems: 1695. <https://igraph.org>.
+Complex Systems: 1695. [https://igraph.org](https://igraph.org).
 
 Csárdi, Gábor, Tamás Nepusz, Vincent Traag, Szabolcs Horvát, Fabio
 Zanini, Daniel Noom, and Kirill Müller. 2024.
 *<span class="nocase" id="ref-igraph">
 igraph: Network Analysis and Visualization in
-R</span>*. <https://doi.org/10.5281/zenodo.7682609>.
+R</span>*. [https://doi.org/10.5281/zenodo.7682609](https://doi.org/10.5281/zenodo.7682609).
 
 Daigle, Rémi M., Anna Metaxas, Arieanna C. Balbar, Jennifer McGowan,
 Eric A. Treml, Caitlin D. Kuempel, Hugh P. Possingham, and Maria Beger.
@@ -376,15 +376,15 @@ Eric A. Treml, Caitlin D. Kuempel, Hugh P. Possingham, and Maria Beger.
 Operationalizing ecological connectivity in
 spatial conservation planning with Marxan Connect</span>.” *Methods in
 Ecology and Evolution* 11 (4): 570–79.
-<https://doi.org/10.1111/2041-210X.13349>.
+[https://doi.org/10.1111/2041-210X.13349](https://doi.org/10.1111/2041-210X.13349).
 
 Hanson, Jeffrey O, Richard Schuster, Nina Morrell, Matthew
 Strimas-Mackey, Brandon P M Edwards, Matthew E Watts, Peter Arcese,
 Joseph R Bennett, and Hugh P Possingham. 2024.
 *<span class="nocase" id="ref-prioritizr">
 prioritizr: Systematic Conservation Prioritization
-in R</span>*. <https://CRAN.R-project.org/package=prioritizr>.
+in R</span>*. [https://CRAN.R-project.org/package=prioritizr](https://CRAN.R-project.org/package=prioritizr).
 
 Watson, Christopher G. 2024. *<span class="nocase" id="ref-brainGraph">brainGraph: Graph
 Theory Analysis of Brain MRI Data</span>*.
-<https://doi.org/10.32614/CRAN.package.brainGraph>.
+[https://doi.org/10.32614/CRAN.package.brainGraph](https://doi.org/10.32614/CRAN.package.brainGraph).
