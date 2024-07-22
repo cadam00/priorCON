@@ -292,8 +292,8 @@ get_metrics <- function(connect_mat, which_community="s_core"){
   solution2[!is.na(solution2)]      <- solution_polygons$solution
   solution_polygons_raster$solution <- solution2
 
-  solution2[!is.na(solution2)]      <- solution_polygons$cluster
-  solution_polygons_raster$cluster  <- solution2
+  solution2[!is.na(values_pu_raster)] <- solution_polygons$cluster
+  solution_polygons_raster$cluster    <- solution2
 
   return(list(solution, solution_polygons_raster, modul_hh_matrix,
               maps_collection_inputs))
