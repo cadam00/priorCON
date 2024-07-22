@@ -395,6 +395,7 @@ connectivity_scenario <- function(cost_raster, features_rasters=NULL,
 
       add(polygons_subset)  <- ifel(condition_raster,
                                     polygons_subset$PUID, NA)
+      names(polygons_subset)[i] <- paste0("PUID_", i)
     }
 
     # Make clustering in the same order with PUID
