@@ -52,7 +52,7 @@ The package provides 4 steps to perform the analysis:
     clustering, s-core.
 
 3.  Prioritization: Functions `basic_scenario()` and
-    `connectivity_scenario()` are used to insert the data to prioritizr
+    `connectivity_scenario()` are used to insert the data to **prioritizr**
     run the prioritization problem and obtain the optimum solutions.
 
 4.  Post-processing: Function `get_outputs()` is used in order to plot
