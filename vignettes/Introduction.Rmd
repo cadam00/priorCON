@@ -46,7 +46,7 @@ The **priorCON** package offers an innovative tool-set that incorporates graph c
 
 -   **Graph Community Detection**: The package utilizes connectivity metrics to identify clusters of habitat patches with high connectivity values.
 
--   **Spatial prioritization**: The package uses the connectivity metrics as inputs in prioritizr to identify areas with high connectivity.
+-   **Spatial prioritization**: The package uses the connectivity metrics as inputs in **prioritizr** to identify areas with high connectivity.
 
 -   **Connectivity Estimation**: The package estimates the connectivity protection level by calculating the protected connections.
 
