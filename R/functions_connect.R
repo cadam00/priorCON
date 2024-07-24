@@ -181,6 +181,10 @@ get_metrics <- function(connect_mat, which_community="s_core"){
   for (i in seq_len(nrow(matrix_test))){
     first_point   <- which(matrix_test[i,1] == PUID)
     second_point  <- which(matrix_test[i,2] == PUID)
+    if (length(first_point) == 0 | length(second_point) == 0) {
+      edges_list[i] <- NA
+      next
+    }
     edges_list[i] <- st_cast(st_combine(
       points_object[c(first_point,second_point),]), "LINESTRING")
     values[i] <- matrix_test[i,3]
@@ -193,7 +197,8 @@ get_metrics <- function(connect_mat, which_community="s_core"){
   ## matrix in the links
   sfc_lines            <- st_as_sf(sfc_lines)
   sfc_lines$values     <- values
-  spatial_graph_result <- as_sfnetwork(sfc_lines, directed=FALSE)
+  spatial_graph_result <- as_sfnetwork(sfc_lines[!is.na(edges_list),],#sfc_lines
+                                       directed=FALSE)
 
 
   result_edges <- st_as_sf(spatial_graph_result, "edges",
@@ -369,11 +374,11 @@ connectivity_scenario <- function(cost_raster, features_rasters=NULL,
     net_result <- pre_graphs$graph_list[[i]]
 
     V_net_result_name <- V(net_result)$name
-    if (is.numeric(polygons_subset$PUID[1][[1]])){
+    if (is.numeric(pu_raster$PUID[1][[1]])){
       V_net_result_name <- as.numeric(V(net_result)$name)
     }
 
-    values_polygons_subsetPUID <- values(polygons_subset$PUID)
+    values_polygons_subsetPUID <- values(pu_raster$PUID)
 
     # Remove vertices that are absent in the PU raster
     net_result <- delete_vertices(net_result,
@@ -382,19 +387,19 @@ connectivity_scenario <- function(cost_raster, features_rasters=NULL,
     )
 
     V_net_result_name <- V(net_result)$name
-    if (is.numeric(polygons_subset$PUID[1][[1]])){
+    if (is.numeric(pu_raster$PUID[1][[1]])){
       V_net_result_name <- as.numeric(V(net_result)$name)
     }
 
-    condition_raster <- polygons_subset$PUID %in% V_net_result_name
+    condition_raster <- pu_raster$PUID %in% V_net_result_name
     condition_values <- values(condition_raster)
     if (i == 1){
       polygons_subset  <- ifel(condition_raster,
-                               polygons_subset$PUID, NA)
+                               pu_raster$PUID, NA)
     } else {
 
       add(polygons_subset)  <- ifel(condition_raster,
-                                    polygons_subset$PUID, NA)
+                                    pu_raster$PUID, NA)
     }
 
     # Make clustering in the same order with PUID
