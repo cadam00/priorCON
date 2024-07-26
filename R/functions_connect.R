@@ -19,41 +19,41 @@ get_metrics <- function(connect_mat, which_community="s_core"){
 
   # Future use of adjacency matrix
   # if (is.list(connect_mat) && !is.data.frame(connect_mat)){
-  #   habitat_list <- vector("list", length(connect_mat))
+  #   features_list <- vector("list", length(connect_mat))
   #   names_connect_mat <- names(connect_mat)
   #   for (hh in seq_len(length(connect_mat))){
-  #     habitat_list[[hh]] <- as.data.frame.table(
+  #     features_list[[hh]] <- as.data.frame.table(
   #       as.matrix(connect_mat[[hh]]))[,c(2,1,3)]
-  #     habitat_list[[hh]] <-
-  #       data.frame(from.X=gsub("[,].*", "", habitat_list[[hh]][,1]),
-  #                  from.Y=gsub("[,].*", "", habitat_list[[hh]][,2]),
-  #                  to.X=gsub(".*[,]", "", habitat_list[[hh]][,1]),
-  #                  to.Y=gsub(".*[,]", "", habitat_list[[hh]][,2]),
-  #                  weight = habitat_list[[hh]][,3]
+  #     features_list[[hh]] <-
+  #       data.frame(from.X=gsub("[,].*", "", features_list[[hh]][,1]),
+  #                  from.Y=gsub("[,].*", "", features_list[[hh]][,2]),
+  #                  to.X=gsub(".*[,]", "", features_list[[hh]][,1]),
+  #                  to.Y=gsub(".*[,]", "", features_list[[hh]][,2]),
+  #                  weight = features_list[[hh]][,3]
   #     )
-  #     habitat_list[[hh]] <- data.frame(habitat=names_connect_mat[hh],
-  #                                      habitat_list[[hh]])
+  #     features_list[[hh]] <- data.frame(habitat=names_connect_mat[hh],
+  #                                      features_list[[hh]])
   #   }
   # } else {
-  habitat_list <- split(connect_mat, connect_mat$feature)
+  features_list <- split(connect_mat, connect_mat$feature)
   # }
 
   graph_list <- memberships <- merged_coords <- vector("list",
-                                                       length(habitat_list))
-  single_coordinates <- do.call(rbind, habitat_list)
+                                                       length(features_list))
+  single_coordinates <- do.call(rbind, features_list)
   single_coordinates <- cbind(c(single_coordinates$from.X,
                                 single_coordinates$to.X),
                               c(single_coordinates$from.Y,
                                 single_coordinates$to.Y))
   single_coordinates <- single_coordinates[!duplicated(single_coordinates),]
 
-  for (hh in seq_len(length(habitat_list))){
+  for (hh in seq_len(length(features_list))){
 
     from <- merge(
-      data.frame(habitat_list[[hh]],
-                 coordcol = paste0(habitat_list[[hh]][,"from.X"], " ",
-                                   habitat_list[[hh]][,"from.Y"]),
-                 fororder=seq_len(nrow(habitat_list[[hh]]))),
+      data.frame(features_list[[hh]],
+                 coordcol = paste0(features_list[[hh]][,"from.X"], " ",
+                                   features_list[[hh]][,"from.Y"]),
+                 fororder=seq_len(nrow(features_list[[hh]]))),
       data.frame(single_coordinates,
                  id = seq_len(nrow(single_coordinates)),
                  coordcol = paste0(single_coordinates[,1], " ",
@@ -63,10 +63,10 @@ get_metrics <- function(connect_mat, which_community="s_core"){
 
 
     to   <- merge(
-      data.frame(habitat_list[[hh]],
-                 coordcol = paste0(habitat_list[[hh]][,"to.X"], " ",
-                                   habitat_list[[hh]][,"to.Y"]),
-                 fororder=seq_len(nrow(habitat_list[[hh]]))),
+      data.frame(features_list[[hh]],
+                 coordcol = paste0(features_list[[hh]][,"to.X"], " ",
+                                   features_list[[hh]][,"to.Y"]),
+                 fororder=seq_len(nrow(features_list[[hh]]))),
       data.frame(single_coordinates,
                  id = seq_len(nrow(single_coordinates)),
                  coordcol = paste0(single_coordinates[,1], " ",
@@ -75,19 +75,19 @@ get_metrics <- function(connect_mat, which_community="s_core"){
     to <- to[order(to$fororder),]
 
 
-    merged_coords[[hh]] <- data.frame(habitat_list[[hh]],
+    merged_coords[[hh]] <- data.frame(features_list[[hh]],
                                       from=from$id, to=to$id)[,c(1,7,8,2:6)]
-    habitat_list[[hh]] <- data.frame(habitat_list[[hh]],
+    features_list[[hh]] <- data.frame(features_list[[hh]],
                                      from=from$id, to=to$id)[,c(1,7,8,6)]
 
 
-    result <- .get_polygons(habitat_list[[hh]], which_community=which_community)
+    result <- .get_polygons(features_list[[hh]], which_community=which_community)
     memberships[[hh]] <- result[[2]]
     graph_list[[hh]] <- result[[3]]
 
   }
   return(list(which_community = which_community, graph_list = graph_list,
-              memberships = memberships, habitat_list = habitat_list,
+              memberships = memberships, features_list = features_list,
               merged_coords = merged_coords))
 }
 
@@ -245,7 +245,7 @@ get_metrics <- function(connect_mat, which_community="s_core"){
   output_chosen_vector <- output_chosen$ID
   bad_vector           <- output[output$cluster==0,]$ID
 
-  con_names             <- names(solution$habitat_list)
+  con_names             <- names(solution$features_list)
 
   modul_hh_matrix           <- data.frame(matrix(
     nrow=length(con_names), ncol=1))
@@ -257,7 +257,7 @@ get_metrics <- function(connect_mat, which_community="s_core"){
     graph_input <- solution$graph_list[[hh]]
     initial_sum_connections <- sum(E(graph_input)$weight)
 
-    edge_list_i  <- solution$habitat_list[[hh]]
+    edge_list_i  <- solution$features_list[[hh]]
     el           <- edge_list_i[
       !(edge_list_i$from %in% bad_vector) & !(edge_list_i$to %in% bad_vector),
       2:4]
@@ -369,7 +369,7 @@ connectivity_scenario <- function(cost_raster, features_rasters=NULL,
 
   rep_ncell_NA <- rep(NA, ncell(polygons_subset))
 
-  for (i in seq_len(length(pre_graphs$habitat_list))){
+  for (i in seq_len(length(pre_graphs$features_list))){
 
     net_result <- pre_graphs$graph_list[[i]]
 
@@ -451,7 +451,7 @@ connectivity_scenario <- function(cost_raster, features_rasters=NULL,
 
   solution$pu_raster <- pu_raster
 
-  solution$habitat_list <- pre_graphs$habitat_list
+  solution$features_list <- pre_graphs$features_list
 
   solution$graph_list <- pre_graphs$graph_list
 
@@ -514,7 +514,7 @@ get_outputs <- function(solution, feature, pre_graphs,
   polygons_subset <- pu_raster * 1
   names(polygons_subset) <- "PUID"
 
-  for (i in seq_len(length(pre_graphs$habitat_list))){
+  for (i in seq_len(length(pre_graphs$features_list))){
 
     net_result <- pre_graphs$graph_list[[i]]
 
@@ -535,7 +535,7 @@ get_outputs <- function(solution, feature, pre_graphs,
 
   }
 
-  solution$habitat_list <- pre_graphs$habitat_list
+  solution$features_list <- pre_graphs$features_list
 
   solution$graph_list <- pre_graphs$graph_list
 
