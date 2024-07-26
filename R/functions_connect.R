@@ -181,10 +181,10 @@ get_metrics <- function(connect_mat, which_community="s_core"){
   for (i in seq_len(nrow(matrix_test))){
     first_point   <- which(matrix_test[i,1] == PUID)
     second_point  <- which(matrix_test[i,2] == PUID)
-    if (length(first_point) == 0 | length(second_point) == 0) {
-      edges_list[i] <- NA
-      next
-    }
+    # if (length(first_point) == 0 | length(second_point) == 0) {
+    #   edges_list[i] <- NA
+    #   next
+    # }
     edges_list[i] <- st_cast(st_combine(
       points_object[c(first_point,second_point),]), "LINESTRING")
     values[i] <- matrix_test[i,3]
