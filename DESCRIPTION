@@ -2,11 +2,20 @@ Package: priorCON
 Type: Package
 Title: Graph Community Detection Methods into Systematic Conservation Planning
 Version: 0.1.0
-Author: Christos Adam [aut, cre],
-        Nikolaos Nagkoulis [aut],
-        Aggeliki Doxa [aut]
+Authors@R: c(person("Christos", "Adam", role = c("aut", "cre"), email = "econp266@econ.soc.uoc.gr"),
+             person("Nikolaos", "Nagkoulis", role = "aut", email = "nikolaosn@civil.auth.gr"),
+             person("Aggeliki", "Doxa", role = "aut", email = "angedoxa@bio.auth.gr"))
 Maintainer: Christos Adam <econp266@econ.soc.uoc.gr>
-Description: Graph community detection methods into systematic conservation planning.
+Description: An innovative tool-set that incorporates graph community detection
+             methods into systematic conservation planning. It is designed to
+             enhance spatial prioritization by focusing on the protection of
+             areas with high ecological connectivity. Unlike traditional
+             approaches that prioritize individual planning units, priorCON
+             focuses on clusters of features that exhibit strong ecological
+             linkages. The priorCON package is built upon the 'prioritizr'
+             package <doi:10.32614/CRAN.package.prioritizr>, using commercial
+             and open-source exact algorithm solvers that ensure optimal
+             solutions to prioritization problems.
 License: GPL-3
 Encoding: UTF-8
 URL: https://github.com/cadam00/priorCON
