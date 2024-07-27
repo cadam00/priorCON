@@ -81,7 +81,8 @@ get_metrics <- function(connect_mat, which_community="s_core"){
                                      from=from$id, to=to$id)[,c(1,7,8,6)]
 
 
-    result <- .get_polygons(features_list[[hh]], which_community=which_community)
+    result <- .get_polygons(features_list[[hh]],
+                            which_community=which_community)
     memberships[[hh]] <- result[[2]]
     graph_list[[hh]] <- result[[3]]
 
