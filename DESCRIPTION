@@ -28,7 +28,6 @@ Imports:
     tools,
     tmap (>= 3.3.4),
     sf (>= 1.0.16),
-    sfnetworks (>= 0.6.4),
     brainGraph (>= 3.1.0),
     igraph (>= 2.0.3)
 RoxygenNote: 7.3.2
