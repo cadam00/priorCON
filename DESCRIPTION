@@ -21,7 +21,8 @@ Encoding: UTF-8
 URL: https://github.com/cadam00/priorCON
 BugReports: https://github.com/cadam00/priorCON/issues
 LazyData: true
-Imports: 
+Imports:
+    utils,
     prioritizr (>= 8.0.4),
     terra (>= 1.7.78),
     highs (>= 0.1.10),
