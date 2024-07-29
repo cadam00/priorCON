@@ -206,7 +206,7 @@ get_metrics <- function(connect_mat, which_community="s_core"){
   #                              crs = st_crs(points_object))
   # colnames(result_edges)[4]<-"edge weights"
 
-  return(result_edges)
+  return(sfc_lines)
 
 }
 
