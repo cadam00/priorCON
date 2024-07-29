@@ -32,7 +32,7 @@ solutions to prioritization problems.
 This workflow is shown on Fig. [1](#ref-Figure1).
 
 <img src="priorCON_flowchart.png" alt="Flow chart of the priorCON prioritization analysis. priorCON functions are indicated in grey boxes" width="100%" />
-<p class="caption">
+<p class="caption" align="center">
 <span id="ref-Figure1"></span>Fig. 1: Flow chart of the <b>priorCON</b>
 prioritization analysis. <b>priorCON</b> functions are indicated in grey boxes
 </p>
@@ -105,7 +105,7 @@ step can be skipped.
 <p align="center">
   <img src="priorCON_fig2.png" alt="Weighted directed graph (left): Circles represent nodes and arrows represent weighted edges. The tabular representation of the graph represents the edge list (right)." width="50%" />
 </p>
-<p class="caption">
+<p class="caption" align="center">
 <span id="ref-Figure2"></span>Fig. 2: Weighted directed graph (left):
 Circles represent nodes and arrows represent weighted edges. The tabular
 representation of the graph represents the edge list (right).
@@ -142,7 +142,7 @@ algorithm to read them properly.
 <p align="center">
     <img src="priorCON_fig3.png" alt="Connectivity folder" width="50%"  />
 </p>
-<p class="caption">
+<p class="caption" align="center">
 <span id="ref-Figure3"></span>Fig. 3: Connectivity folder
 </p>
 
@@ -158,7 +158,7 @@ order for the algorithm to match the coordinates with the points (Fig.
 <p align="center">
     <img src="priorCON_fig4.png" alt="The 001.txt file contains the following information: Each row represents the probability of movement between point 001 and any other destination points." width="50%"/>
 </p>
-<p class="caption">
+<p class="caption" align="center">
 <span id="ref-Figure4"></span>Fig. 4: The 001.txt file contains the
 following information: Each row represents the probability of movement
 between point 001 and any other destination points.
@@ -254,7 +254,7 @@ tm_shape(cost_raster) +
 <p align="center">
     <img src="cost_raster.png" alt="Cost raster" width="50%"/>
 </p>
-<p class="caption">
+<p class="caption" align="center">
 <span id="ref-Costraster"></span>Fig. 5: Cost raster
 </p>
 
@@ -275,7 +275,7 @@ tm_shape(features) +
 <p align="center">
     <img src="features.png" alt="Features raster" width="50%"  />
 </p>
-<p class="caption">
+<p class="caption" align="center">
 <span id="ref-Features"></span>Fig. 6: Features raster
 </p>
 
@@ -316,7 +316,7 @@ basic_outputs$tmap
 <p align="center">
     <img src="basic_output.png" alt="Basic solution with connections shown" width="50%"  />
 </p>
-<p class="caption">
+<p class="caption" align="center">
 <span id="ref-Basic"></span>Fig. 7: Basic solution with connections
 shown
 </p>
@@ -343,7 +343,7 @@ connectivity_outputs$tmap
 <p align="center">
     <img src="connectivity_output.png" alt="Connectivity solution with connections shown" width="50%" />
 </p>
-<p class="caption">
+<p class="caption" align="center">
 <span id="ref-Connectivity"></span>Fig. 8: Connectivity solution with
 connections shown
 </p>
