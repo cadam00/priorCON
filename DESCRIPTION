@@ -25,7 +25,6 @@ Imports:
     prioritizr (>= 8.0.4),
     terra (>= 1.7.78),
     highs (>= 0.1.10),
-    tools,
     tmap (>= 3.3.4),
     sf (>= 1.0.16),
     brainGraph (>= 3.1.0),
