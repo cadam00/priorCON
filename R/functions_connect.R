@@ -198,8 +198,9 @@ get_metrics <- function(connect_mat, which_community="s_core"){
   ## matrix in the links
   sfc_lines                <- st_as_sf(sfc_lines)
   sfc_lines$`edge weights` <- values
-  # spatial_graph_result <- as_sfnetwork(sfc_lines[!is.na(edges_list),],#sfc_lines
-  #                                      directed=FALSE)
+  # spatial_graph_result <- as_sfnetwork(
+  #                           sfc_lines[!is.na(edges_list),],#sfc_lines
+  #                           directed=FALSE)
   #
   #
   # result_edges <- st_as_sf(spatial_graph_result, "edges",
