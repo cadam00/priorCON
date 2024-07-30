@@ -10,9 +10,9 @@ Description: An innovative tool-set that incorporates graph community detection
              methods into systematic conservation planning. It is designed to
              enhance spatial prioritization by focusing on the protection of
              areas with high ecological connectivity. Unlike traditional
-             approaches that prioritize individual planning units, priorCON
+             approaches that prioritize individual planning units, 'priorCON'
              focuses on clusters of features that exhibit strong ecological
-             linkages. The priorCON package is built upon the 'prioritizr'
+             linkages. The 'priorCON' package is built upon the 'prioritizr'
              package <doi:10.32614/CRAN.package.prioritizr>, using commercial
              and open-source exact algorithm solvers that ensure optimal
              solutions to prioritization problems.
