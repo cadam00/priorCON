@@ -23,7 +23,6 @@ BugReports: https://github.com/cadam00/priorCON/issues
 LazyData: true
 Imports:
     utils,
-    tools,
     prioritizr (>= 8.0.4),
     terra (>= 1.7.78),
     highs,
