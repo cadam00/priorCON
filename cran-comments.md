@@ -1,9 +1,9 @@
 ## Resubmission
 This is a resubmission. In this version I have:
 
-* Added a paragraph at the Description field about the package.
-
-* Replaced Author field with Authors@R.
+* Corrected possibly misspelled words in DESCRIPTION:
+    priorCON (14:68, 16:28)
+-> 'priorCON' as packages should be written in single quotes.
 
 ## R CMD check results
 
