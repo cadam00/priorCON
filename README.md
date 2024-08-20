@@ -71,7 +71,7 @@ example to explain in more detail how the functions operate.
 
 All the functions of the package can be installed from CRAN inr R via
 ``` r
-install.packags("priorCON")
+install.packages("priorCON")
 ```
 
 Alternatively, the package **priorCON** can be installed at the development
