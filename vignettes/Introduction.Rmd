@@ -56,7 +56,7 @@ solutions to prioritization problems.
 This workflow is shown on Fig. [1](#ref-Figure1).
 
 ```{r Figure1, eval=TRUE, echo=FALSE, out.width = '100%', fig.align = "center"}
-knitr::include_graphics("priorCON_flowchart.png")
+knitr::include_graphics("man/figures/priorCON_flowchart.png")
 ```
 <p class="caption" align="center">
 <span id="ref-Figure1"></span>Fig. 1: Flow chart of the <b>priorCON</b>
@@ -119,7 +119,7 @@ formats are given below. In case that an edge list is available, this
 step can be skipped.
 
 ```{r Figure2, eval=TRUE, echo=FALSE, out.width = '100%', fig.align = "center"}
-knitr::include_graphics("priorCON_fig2.png")
+knitr::include_graphics("man/figures/priorCON_fig2.png")
 ```
 <p class="caption" align="center">
 <span id="ref-Figure2"></span>Fig. 2: Weighted directed graph (left):
@@ -156,7 +156,7 @@ tutorial. The data need to be stored in this way in order for the
 algorithm to read them properly.
 
 ```{r Figure3, eval=TRUE, echo=FALSE, out.width = '100%', fig.align = "center"}
-knitr::include_graphics("priorCON_fig3.png")
+knitr::include_graphics("man/figures/priorCON_fig3.png")
 ```
 <p class="caption" align="center">
 <span id="ref-Figure3"></span>Fig. 3: Connectivity folder
@@ -172,7 +172,7 @@ order for the algorithm to match the coordinates with the points (Fig.
 <a href="#ref-Figure4">4</a>).
 
 ```{r Figure4, eval=TRUE, echo=FALSE, out.width = '100%', fig.align = "center"}
-knitr::include_graphics("priorCON_fig4.png")
+knitr::include_graphics("man/figures/priorCON_fig4.png")
 ```
 <p class="caption" align="center">
 <span id="ref-Figure4"></span>Fig. 4: The 001.txt file contains the
@@ -272,7 +272,7 @@ tm_shape(cost_raster) +
 ```
 
 ```{r Costraster, eval=TRUE, echo=FALSE, out.width = '70%', fig.align = "center"}
-knitr::include_graphics("cost_raster.png")
+knitr::include_graphics("man/figures/cost_raster.png")
 ```
 <p class="caption" align="center">
 <span id="ref-Costraster"></span>Fig. 5: Cost raster
@@ -293,7 +293,7 @@ tm_shape(features) +
 ```
 
 ```{r Features, eval=TRUE, echo=FALSE, out.width = '70%', fig.align = "center"}
-knitr::include_graphics("features.png")
+knitr::include_graphics("man/figures/features.png")
 ```
 <p class="caption" align="center">
 <span id="ref-Features"></span>Fig. 6: Features raster
@@ -334,7 +334,7 @@ basic_outputs$tmap
 ```
 
 ```{r Basic, eval=TRUE, echo=FALSE, out.width = '70%', fig.align = "center"}
-knitr::include_graphics("basic_output.png")
+knitr::include_graphics("man/figures/basic_output.png")
 ```
 <p class="caption" align="center">
 <span id="ref-Basic"></span>Fig. 7: Basic solution with connections
@@ -361,7 +361,7 @@ connectivity_outputs$tmap
 ```
 
 ```{r Connectivity, eval=TRUE, echo=FALSE, out.width = '70%', fig.align = "center"}
-knitr::include_graphics("connectivity_output.png")
+knitr::include_graphics("man/figures/connectivity_output.png")
 ```
 <p class="caption" align="center">
 <span id="ref-Connectivity"></span>Fig. 8: Connectivity solution with
