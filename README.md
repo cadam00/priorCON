@@ -69,9 +69,13 @@ example to explain in more detail how the functions operate.
 
 ## **Installation**
 
-All the functions of the package **priorCON** at the development version
-can be installed in R via
+All the functions of the package can be installed from CRAN inr R via
+``` r
+install.packags("priorCON")
+```
 
+Alternatively, the package **priorCON** can be installed at the development
+version from Github in R via
 ``` r
 if (!require(remotes)) install.packages("remotes")
 remotes::install_github("cadam00/priorCON")
