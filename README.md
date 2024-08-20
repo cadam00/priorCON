@@ -69,7 +69,7 @@ example to explain in more detail how the functions operate.
 
 ## **Installation**
 
-All the functions of the package can be installed from CRAN inr R via
+All the functions of the package can be installed from CRAN in R via
 ``` r
 install.packages("priorCON")
 ```
