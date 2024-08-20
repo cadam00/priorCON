@@ -5,13 +5,5 @@
 ^Meta$
 ^revdep$
 ^\.github$
-^basic_output\.png$
-^connectivity_output\.png$
 ^biblio\.bib$
-^cost_raster\.png$
-^features\.png$
-^priorCON_fig2\.png$
-^priorCON_fig3\.png$
-^priorCON_fig4\.png$
-^priorCON_flowchart\.png$
 ^cran-comments\.md$
