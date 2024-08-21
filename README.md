@@ -1,3 +1,7 @@
+<!-- badges: start -->
+  [![CRAN status](https://www.r-pkg.org/badges/version/priorCON)](https://CRAN.R-project.org/package=priorCON)
+<!-- badges: end -->
+
 **This work was supported by the European Union’s Horizon 2020 research and innovation programme HORIZON-CL6–2021-BIODIV-01–12 under grant agreement No 101059407 “MarinePlan – Improved transdisciplinary science for effective ecosystem-based maritime spatial planning and conservation in European Seas”.**
 
 # **Introduction to the priorCON Package (tutorial)**
