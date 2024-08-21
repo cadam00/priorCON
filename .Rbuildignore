@@ -7,3 +7,4 @@
 ^\.github$
 ^biblio\.bib$
 ^cran-comments\.md$
+^codecov\.yml$

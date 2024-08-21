@@ -4,6 +4,7 @@
 [![R-CMD-check-Windows](https://img.shields.io/github/actions/workflow/status/priorCON/priorCON/R-CMD-check-windows.yaml?branch=main&label=Windows)](https://github.com/priorCON/priorCON/actions)
 [![R-CMD-check-macOS](https://img.shields.io/github/actions/workflow/status/priorCON/priorCON/R-CMD-check-macos.yaml?branch=main&label=macOS)](https://github.com/priorCON/priorCON/actions)
 [![R-CMD-check](https://github.com/cadam00/priorCON/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/cadam00/priorCON/actions/workflows/R-CMD-check.yaml)
+[![Codecov test coverage](https://codecov.io/gh/cadam00/priorCON/branch/main/graph/badge.svg)](https://app.codecov.io/gh/cadam00/priorCON?branch=main)
 <!-- badges: end -->
 
 **This work was supported by the European Union’s Horizon 2020 research and innovation programme HORIZON-CL6–2021-BIODIV-01–12 under grant agreement No 101059407 “MarinePlan – Improved transdisciplinary science for effective ecosystem-based maritime spatial planning and conservation in European Seas”.**
