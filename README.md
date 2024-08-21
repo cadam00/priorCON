@@ -1,8 +1,5 @@
 <!-- badges: start -->
   [![CRAN status](https://www.r-pkg.org/badges/version/priorCON)](https://CRAN.R-project.org/package=priorCON)
-  [![R-CMD-check-Ubuntu](https://img.shields.io/github/actions/workflow/status/priorCON/priorCON/R-CMD-check-ubuntu.yaml?branch=main&label=Ubuntu)](https://github.com/priorCON/priorCON/actions)
-[![R-CMD-check-Windows](https://img.shields.io/github/actions/workflow/status/priorCON/priorCON/R-CMD-check-windows.yaml?branch=main&label=Windows)](https://github.com/priorCON/priorCON/actions)
-[![R-CMD-check-macOS](https://img.shields.io/github/actions/workflow/status/priorCON/priorCON/R-CMD-check-macos.yaml?branch=main&label=macOS)](https://github.com/priorCON/priorCON/actions)
 [![R-CMD-check](https://github.com/cadam00/priorCON/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/cadam00/priorCON/actions/workflows/R-CMD-check.yaml)
 [![Codecov test coverage](https://codecov.io/gh/cadam00/priorCON/branch/main/graph/badge.svg)](https://app.codecov.io/gh/cadam00/priorCON?branch=main)
 <!-- badges: end -->
