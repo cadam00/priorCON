@@ -1,5 +1,8 @@
 <!-- badges: start -->
   [![CRAN status](https://www.r-pkg.org/badges/version/priorCON)](https://CRAN.R-project.org/package=priorCON)
+  [![R-CMD-check-Ubuntu](https://img.shields.io/github/actions/workflow/status/priorCON/priorCON/R-CMD-check-ubuntu.yaml?branch=main&label=Ubuntu)](https://github.com/priorCON/priorCON/actions)
+[![R-CMD-check-Windows](https://img.shields.io/github/actions/workflow/status/priorCON/priorCON/R-CMD-check-windows.yaml?branch=main&label=Windows)](https://github.com/priorCON/priorCON/actions)
+[![R-CMD-check-macOS](https://img.shields.io/github/actions/workflow/status/priorCON/priorCON/R-CMD-check-macos.yaml?branch=main&label=macOS)](https://github.com/priorCON/priorCON/actions)
 <!-- badges: end -->
 
 **This work was supported by the European Union’s Horizon 2020 research and innovation programme HORIZON-CL6–2021-BIODIV-01–12 under grant agreement No 101059407 “MarinePlan – Improved transdisciplinary science for effective ecosystem-based maritime spatial planning and conservation in European Seas”.**
