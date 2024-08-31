@@ -1,5 +1,6 @@
 <!-- badges: start -->
   [![CRAN status](https://www.r-pkg.org/badges/version/priorCON)](https://CRAN.R-project.org/package=priorCON)
+  [![](https://img.shields.io/badge/devel%20version-0.1.1-blue.svg)](https://CRAN.R-project.org/package=priorCON)
 [![R-CMD-check](https://github.com/cadam00/priorCON/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/cadam00/priorCON/actions/workflows/R-CMD-check.yaml)
 [![Codecov test coverage](https://codecov.io/gh/cadam00/priorCON/branch/main/graph/badge.svg)](https://app.codecov.io/gh/cadam00/priorCON?branch=main)
 <!-- badges: end -->

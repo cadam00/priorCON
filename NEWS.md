@@ -4,7 +4,7 @@
 
 - Move figures used from README.md to man/figures.
 
-- Update README.md text.
+- Update README.md text and add badges.
 
 - Add CRAN version, R-CMD-check and codecov at README.md.
 
