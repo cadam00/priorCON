@@ -4,9 +4,12 @@
 
 - Move figures used from README.md to man/figures.
 
-- Update README.md text and add badges.
+- Update README.md and Introduction.Rmd text and add badges (CRAN version,
+R-CMD-check and codecov).
 
-- Add CRAN version, R-CMD-check and codecov at README.md.
+- Fix test-get_metrics.R for the upcoming igraph releases, after changes on
+`igraph::cluster_louvain`, as noted by Szabolcs Horvát (for more see
+https://github.com/cadam00/priorCON/issues/1).
 
 # priorCON 0.1.0
 
