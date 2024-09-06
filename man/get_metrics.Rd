@@ -13,19 +13,21 @@ a \code{data.frame} object where the edge lists are contained. See more in
 details.
 }
 \item{which_community}{
-\code{character} value for community type detection. It can be one of \code{"s_core"},
-\code{"louvain"}, \code{"walktrap"}, \code{"eigen"}, \code{"betw"} or \code{"deg"}.
+\code{character} value for community type detection. It can be one of
+\code{"s_core"}, \code{"louvain"}, \code{"walktrap"}, \code{"eigen"},
+\code{"betw"}, \code{"deg"} or \code{"page_rank"}.
 The default is \code{"s_core"}.
 }
 }
 
 \details{
 Function \link[priorCON]{get_metrics} is used to calculate graph metrics values.
-The edge lists created from the previous step, or inserted directly from the user are used
-in this step to create graphs. The directed graphs are transformed to undirected. The
-function is based on the \pkg{igraph} package which is used to create clusters using
-Louvain and Walktrap and calculate the following metrics: Eigenvector Centrality,
-Betweenness Centrality and Degree. S-core is calculated using the package
+The edge lists created from the previous step, or inserted directly from the
+user are used in this step to create graphs. The directed graphs are transformed
+to undirected. The function is based on the \pkg{igraph} package which is used
+to create clusters using Louvain and Walktrap and calculate the following
+metrics: Eigenvector Centrality, Betweenness Centrality and Degree. S-core is
+calculated using the package
 \pkg{brainGraph}.
 
 \code{connect_mat} is either the output of \link[priorCON]{preprocess_graphs} or
@@ -42,7 +44,7 @@ columns:
 }
 
 \value{
-A list containing input for \link[priorCON]{basic_scenario} or 
+A list containing input for \link[priorCON]{basic_scenario} or
 \link[priorCON]{connectivity_scenario}.
 }
 

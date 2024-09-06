@@ -10,25 +10,27 @@ Solve an ordinary \pkg{prioritizr} prioritization problem.
 \arguments{
 \item{cost_raster}{
 \code{SpatRaster} object used as cost for prioritization.
-Its coordinates must correspond to the input given at \link[priorCON]{preprocess_graphs}.
+Its coordinates must correspond to the input given at
+\link[priorCON]{preprocess_graphs}.
 }
 \item{features_rasters}{
 features \code{SpatRaster} object used for prioritization.
-Its coordinates must correspond to the input given at \link[priorCON]{preprocess_graphs}.
+Its coordinates must correspond to the input given at
+\link[priorCON]{preprocess_graphs}.
 }
 \item{budget_perc}{
-\code{numeric} value \eqn{[0,1]}. It represents the budget percentage of the cost to be
-used for prioritization.
+\code{numeric} value \eqn{[0,1]}. It represents the budget percentage of the
+cost to be used for prioritization.
 }
 }
 
 \details{
 
-A basic prioritization problem is created and solved using \pkg{prioritizr} package.
-The solver used for solving the problems is the best available on the computer,
-following the solver hierarchy of \pkg{prioritizr}. By default, the \pkg{highs}
-package using the \href{https://highs.dev/}{HiGHS} solver is downloaded during package
-installation.
+A basic prioritization problem is created and solved using \pkg{prioritizr}
+package. The solver used for solving the problems is the best available on the
+computer, following the solver hierarchy of \pkg{prioritizr}. By default, the
+\pkg{highs} package using the \href{https://highs.dev/}{HiGHS} solver is
+downloaded during package installation.
 }
 
 \value{
@@ -42,7 +44,7 @@ Possingham. 2024. prioritizr: Systematic Conservation Prioritization in R.
 \href{https://prioritizr.net}{https://prioritizr.net}.
 
 Huangfu, Qi, and JA Julian Hall. 2018. Parallelizing the Dual Revised Simplex
-Method. \emph{Mathematical Programming Computation} 10 (1): 119–42. 
+Method. \emph{Mathematical Programming Computation} 10 (1): 119–42.
 \doi{10.1007/s12532-017-0130-5}
 }
 

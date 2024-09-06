@@ -9,10 +9,10 @@ Read connectivity data from multiple sub-folders.
 }
 \arguments{
 \item{path}{
-a path of the folder where sub-folders containing txt or csv files are contained. Each
-sub-folder has the name of the corresponding connectivity data. In case that a
-connectivity folder corresponds to a specific biodiversity feature, it should be named as
-the corresponding feature.
+a path of the folder where sub-folders containing txt or csv files are
+contained. Each sub-folder has the name of the corresponding connectivity data.
+In case that a connectivity folder corresponds to a specific biodiversity
+feature, it should be named as the corresponding feature.
 }
 \item{...}{
 additional arguments passed to \code{read.csv}.

@@ -30,24 +30,25 @@ for each distinct patch at output plots.
 }
 
 \details{
-Loose graph connectivity indicates the case where two protected nodes (cells) can be
-considered connected, even if the between them cells are not protected (thus not included
-in the solution), whereas strict connectivity indicates the case where two protected cells
-can be considered connected, only if they are cells between them that are also protected.
-The default is \code{loose = FALSE}, indicating the use of the strict connectivity
-definition.
+Loose graph connectivity indicates the case where two protected nodes (cells)
+can be considered connected, even if the between them cells are not protected
+(thus not included in the solution), whereas strict connectivity indicates the
+case where two protected cells can be considered connected, only if they are
+cells between them that are also protected. The default is \code{loose = FALSE},
+indicating the use of the strict connectivity definition.
 }
 
 \value{
 A list containing the following items:
 \itemize{
 \item{tmap}: tmap plot of the solution including connections.
-\item{solution}: \pkg{terra} \code{SpatRaster} object representing the prioritization solution.
+\item{solution}: \pkg{terra} \code{SpatRaster} object representing the
+prioritization solution.
 \item{connections}: \pkg{sf} \code{LINESTRING} object representing the preserved
 connections of the solution.
-\item{connectivity_table}: \code{data.frame} containing all feature names at the first
-column, the relative held percentages at the second column and the percentage of
-connections held at the third column.
+\item{connectivity_table}: \code{data.frame} containing all feature names at the
+first column, the relative held percentages at the second column and the
+percentage of connections held at the third column.
 }
 }
 
