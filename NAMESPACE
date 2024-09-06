@@ -7,7 +7,7 @@ importFrom("utils", "read.csv")
 importFrom("igraph", "graph_from_data_frame", "as.undirected", "simplify",
            "igraph_opt", "cluster_louvain", "sizes", "membership",
            "cluster_walktrap", "eigen_centrality", "betweenness", "strength",
-           "as_data_frame", "E", "V", "delete_vertices")
+           "as_data_frame", "E", "V", "delete_vertices", "page_rank")
 importFrom("sf", "st_sfc", "st_crs", "st_as_sf", "st_cast", "st_combine",
            "st_crs<-")
 importFrom("tmap", "tm_shape", "tm_raster", "tm_lines")
@@ -16,5 +16,10 @@ importFrom("prioritizr", "problem", "add_max_utility_objective",
        "eval_target_coverage_summary")
 
 
-exportPattern("^[[:alpha:]]+")
-exportPattern("^[^\\.]")
+export("basic_scenario")
+export("connectivity_scenario")
+export("get_cost_raster")
+export("get_features_raster")
+export("get_metrics")
+export("get_outputs")
+export("preprocess_graphs")
