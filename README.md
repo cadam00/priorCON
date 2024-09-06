@@ -58,7 +58,7 @@ The package provides 4 steps to perform the analysis:
 2.  Connectivity metrics estimation: Function `get_metrics()` is built
     to calculate the following graph metrics: degree, eigenvector
     centrality, betweenness centrality, louvain clustering, walktrap
-    clustering, s-core.
+    clustering, s-core, PageRank.
 
 3.  Prioritization: Functions `basic_scenario()` and
     `connectivity_scenario()` are used to insert the data to **prioritizr**
@@ -201,10 +201,11 @@ transformed to undirected. The function is based on the **igraph**
 package ([Csárdi and Nepusz 2006](#ref-csardi2006igraph); [Csárdi et al.
 2024](#ref-igraph)) which is used to create clusters using Louvain and
 Walktrap and calculate the following metrics: Eigenvector Centrality,
-Betweenness Centrality and Degree. S-core is calculated using the
+Betweenness Centrality,  Degree and PageRank. S-core is calculated using the
 package **brainGraph** ([Watson 2024](#ref-brainGraph)). The user can
 choose between these options to create the respective outputs.
-`'s_core'`, `'louvain'`, `'walktrap'`, `'eigen'`, `'betw'` or `'deg'`.
+`'s_core'`, `'louvain'`, `'walktrap'`, `'eigen'`, `'betw'`, `'deg'` or
+`'page_rank'`.
 
 Detailed information on the theory and equations of the used graph
 metrics are provided in Nagkoulis et al.(2024; subm Methods in Ecology

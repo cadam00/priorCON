@@ -2,6 +2,8 @@
 
 ## Minor changes
 
+- Add `"page_rank"` option on `which_community` argument of `get_metrics`.
+
 - Move figures used from README.md to man/figures.
 
 - Update README.md and Introduction.Rmd text and add badges (CRAN version,

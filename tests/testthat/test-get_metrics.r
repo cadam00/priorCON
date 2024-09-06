@@ -52,6 +52,22 @@ test_that("get_metrics works", {
   #   c(31, 48, 48, 48, 48, 31)
   # )
 
+  pre_graphs <- get_metrics(combined_edge_list, which_community = "page_rank")
+
+  expect_equal(
+    pre_graphs$which_community,
+    "page_rank"
+  )
+
+  expect_equal(
+    length(pre_graphs$memberships[[1]]),
+    112
+  )
+
+  ## Better not to check direct values for a little time...
+  # expect_equal(pre_graphs$memberships[[1]][1:5],
+  #       c(0.0071663478,0.0135738265,0.0133252235,0.0131638595,0.0123293655))
+
   # Detect graph communities using the walktrap algorithm
   pre_graphs <- get_metrics(combined_edge_list, which_community = "walktrap")
 
