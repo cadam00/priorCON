@@ -154,10 +154,14 @@ get_metrics <- function(connect_mat, which_community="s_core"){
     #degree (in-out, total for unweighted) strength is just the weighted degree
     solution2 <- unname(strength(net_result))
 
+  } else if (which_community == "page_rank"){
+
+    solution2 <- unname(page_rank(net_result)$vector)
+
   } else {
 
     stop(paste0("Community name must be one of 's_core', 'louvain',",
-                " 'walktrap', 'eigen', 'betw' or 'deg'"))
+                " 'walktrap', 'eigen', 'betw', 'deg' or 'page_rank'"))
 
   }
 
