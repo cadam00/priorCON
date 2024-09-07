@@ -1,5 +1,6 @@
-## Resubmission
-Update priorCON to version 0.1.1.
+## New version submission
+
+Update 'priorCON' to version 0.1.1.
 
 ## R CMD check results
 
