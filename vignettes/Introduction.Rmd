@@ -36,7 +36,7 @@ on the protection of areas with high ecological connectivity. Unlike
 traditional approaches that prioritize individual planning units,
 **priorCON** focuses on clusters of features that exhibit strong
 ecological linkages. The **priorCON** package is built upon the
-**prioritizr** package ([Hanson et al. 2024](#ref-prioritizr)), using
+**prioritizr** package ([Hanson et al., 2024](#ref-prioritizr)), using
 commercial and open-source exact algorithm solvers that ensure optimal
 solutions to prioritization problems.
 
@@ -206,11 +206,11 @@ Function `get_metrics()` is used to calculate graph metrics values. The
 edge lists created from the previous step, or inserted directly from the
 user are used in this step to create graphs. The directed graphs are
 transformed to undirected. The function is based on the **igraph**
-package ([Csárdi and Nepusz 2006](#ref-csardi2006igraph); [Csárdi et al.
+package ([Csárdi and Nepusz, 2006](#ref-csardi2006igraph); [Csárdi et al.,
 2024](#ref-igraph)) which is used to create clusters using Louvain and
 Walktrap and calculate the following metrics: Eigenvector Centrality,
 Betweenness Centrality and Degree and PageRank. S-core is calculated using the
-package **brainGraph** ([Watson 2024](#ref-brainGraph)). The user can
+package **brainGraph** ([Watson, 2024](#ref-brainGraph)). The user can
 choose between these options to create the respective outputs.
 `'s_core'`, `'louvain'`, `'walktrap'`, `'eigen'`, `'betw'`, `'deg'` or
 `'page_rank'`.
@@ -237,10 +237,10 @@ they wish to compare the results obtained from the two scenarios,
 i.e. with and without connectivity. Alternatively, only the
 `connectivity_scenario()` function can be run to obtain the
 prioritization outputs of the connectivity scenario. Both functions are
-based on the **priorititizr** package ([Hanson et al.
+based on the **priorititizr** package ([Hanson et al.,
 2024](#ref-prioritizr)). The connectivity metrics are first transformed
 to rasters, following an approach similar to Marxan Connect ([Daigle et
-al. 2020](#ref-daigle2020operationalizing)). Then **priorititizr**
+al., 2020](#ref-daigle2020operationalizing)). Then **priorititizr**
 maximizes the utility obtained from protecting both features and
 connections. Mathematically, the target of the optimization is to
 maximize U under the budget (B) limitations (eq. 2 and 3 of Nagkoulis et
