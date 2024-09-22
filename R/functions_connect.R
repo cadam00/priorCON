@@ -352,7 +352,7 @@ connectivity_scenario <- function(cost_raster, features_rasters=NULL,
   if ((budget_perc < 0) || (budget_perc > 1))
     stop("budget_perc must be a numeric value between 0 and 1")
 
-  r <- cost_raster * 0
+  # r <- cost_raster * 0
   single_coordinates <- do.call(rbind, pre_graphs$merged_coords)
   single_coordinates <- cbind(c(single_coordinates$from.X,
                                 single_coordinates$to.X),
@@ -364,7 +364,7 @@ connectivity_scenario <- function(cost_raster, features_rasters=NULL,
   single_coordinates <- as.matrix(single_coordinates[
                                    !duplicated(single_coordinates),])
   pu_raster <- terra::rasterize(single_coordinates[,c(1,2)],
-                                r,
+                                cost_raster,# r,
                                 single_coordinates[,3],
                                 fun=min)
   names(pu_raster)   <- "PUID"
@@ -499,7 +499,7 @@ connectivity_scenario <- function(cost_raster, features_rasters=NULL,
 get_outputs <- function(solution, feature, pre_graphs,
                         loose = FALSE, patch = FALSE){
 
-  r <- solution$solution * 0
+  # r <- solution$solution * 0
   single_coordinates <- do.call(rbind, pre_graphs$merged_coords)
   single_coordinates <- cbind(c(single_coordinates$from.X,
                                 single_coordinates$to.X),
@@ -511,7 +511,7 @@ get_outputs <- function(solution, feature, pre_graphs,
   single_coordinates <- as.matrix(
     single_coordinates[!duplicated(single_coordinates),])
   pu_raster <- terra::rasterize(single_coordinates[,c(1,2)],
-                                r,
+                                solution$solution,# r,
                                 single_coordinates[,3],
                                 fun=min)
   names(pu_raster)   <- "PUID"
