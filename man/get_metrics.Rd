@@ -26,9 +26,8 @@ The edge lists created from the previous step, or inserted directly from the
 user are used in this step to create graphs. The directed graphs are transformed
 to undirected. The function is based on the \pkg{igraph} package which is used
 to create clusters using Louvain and Walktrap and calculate the following
-metrics: Eigenvector Centrality, Betweenness Centrality and Degree. S-core is
-calculated using the package
-\pkg{brainGraph}.
+metrics: Eigenvector Centrality, Betweenness Centrality and Degree and PageRank.
+S-core is calculated using the package \pkg{brainGraph}.
 
 \code{connect_mat} is either the output of \link[priorCON]{preprocess_graphs} or
 a custom edge list \code{data.frame} object, with the following
