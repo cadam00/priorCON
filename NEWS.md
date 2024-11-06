@@ -5,6 +5,8 @@
 - Remove redundant `r` SpatRaster object at `terra::rasterize` use (we care only
 for the "geometry" of the `r`, so no need for new object).
 
+- Update Introduction.Rmd, README and DESCRIPTION text.
+
 # priorCON 0.1.1
 
 ## Minor changes
