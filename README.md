@@ -146,7 +146,7 @@ incorporate connectivity data, based on their linkage to features:
     the connectivity data need to be included in a separate folder named
     in a different way than the species. For example consider having 5
     species (f1,f2,f3,f4,f5) and 1 connectivity dataset. This dataset
-    can be included in a separate folder (e.g. “Langragian_con”).
+    can be included in a separate folder (e.g. “Langragian_con”).
 
 In our example we use connectivity values that are not directly
 connected with a specific species, therefore we illustrate Case 2. Fig.
@@ -230,7 +230,7 @@ includes connectivity into the optimization procedure and ii) the
 `basic_scenario()` function, which does not include connectivity. The
 two functions can be run separately. Users may use both functions, if
 they wish to compare the results obtained from the two scenarios,
-i.e. with and without connectivity. Alternatively, only the
+i.e. with and without connectivity. Alternatively, only the
 `connectivity_scenario()` function can be run to obtain the
 prioritization outputs of the connectivity scenario. Both functions are
 based on the **priorititizr** package ([Hanson et al.,
@@ -240,11 +240,15 @@ al., 2020](#ref-daigle2020operationalizing)). Then **priorititizr**
 maximizes the utility obtained from protecting both features and
 connections. Mathematically, the target of the optimization is to
 maximize U under the budget (B) limitations (eq. 2 and 3 of Nagkoulis et
-al. (2024)):
+al. (2024)):
 
-$$U = \sum\_{\boldsymbol{PU_i} \\ \in SA} -\lambda c_i + \sum\_{\boldsymbol{PU_i} \\ \in SA} \sum\_{j=1}^J \mu_j f_j + \sum\_{\boldsymbol{PU_i} \\ \in SA} \sum\_{j=1}^J \mu_j M_j,$$
+$$
+U = \sum_{\boldsymbol{PU_i} \, \in \,SA} -\lambda c_i + \sum_{\boldsymbol{PU_i} \, \in \,SA} \sum_{j=1}^J \mu_j f_j + \sum_{\boldsymbol{PU_i} \, \in \,SA} \sum_{j=1}^J \mu_j M_j,
+$$
 
-$$\sum_{\boldsymbol{PU_i} \, \in \, SA} c_i \leq B$$
+$$
+\sum_{\boldsymbol{PU_i} \, \in \, SA} c_i \leq B
+$$
 
 A set of planning units $\boldsymbol{A}=(\boldsymbol{PU}_1, \boldsymbol{PU}_2, ..., \boldsymbol{PU_i}, ..., \boldsymbol{PU_i})$ is considered to be protected when $\boldsymbol{PU_i} \, \in \, SA$. The protection of any $\boldsymbol{PU_i}$ results in a cost $c_i$. A finite set of features $\boldsymbol{F}=(F_1, F_2, ... , F_j, ..., F_J)$ is also distributed in $A$, suggesting that these features can be spatially mapped within the PUs. Each $PU$ is thus defined as a spatial object containing the following properties: $\boldsymbol{PU_i}=(f_1, f_2, ..., f_j, ..., f_J, c_i)$, where $f_j$ indicates the quantity of $F_j$ located in $PU_i$. We use the annotation $M_j$ for the values of the metric for every feature $j$. By inserting metrics into the analysis, each PU’s ($\boldsymbol{PU_i}$) properties are extended and can be expressed as follows: $\boldsymbol{PU_i} = (f_1, f_2, ..., f_j, ..., f_J, M_1, M_2, ..., M_j, ..., M_J, c_i)$.
 
