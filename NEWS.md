@@ -7,6 +7,8 @@ for the "geometry" of the `r`, so no need for new object).
 
 - Update Introduction.Rmd, README and DESCRIPTION text.
 
+- Add pkgdown website.
+
 # priorCON 0.1.1
 
 ## Minor changes
