@@ -9,3 +9,6 @@
 ^cran-comments\.md$
 ^codecov\.yml$
 ^LICENSE$
+^_pkgdown\.yml$
+^docs$
+^pkgdown$
