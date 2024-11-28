@@ -1,6 +1,7 @@
 ---
 title: "Introduction to priorCON"
-author: "Christos Adam, Nikolaos Nagkoulis, Aggeliki Doxa"
+author: "Christos Adam, Nikolaos Nagkoulis, Aggeliki Doxa, Antonios D. Mazaris,
+Stelios Katsanevakis"
 output:
   rmarkdown::html_vignette:
     number_sections: false

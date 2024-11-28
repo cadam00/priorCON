@@ -1,3 +1,9 @@
+# priorCON 0.1.3
+
+## Minor changes
+
+- Update package authors in DESCRIPTION.
+
 # priorCON 0.1.2
 
 ## Minor changes
