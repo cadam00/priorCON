@@ -7,7 +7,7 @@
 
     <a class="navbar-brand me-2" href="../index.html">priorCON</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.1.3</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.1.4</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -38,7 +38,8 @@
 
     <div class="section level2">
     <h2 id="ref-usage">Usage<a class="anchor" aria-label="anchor" href="#ref-usage"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">basic_scenario</span><span class="op">(</span><span class="va">cost_raster</span>, <span class="va">features_rasters</span>, <span class="va">budget_perc</span><span class="op">)</span></span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">basic_scenario</span><span class="op">(</span><span class="va">cost_raster</span>, <span class="va">features_rasters</span>, <span class="va">budget_perc</span>, locked_in <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>locked_out <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div class="section level2">
@@ -59,6 +60,16 @@ Its coordinates must correspond to the input given at
 <dd><p><code>numeric</code> value \([0,1]\). It represents the budget percentage of the
 cost to be used for prioritization.</p></dd>
 
+<dt id="arg-locked-in">locked_in<a class="anchor" aria-label="anchor" href="#arg-locked-in"></a></dt>
+<dd><p><code>SpatRaster</code> object used as locked in constraints, where these planning
+units are selected in the solution, e.g. current protected areas. For details,
+see <code><a href="https://prioritizr.net/reference/add_locked_in_constraints.html" class="external-link">prioritizr::add_locked_in_constraints</a></code>.</p></dd>
+
+<dt id="arg-locked-out">locked_out<a class="anchor" aria-label="anchor" href="#arg-locked-out"></a></dt>
+<dd><p><code>SpatRaster</code> object used as locked out constraints, where these planning
+units are excluded from the solution, e.g. not appropriate for protected areas.
+For details, see <code><a href="https://prioritizr.net/reference/add_locked_out_constraints.html" class="external-link">prioritizr::add_locked_out_constraints</a></code>.</p></dd>
+
 </dl></div>
     <div class="section level2">
     <h2 id="details">Details<a class="anchor" aria-label="anchor" href="#details"></a></h2>
@@ -67,7 +78,7 @@ cost to be used for prioritization.</p></dd>
 <p>A basic prioritization problem is created and solved using <span class="pkg">prioritizr</span>
 package. The solver used for solving the problems is the best available on the
 computer, following the solver hierarchy of <span class="pkg">prioritizr</span>. By default, the
-<span class="pkg">highs</span> package using the <a href="https://highs.dev/" class="external-link">HiGHS</a> solver is
+<span class="pkg">highs</span> package using the <a href="https://highs.dev" class="external-link">HiGHS</a> solver is
 downloaded during package installation.</p>
     </div>
     <div class="section level2">
