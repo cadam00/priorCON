@@ -3,7 +3,7 @@ pkgdown: 2.1.1
 pkgdown_sha: ~
 articles:
   Introduction: Introduction.html
-last_built: 2024-11-28T09:08Z
+last_built: 2025-01-19T13:23Z
 urls:
   reference: https://cadam00.github.io/priorCON/reference
   article: https://cadam00.github.io/priorCON/articles

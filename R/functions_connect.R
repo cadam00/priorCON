@@ -99,7 +99,7 @@ get_metrics <- function(connect_mat, which_community="s_core"){
   colnames(edge_list_i) <- c("from","to","weight")
 
   directed_graph_wgt <- graph_from_data_frame(edge_list_i, directed = TRUE)
-  net_result <- as.undirected(directed_graph_wgt, mode = "collapse",
+  net_result <- as_undirected(directed_graph_wgt, mode = "collapse",
                               edge.attr.comb = "sum")
 
   # Simplifying graph
@@ -276,7 +276,7 @@ get_metrics <- function(connect_mat, which_community="s_core"){
     el        <- el[stats::complete.cases(el),]
 
     directed_graph_wgt       <- graph_from_data_frame(el, directed = TRUE)
-    net_result               <- as.undirected(directed_graph_wgt,
+    net_result               <- as_undirected(directed_graph_wgt,
                                               mode = "collapse",
                                               edge.attr.comb = "sum")
     net_result               <- simplify(net_result, remove.multiple = TRUE,
@@ -310,7 +310,8 @@ get_metrics <- function(connect_mat, which_community="s_core"){
 
 }
 
-basic_scenario <- function(cost_raster, features_rasters, budget_perc){
+basic_scenario <- function(cost_raster, features_rasters, budget_perc,
+                           locked_in = NULL, locked_out = NULL){
 
   if ((budget_perc < 0) || (budget_perc > 1))
     stop("budget_perc must be a numeric value between 0 and 1")
@@ -331,6 +332,14 @@ basic_scenario <- function(cost_raster, features_rasters, budget_perc){
     add_relative_targets(0.17) |>
     add_default_solver(verbose=FALSE)
 
+  if (!is.null(locked_in)){
+    p0 <- p0 |> add_locked_in_constraints(locked_in)
+  }
+
+  if (!is.null(locked_out)){
+    p0 <- p0 |> add_locked_out_constraints(locked_out)
+  }
+
   solution <- NULL
   solution$solution <- suppressWarnings(solve(p0, force = TRUE))
   names(solution$solution) <- "basic scenario"
@@ -347,7 +356,8 @@ basic_scenario <- function(cost_raster, features_rasters, budget_perc){
 }
 
 connectivity_scenario <- function(cost_raster, features_rasters=NULL,
-                                  budget_perc, pre_graphs){
+                                  budget_perc, pre_graphs,
+                                  locked_in = NULL, locked_out = NULL){
 
   if ((budget_perc < 0) || (budget_perc > 1))
     stop("budget_perc must be a numeric value between 0 and 1")
@@ -443,6 +453,14 @@ connectivity_scenario <- function(cost_raster, features_rasters=NULL,
     add_binary_decisions() |>
     add_relative_targets(0.17) |>
     add_default_solver(verbose=FALSE)
+
+  if (!is.null(locked_in)){
+    p_cluster <- p_cluster |> add_locked_in_constraints(locked_in)
+  }
+
+  if (!is.null(locked_out)){
+    p_cluster <- p_cluster |> add_locked_out_constraints(locked_out)
+  }
 
   solution <- NULL
   solution$solution <- suppressWarnings(solve(p_cluster, force=TRUE))

@@ -4,7 +4,7 @@ importFrom("brainGraph", "s_core")
 importFrom("grDevices", "terrain.colors")
 importFrom("stats", "complete.cases")
 importFrom("utils", "read.csv")
-importFrom("igraph", "graph_from_data_frame", "as.undirected", "simplify",
+importFrom("igraph", "graph_from_data_frame", "as_undirected", "simplify",
            "igraph_opt", "cluster_louvain", "sizes", "membership",
            "cluster_walktrap", "eigen_centrality", "betweenness", "strength",
            "as_data_frame", "E", "V", "delete_vertices", "page_rank")
@@ -12,8 +12,9 @@ importFrom("sf", "st_sfc", "st_crs", "st_as_sf", "st_cast", "st_combine",
            "st_crs<-")
 importFrom("tmap", "tm_shape", "tm_raster", "tm_lines")
 importFrom("prioritizr", "problem", "add_max_utility_objective",
-       "add_binary_decisions", "add_relative_targets", "add_default_solver",
-       "eval_target_coverage_summary")
+           "add_binary_decisions", "add_relative_targets", "add_default_solver",
+           "eval_target_coverage_summary", "add_locked_in_constraints",
+           "add_locked_out_constraints")
 
 
 export("basic_scenario")

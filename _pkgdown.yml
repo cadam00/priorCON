@@ -1,7 +1,6 @@
 url: https://cadam00.github.io/priorCON/
 template:
   bootstrap: 5
-
 navbar:
   left:
     - icon: fa-home

@@ -1,19 +1,9 @@
-# priorCON 0.1.3
+# priorCON 0.1.4
 
-## Minor changes
+## Major changes
 
-- Update package authors in DESCRIPTION.
-
-# priorCON 0.1.2
-
-## Minor changes
-
-- Remove redundant `r` SpatRaster object at `terra::rasterize` use (we care only
-for the "geometry" of the `r`, so no need for new object).
-
-- Update Introduction.Rmd, README and DESCRIPTION text.
-
-- Add pkgdown website.
+- Add `locked_in` and `locked_out` arguments in `priorCON::basic_scenario` and
+`priorCON::connectivity_scenario`.
 
 ## R CMD check results
 
