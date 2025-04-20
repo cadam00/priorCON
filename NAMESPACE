@@ -10,7 +10,8 @@ importFrom("igraph", "graph_from_data_frame", "as_undirected", "simplify",
            "as_data_frame", "E", "V", "delete_vertices", "page_rank")
 importFrom("sf", "st_sfc", "st_crs", "st_as_sf", "st_cast", "st_combine",
            "st_crs<-")
-importFrom("tmap", "tm_shape", "tm_raster", "tm_lines")
+importFrom("tmap", "tm_shape", "tm_raster", "tm_lines", "tm_legend",
+           "tm_scale_categorical", "tm_scale")
 importFrom("prioritizr", "problem", "add_max_utility_objective",
            "add_binary_decisions", "add_relative_targets", "add_default_solver",
            "eval_target_coverage_summary", "add_locked_in_constraints",

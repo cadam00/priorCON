@@ -20,7 +20,7 @@
 
     <a class="navbar-brand me-2" href="../index.html">priorCON</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.1.4</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.1.5</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -81,8 +81,9 @@ individual planning units, <strong>priorCON</strong> focuses on clusters
 of features that exhibit strong ecological linkages. The
 <strong>priorCON</strong> package is built upon the
 <strong>prioritizr</strong> package (<a href="#ref-prioritizr">Hanson et
-al., 2024</a>), using commercial and open-source exact algorithm solvers
-that ensure optimal solutions to prioritization problems.</p>
+al., 2024</a>; <a href="#ref-hanson2025">2025</a>), using commercial and
+open-source exact algorithm solvers that ensure optimal solutions to
+prioritization problems.</p>
 <p><strong>Features of priorCON</strong></p>
 <ul>
 <li><p><strong>Graph Community Detection</strong>: The package utilizes
@@ -99,7 +100,7 @@ produce and download the outputs of the analysis as shapefiles, matrices
 and tmap plots.</p></li>
 </ul>
 <p>This workflow is shown on Fig. <a href="#ref-Figure1">1</a>.</p>
-<img src="priorCON_flowchart.png" width="100%" style="display: block; margin: auto;"><p class="caption" align="center">
+<img src="priorCON_flowchart.png" alt="Flow chart of the priorCON prioritization analysis. priorCON functions are indicated in grey boxes" width="100%"><p class="caption" align="center">
 <span id="ref-Figure1"></span>Fig. 1: Flow chart of the <b>priorCON</b>
 prioritization analysis. <b>priorCON</b> functions are indicated in grey
 boxes
@@ -135,6 +136,20 @@ other research contexts. In the next sections we provide an illustrative
 example to explain in more detail how the functions operate.</p>
 </div>
 <div class="section level3">
+<h3 id="installation">
+<strong>Installation</strong><a class="anchor" aria-label="anchor" href="#installation"></a>
+</h3>
+<p>All the functions of the package can be installed from CRAN in R
+via</p>
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"priorCON"</span><span class="op">)</span></span></code></pre></div>
+<p>Alternatively, the package <strong>priorCON</strong> can be installed
+at the development version from Github in R via</p>
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="kw">if</span> <span class="op">(</span><span class="op">!</span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">require</a></span><span class="op">(</span><span class="va"><a href="https://remotes.r-lib.org" class="external-link">remotes</a></span><span class="op">)</span><span class="op">)</span> <span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"remotes"</span><span class="op">)</span></span>
+<span><span class="fu">remotes</span><span class="fu">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html" class="external-link">install_github</a></span><span class="op">(</span><span class="st">"cadam00/priorCON"</span><span class="op">)</span></span></code></pre></div>
+</div>
+<div class="section level3">
 <h3 id="illustration-example">
 <strong>Illustration example</strong><a class="anchor" aria-label="anchor" href="#illustration-example"></a>
 </h3>
@@ -160,7 +175,9 @@ other. This preprocessing step can be conducted using the function
 the initial input data into an edge list. Further details on the initial
 data formats are given below. In case that an edge list is available,
 this step can be skipped.</p>
-<img src="priorCON_fig2.png" width="100%" style="display: block; margin: auto;"><p class="caption" align="center">
+<p align="center">
+<img src="priorCON_fig2.png" alt="Weighted directed graph (left): Circles represent nodes and arrows represent weighted edges. The tabular representation of the graph represents the edge list (right)." width="50%"></p>
+<p class="caption" align="center">
 <span id="ref-Figure2"></span>Fig. 2: Weighted directed graph (left):
 Circles represent nodes and arrows represent weighted edges. The tabular
 representation of the graph represents the edge list (right).
@@ -190,7 +207,9 @@ connected with a specific species, therefore we illustrate Case 2. Fig.
 <a href="#ref-Figure3">3</a> represents the structure used in the
 tutorial. The data need to be stored in this way in order for the
 algorithm to read them properly.</p>
-<img src="priorCON_fig3.png" width="100%" style="display: block; margin: auto;"><p class="caption" align="center">
+<p align="center">
+<img src="priorCON_fig3.png" alt="Connectivity folder" width="50%"></p>
+<p class="caption" align="center">
 <span id="ref-Figure3"></span>Fig. 3: Connectivity folder
 </p>
 <p>A typical Lagrangian output is a set of files representing the
@@ -201,7 +220,9 @@ probability. The .txt files need to be named in an increasing order. The
 name of the files need to correspond to the numbering of the points, in
 order for the algorithm to match the coordinates with the points (Fig.
 <a href="#ref-Figure4">4</a>).</p>
-<img src="priorCON_fig4.png" width="100%" style="display: block; margin: auto;"><p class="caption" align="center">
+<p align="center">
+<img src="priorCON_fig4.png" alt="The 001.txt file contains the following information: Each row represents the probability of movement between point 001 and any other destination points." width="50%"></p>
+<p class="caption" align="center">
 <span id="ref-Figure4"></span>Fig. 4: The 001.txt file contains the
 following information: Each row represents the probability of movement
 between point 001 and any other destination points.
@@ -210,13 +231,14 @@ between point 001 and any other destination points.
 can run and transform the format of the inputs to an edge list. If an
 edge list dataset is available, this preprocessing step can be
 skipped.</p>
-<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Import packages</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/cadam00/priorCON" class="external-link">priorCON</a></span><span class="op">)</span></span>
-<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://r-tmap.github.io/tmap/" class="external-link">tmap</a></span><span class="op">)</span></span>
-<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://rspatial.org/" class="external-link">terra</a></span><span class="op">)</span></span>
-<span></span>
-<span><span class="co"># Read connectivity files from folder and combine them</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/r-tmap/tmap" class="external-link">tmap</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://rspatial.org/" class="external-link">terra</a></span><span class="op">)</span></span></code></pre></div>
+<pre><code><span><span class="co">## terra 1.8.21</span></span></code></pre>
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># Read connectivity files from folder and combine them</span></span>
 <span>  <span class="va">combined_edge_list</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/preprocess_graphs.html">preprocess_graphs</a></span><span class="op">(</span></span>
 <span>    <span class="fu"><a href="https://rdrr.io/r/base/system.file.html" class="external-link">system.file</a></span><span class="op">(</span><span class="st">"external"</span>,package<span class="op">=</span><span class="st">"priorCON"</span><span class="op">)</span>,</span>
 <span>    header <span class="op">=</span> <span class="cn">FALSE</span>, sep <span class="op">=</span><span class="st">";"</span></span>
@@ -231,7 +253,7 @@ inserted directly from the user are used in this step to create graphs.
 The directed graphs are transformed to undirected. The function is based
 on the <strong>igraph</strong> package (<a href="#ref-csardi2006igraph">Csárdi and Nepusz, 2006</a>; <a href="#ref-igraph">Csárdi et al., 2024</a>) which is used to create
 clusters using Louvain and Walktrap and calculate the following metrics:
-Eigenvector Centrality, Betweenness Centrality and Degree and PageRank.
+Eigenvector Centrality, Betweenness Centrality, Degree and PageRank.
 S-core is calculated using the package <strong>brainGraph</strong> (<a href="#ref-brainGraph">Watson, 2024</a>). The user can choose between
 these options to create the respective outputs. <code>'s_core'</code>,
 <code>'louvain'</code>, <code>'walktrap'</code>, <code>'eigen'</code>,
@@ -239,7 +261,7 @@ these options to create the respective outputs. <code>'s_core'</code>,
 <p>Detailed information on the theory and equations of the used graph
 metrics are provided in Nagkoulis et al.(2024; subm Methods in Ecology
 and Evolution).</p>
-<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Set seed for reproducibility</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">42</span><span class="op">)</span></span>
 <span></span>
@@ -258,18 +280,18 @@ both functions, if they wish to compare the results obtained from the
 two scenarios, i.e. with and without connectivity. Alternatively, only
 the <code><a href="../reference/connectivity_scenario.html">connectivity_scenario()</a></code> function can be run to obtain
 the prioritization outputs of the connectivity scenario. Both functions
-are based on the <strong>priorititizr</strong> package (<a href="#ref-prioritizr">Hanson et al., 2024</a>). The connectivity
-metrics are first transformed to rasters, following an approach similar
-to Marxan Connect (<a href="#ref-daigle2020operationalizing">Daigle et
-al., 2020</a>). Then <strong>priorititizr</strong> maximizes the utility
-obtained from protecting both features and connections. Mathematically,
-the target of the optimization is to maximize U under the budget (B)
-limitations (eq. 2 and 3 of Nagkoulis et al.(2024)):</p>
+are based on the <strong>priorititizr</strong> package (<a href="#ref-prioritizr">Hanson et al., 2024</a>; <a href="#ref-hanson2025">2025</a>). The connectivity metrics are first
+transformed to rasters, following an approach similar to Marxan Connect
+(<a href="#ref-daigle2020operationalizing">Daigle et al., 2020</a>).
+Then <strong>priorititizr</strong> maximizes the utility obtained from
+protecting both features and connections. Mathematically, the target of
+the optimization is to maximize U under the budget (B) limitations (eq.
+2 and 3 of Nagkoulis et al. (2024)):</p>
 <p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>U</mi><mo>=</mo><munder><mo>∑</mo><mrow><mrow><mi>𝐏</mi><msub><mi>𝐔</mi><mi>𝐢</mi></msub></mrow><mspace width="0.167em"></mspace><mo>∈</mo><mspace width="0.167em"></mspace><mi>S</mi><mi>A</mi></mrow></munder><mo>−</mo><mi>λ</mi><msub><mi>c</mi><mi>i</mi></msub><mo>+</mo><munder><mo>∑</mo><mrow><mrow><mi>𝐏</mi><msub><mi>𝐔</mi><mi>𝐢</mi></msub></mrow><mspace width="0.167em"></mspace><mo>∈</mo><mspace width="0.167em"></mspace><mi>S</mi><mi>A</mi></mrow></munder><munderover><mo>∑</mo><mrow><mi>j</mi><mo>=</mo><mn>1</mn></mrow><mi>J</mi></munderover><msub><mi>μ</mi><mi>j</mi></msub><msub><mi>f</mi><mi>j</mi></msub><mo>+</mo><munder><mo>∑</mo><mrow><mrow><mi>𝐏</mi><msub><mi>𝐔</mi><mi>𝐢</mi></msub></mrow><mspace width="0.167em"></mspace><mo>∈</mo><mspace width="0.167em"></mspace><mi>S</mi><mi>A</mi></mrow></munder><munderover><mo>∑</mo><mrow><mi>j</mi><mo>=</mo><mn>1</mn></mrow><mi>J</mi></munderover><msub><mi>μ</mi><mi>j</mi></msub><msub><mi>M</mi><mi>j</mi></msub><mo>,</mo></mrow><annotation encoding="application/x-tex">
 U = \sum_{\boldsymbol{PU_i} \, \in \,SA} -\lambda c_i + \sum_{\boldsymbol{PU_i} \, \in \,SA} \sum_{j=1}^J \mu_j f_j + \sum_{\boldsymbol{PU_i} \, \in \,SA} \sum_{j=1}^J \mu_j M_j,
 </annotation></semantics></math></p>
 <p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><munder><mo>∑</mo><mrow><mrow><mi>𝐏</mi><msub><mi>𝐔</mi><mi>𝐢</mi></msub></mrow><mspace width="0.167em"></mspace><mo>∈</mo><mspace width="0.167em"></mspace><mi>S</mi><mi>A</mi></mrow></munder><msub><mi>c</mi><mi>i</mi></msub><mo>≤</mo><mi>B</mi></mrow><annotation encoding="application/x-tex">
-\sum_{\boldsymbol{PU_i} \, \in \,SA} c_i \leq B
+\sum_{\boldsymbol{PU_i} \, \in \, SA} c_i \leq B
 </annotation></semantics></math></p>
 <p>A set of planning units
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>𝐀</mi><mo>=</mo><mrow><mo stretchy="true" form="prefix">(</mo><msub><mrow><mi>𝐏</mi><mi>𝐔</mi></mrow><mn>1</mn></msub><mo>,</mo><msub><mrow><mi>𝐏</mi><mi>𝐔</mi></mrow><mn>2</mn></msub><mo>,</mo><mi>.</mi><mi>.</mi><mi>.</mi><mo>,</mo><mrow><mi>𝐏</mi><msub><mi>𝐔</mi><mi>𝐢</mi></msub></mrow><mo>,</mo><mi>.</mi><mi>.</mi><mi>.</mi><mo>,</mo><mrow><mi>𝐏</mi><msub><mi>𝐔</mi><mi>𝐢</mi></msub></mrow><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">\boldsymbol{A}=(\boldsymbol{PU}_1, \boldsymbol{PU}_2, ..., \boldsymbol{PU_i}, ..., \boldsymbol{PU_i})</annotation></semantics></math>
@@ -309,7 +331,7 @@ cost layer is not available, a cost layer with all planning units having
 equal cost can be inserted (Fig. <a href="#ref-Costraster">5</a>. The
 algorithm needs a cost layer, in order to determine the planning
 units.</p>
-<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Set tmap to “view” mode</span></span>
 <span><span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tmap_mode.html" class="external-link">tmap_mode</a></span><span class="op">(</span><span class="st">"view"</span><span class="op">)</span></span>
 <span></span>
@@ -318,25 +340,32 @@ units.</p>
 <span></span>
 <span><span class="co"># Plot the cost raster with tmap</span></span>
 <span><span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_shape.html" class="external-link">tm_shape</a></span><span class="op">(</span><span class="va">cost_raster</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_raster.html" class="external-link">tm_raster</a></span><span class="op">(</span>title <span class="op">=</span> <span class="st">"cost"</span><span class="op">)</span></span></code></pre></div>
-<img src="cost_raster.png" width="70%" style="display: block; margin: auto;"><p class="caption" align="center">
+<span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_raster.html" class="external-link">tm_raster</a></span><span class="op">(</span>col.legend <span class="op">=</span> <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_legend.html" class="external-link">tm_legend</a></span><span class="op">(</span>title <span class="op">=</span> <span class="st">"cost"</span>,</span>
+<span>            position <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"right"</span>, <span class="st">"top"</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<pre><code><span><span class="co">## The visual variable "col" of the layer "raster" contains a unique value. Therefore a discrete scale is applied (tm_scale_discrete).</span></span></code></pre>
+<p align="center">
+<img src="cost_raster.png" alt="Cost raster" width="50%"></p>
+<p class="caption" align="center">
 <span id="ref-Costraster"></span>Fig. 5: Cost raster
 </p>
 <p>The second input are the features rasters. In case such rasters are
 not available, a raster with equal values can be given to the algorithm.
 In this case we have used such a pseudo-raster, adding some noise to
 improve the performance of the algorithm.</p>
-<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Read the features raster</span></span>
 <span><span class="va">features</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/get_features_raster.html">get_features_raster</a></span><span class="op">(</span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># Plot the features raster with tmap</span></span>
 <span><span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_shape.html" class="external-link">tm_shape</a></span><span class="op">(</span><span class="va">features</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_raster.html" class="external-link">tm_raster</a></span><span class="op">(</span>title <span class="op">=</span> <span class="st">"f1"</span><span class="op">)</span></span></code></pre></div>
-<img src="features.png" width="70%" style="display: block; margin: auto;"><p class="caption" align="center">
+<span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_raster.html" class="external-link">tm_raster</a></span><span class="op">(</span>col.legend <span class="op">=</span> <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_legend.html" class="external-link">tm_legend</a></span><span class="op">(</span>title <span class="op">=</span> <span class="st">"f1"</span>,</span>
+<span>            position <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"right"</span>, <span class="st">"top"</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<p align="center">
+<img src="features.png" alt="Features raster" width="50%"></p>
+<p class="caption" align="center">
 <span id="ref-Features"></span>Fig. 6: Features raster
 </p>
-<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Solve an ordinary prioritizr prioritization problem</span></span>
 <span><span class="va">basic_solution</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/basic_scenario.html">basic_scenario</a></span><span class="op">(</span></span>
 <span>                    cost_raster <span class="op">=</span> <span class="va">cost_raster</span>,</span>
@@ -362,38 +391,43 @@ incorporating connectivity metrics in the analysis. Function
 <code><a href="../reference/get_outputs.html">get_outputs()</a></code> takes as input a prioritization solution. The
 user can also get the outputs as shapefiles and raster to use them in
 their analysis.</p>
-<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span> <span class="co"># Get outputs from basic_scenario function for feature “f1”</span></span>
 <span><span class="va">basic_outputs</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/get_outputs.html">get_outputs</a></span><span class="op">(</span>solution   <span class="op">=</span> <span class="va">basic_solution</span>, </span>
 <span>                             feature    <span class="op">=</span> <span class="st">"f1"</span>,</span>
 <span>                             pre_graphs <span class="op">=</span> <span class="va">pre_graphs</span><span class="op">)</span></span>
 <span><span class="va">basic_outputs</span><span class="op">$</span><span class="va">tmap</span></span></code></pre></div>
-<img src="basic_output.png" width="70%" style="display: block; margin: auto;"><p class="caption" align="center">
+<pre><code>The visual variable "col" of the layer "lines" contains a unique value. Therefore a discrete scale is applied (tm_scale_discrete).</code></pre>
+<p align="center">
+<img src="basic_output.png" alt="Basic solution with connections shown" width="50%"></p>
+<p class="caption" align="center">
 <span id="ref-Basic"></span>Fig. 7: Basic solution with connections
 shown
 </p>
-<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Print summary of features and connections held</span></span>
 <span><span class="co"># percentages for basic scenario</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">basic_outputs</span><span class="op">$</span><span class="va">connectivity_table</span><span class="op">)</span></span></code></pre></div>
-<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co">##  feature relative_held connections(%)</span></span>
 <span><span class="co">## 1     f1      0.178563              0</span></span></code></pre></div>
-<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Get outputs from connectivity_scenario function for feature “f1”</span></span>
 <span><span class="va">connectivity_outputs</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/get_outputs.html">get_outputs</a></span><span class="op">(</span>solution   <span class="op">=</span> <span class="va">connectivity_solution</span>,</span>
 <span>                                    feature    <span class="op">=</span> <span class="st">"f1"</span>,</span>
 <span>                                    pre_graphs <span class="op">=</span> <span class="va">pre_graphs</span><span class="op">)</span></span>
 <span><span class="va">connectivity_outputs</span><span class="op">$</span><span class="va">tmap</span></span></code></pre></div>
-<img src="connectivity_output.png" width="70%" style="display: block; margin: auto;"><p class="caption" align="center">
+<p align="center">
+<img src="connectivity_output.png" alt="Connectivity solution with connections shown" width="50%"></p>
+<p class="caption" align="center">
 <span id="ref-Connectivity"></span>Fig. 8: Connectivity solution with
 connections shown
 </p>
-<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Print summary of features and connections held percentages</span></span>
 <span><span class="co"># for connectivity scenario</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">connectivity_outputs</span><span class="op">$</span><span class="va">connectivity_table</span><span class="op">)</span></span></code></pre></div>
-<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb17"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co">##  feature relative_held connections(%)</span></span>
 <span><span class="co">## 1     f1     0.1637209      0.3339886</span></span></code></pre></div>
 </div>
@@ -404,22 +438,28 @@ connections shown
 </h3>
 <p>Csárdi, Gábor, and Tamás Nepusz. 2006. “<span id="ref-csardi2006igraph" class="nocase">The igraph software package for
 complex network research</span>.” <em>InterJournal</em> Complex Systems:
-1695. <a href="https://igraph.org" class="external-link uri">https://igraph.org</a>.</p>
-<p>Csárdi, Gábor, Tamás Nepusz, Vincent Traag, Szabolcs Horvát, Fabio
-Zanini, Daniel Noom, and Kirill Müller. 2024. <em><span id="ref-igraph" class="nocase"> igraph: Network Analysis and Visualization in
-R</span></em>. <a href="https://doi.org/10.5281/zenodo.7682609" class="external-link uri">https://doi.org/10.5281/zenodo.7682609</a>.</p>
-<p>Daigle, Rémi M., Anna Metaxas, Arieanna C. Balbar, Jennifer McGowan,
+1695. <a href="https://igraph.org" class="external-link">https://igraph.org</a></p>
+<p><span id="ref-igraph" class="nocase"></span> Csárdi, Gábor, Tamás
+Nepusz, Vincent Traag, Szabolcs Horvát, Fabio Zanini, Daniel Noom, and
+Kirill Müller. 2024. <em>igraph: Network Analysis and Visualization in
+R</em>. <a href="https://doi.org/10.5281/zenodo.7682609" class="external-link">https://doi.org/10.5281/zenodo.7682609</a></p>
+<p><span id="ref-daigle2020operationalizing" class="nocase"></span>
+Daigle, Rémi M., Anna Metaxas, Arieanna C. Balbar, Jennifer McGowan,
 Eric A. Treml, Caitlin D. Kuempel, Hugh P. Possingham, and Maria Beger.
-2020. “<span id="ref-daigle2020operationalizing" class="nocase">
-Operationalizing ecological connectivity in spatial conservation
-planning with Marxan Connect</span>.” <em>Methods in Ecology and
-Evolution</em> 11 (4): 570–79. <a href="https://doi.org/10.1111/2041-210X.13349" class="external-link uri">https://doi.org/10.1111/2041-210X.13349</a>.</p>
-<p>Hanson, Jeffrey O, Richard Schuster, Nina Morrell, Matthew
-Strimas-Mackey, Brandon P M Edwards, Matthew E Watts, Peter Arcese,
-Joseph R Bennett, and Hugh P Possingham. 2024. <em><span id="ref-prioritizr" class="nocase"> prioritizr: Systematic Conservation
-Prioritization in R</span></em>. <a href="https://CRAN.R-project.org/package=prioritizr" class="external-link uri">https://CRAN.R-project.org/package=prioritizr</a>.</p>
-<p>Watson, Christopher G. 2024. <em><span id="ref-brainGraph" class="nocase">brainGraph: Graph Theory Analysis of Brain MRI
-Data</span></em>. <a href="https://doi.org/10.32614/CRAN.package.brainGraph" class="external-link uri">https://doi.org/10.32614/CRAN.package.brainGraph</a>.</p>
+2020. “Operationalizing ecological connectivity in spatial conservation
+planning with Marxan Connect.” <em>Methods in Ecology and Evolution</em>
+11 (4): 570–79. <a href="https://doi.org/10.1111/2041-210X.13349" class="external-link uri">https://doi.org/10.1111/2041-210X.13349</a></p>
+<p><span id="ref-prioritizr" class="nocase"></span> Hanson, Jeffrey O,
+Richard Schuster, Nina Morrell, Matthew Strimas-Mackey, Brandon P M
+Edwards, Matthew E Watts, Peter Arcese, Joseph R Bennett, and Hugh P
+Possingham. 2024. <b>prioritizr: Systematic Conservation Prioritization
+in R</b>. <a href="https://CRAN.R-project.org/package=prioritizr" class="external-link">https://CRAN.R-project.org/package=prioritizr</a></p>
+<p><span id="ref-hanson2025" class="nocase"></span> Hanson JO, Schuster
+R, Strimas‐Mackey M, Morrell N, Edwards BPM, Arcese P, Bennett JR, and
+Possingham HP. 2025. Systematic conservation prioritization with the
+prioritizr R package. <em>Conservation Biology</em>, 39: e14376. <a href="https://doi.org/10.1111/cobi.14376" class="external-link uri">https://doi.org/10.1111/cobi.14376</a></p>
+<p><span id="ref-brainGraph" class="nocase"></span> Watson, Christopher
+G. 2024. <b>brainGraph: Graph Theory Analysis of Brain MRI Data</b>. <a href="https://doi.org/10.32614/CRAN.package.brainGraph" class="external-link">https://doi.org/10.32614/CRAN.package.brainGraph</a></p>
 </div>
 </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>

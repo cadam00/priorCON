@@ -47,17 +47,30 @@ The solver used for solving the problems is the best available on the computer,
 following the solver hierarchy of \pkg{prioritizr}. By default, the \pkg{highs}
 package using the \href{https://highs.dev}{HiGHS} solver is downloaded during
 package installation.
+
+Both features and connectivity rasters are min-max scaled before solving the
+prioritization problem.
 }
 
 \value{
-A list containing input for \link[priorCON]{get_outputs}.
+A list containing input for \link[priorCON]{get_outputs}. Additionally, the
+connectivity \code{SpatRaster} objects that are used in prioritization are
+returned as well, before and after min-max scaling
+(\code{original_connectivity_rast} and \code{normalized_connectivity_rast}
+objects correspondingly).
 }
 
 \references{
 Hanson, Jeffrey O, Richard Schuster, Nina Morrell, Matthew Strimas-Mackey,
 Brandon P M Edwards, Matthew E Watts, Peter Arcese, Joseph Bennett, and Hugh P
-Possingham. 2024. prioritizr: Systematic Conservation Prioritization in R.
-\href{https://prioritizr.net}{https://prioritizr.net}.
+Possingham. 2025. prioritizr: Systematic Conservation Prioritization in R.
+\href{https://CRAN.R-project.org/package=prioritizr}{
+https://CRAN.R-project.org/package=prioritizr}.
+
+Hanson JO, Schuster R, Strimas‐Mackey M, Morrell N, Edwards BPM, Arcese P,
+Bennett JR, and Possingham HP. 2025. Systematic conservation prioritization with
+the prioritizr R package. \emph{Conservation Biology}, 39: e14376.
+\doi{10.1111/cobi.14376}
 
 Huangfu, Qi, and JA Julian Hall. 2018. Parallelizing the Dual Revised Simplex
 Method. \emph{Mathematical Programming Computation} 10 (1): 119–42.
@@ -89,4 +102,11 @@ features_rasters <- get_features_raster()
 # by incorporating graph connectivity of the features
 connectivity_solution <- connectivity_scenario(cost_raster=cost_raster,
 features_rasters=features_rasters, budget_perc=0.1, pre_graphs=pre_graphs)
+
+# Plot solution raster
+terra::plot(connectivity_solution$solution, main="Connectivity Solution")
+
+# Plot normalized connectivity raster
+terra::plot(connectivity_solution$normalized_connectivity_rast,
+main="Normalized S-Core Connectivity raster")
 }

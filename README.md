@@ -1,6 +1,6 @@
 <!-- badges: start -->
 [![CRAN status](https://www.r-pkg.org/badges/version/priorCON)](https://CRAN.R-project.org/package=priorCON)
-[![Developmental version](https://img.shields.io/badge/devel%20version-0.1.4-blue.svg)](https://CRAN.R-project.org/package=priorCON)
+[![Developmental version](https://img.shields.io/badge/devel%20version-0.1.5-blue.svg)](https://CRAN.R-project.org/package=priorCON)
 [![R-CMD-check](https://github.com/cadam00/priorCON/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/cadam00/priorCON/actions/workflows/R-CMD-check.yaml)
 [![Codecov test coverage](https://codecov.io/gh/cadam00/priorCON/branch/main/graph/badge.svg)](https://app.codecov.io/gh/cadam00/priorCON?branch=main)
 <!-- badges: end -->
@@ -20,9 +20,9 @@ on the protection of areas with high ecological connectivity. Unlike
 traditional approaches that prioritize individual planning units,
 **priorCON** focuses on clusters of features that exhibit strong
 ecological linkages. The **priorCON** package is built upon the
-**prioritizr** package ([Hanson et al., 2024](#ref-prioritizr)), using
-commercial and open-source exact algorithm solvers that ensure optimal
-solutions to prioritization problems.
+**prioritizr** package ([Hanson et al., 2024](#ref-prioritizr);
+[2025](#ref-hanson2025)), using commercial and open-source exact algorithm
+solvers that ensure optimal solutions to prioritization problems.
 
 **Features of priorCON**
 
@@ -42,7 +42,7 @@ solutions to prioritization problems.
 
 This workflow is shown on Fig. [1](#ref-Figure1).
 
-<img src="man/figures/priorCON_flowchart.png" alt="Flow chart of the priorCON prioritization analysis. priorCON functions are indicated in grey boxes" width="100%" />
+<img src="vignettes/priorCON_flowchart.png" alt="Flow chart of the priorCON prioritization analysis. priorCON functions are indicated in grey boxes" width="100%" />
 <p class="caption" align="center">
 <span id="ref-Figure1"></span>Fig. 1: Flow chart of the <b>priorCON</b>
 prioritization analysis. <b>priorCON</b> functions are indicated in grey boxes
@@ -118,7 +118,7 @@ formats are given below. In case that an edge list is available, this
 step can be skipped.
 
 <p align="center">
-  <img src="man/figures/priorCON_fig2.png" alt="Weighted directed graph (left): Circles represent nodes and arrows represent weighted edges. The tabular representation of the graph represents the edge list (right)." width="50%" />
+  <img src="vignettes/priorCON_fig2.png" alt="Weighted directed graph (left): Circles represent nodes and arrows represent weighted edges. The tabular representation of the graph represents the edge list (right)." width="50%" />
 </p>
 <p class="caption" align="center">
 <span id="ref-Figure2"></span>Fig. 2: Weighted directed graph (left):
@@ -155,7 +155,7 @@ tutorial. The data need to be stored in this way in order for the
 algorithm to read them properly.
 
 <p align="center">
-    <img src="man/figures/priorCON_fig3.png" alt="Connectivity folder" width="50%"  />
+    <img src="vignettes/priorCON_fig3.png" alt="Connectivity folder" width="50%"  />
 </p>
 <p class="caption" align="center">
 <span id="ref-Figure3"></span>Fig. 3: Connectivity folder
@@ -171,7 +171,7 @@ order for the algorithm to match the coordinates with the points (Fig.
 <a href="#ref-Figure4">4</a>).
 
 <p align="center">
-    <img src="man/figures/priorCON_fig4.png" alt="The 001.txt file contains the following information: Each row represents the probability of movement between point 001 and any other destination points." width="50%"/>
+    <img src="vignettes/priorCON_fig4.png" alt="The 001.txt file contains the following information: Each row represents the probability of movement between point 001 and any other destination points." width="50%"/>
 </p>
 <p class="caption" align="center">
 <span id="ref-Figure4"></span>Fig. 4: The 001.txt file contains the
@@ -188,7 +188,12 @@ list dataset is available, this preprocessing step can be skipped.
 library(priorCON)
 library(tmap)
 library(terra)
+```
+```
+## terra 1.8.21
+```
 
+```r
 # Read connectivity files from folder and combine them
   combined_edge_list <- preprocess_graphs(
     system.file("external",package="priorCON"),
@@ -233,10 +238,10 @@ they wish to compare the results obtained from the two scenarios,
 i.e. with and without connectivity. Alternatively, only the
 `connectivity_scenario()` function can be run to obtain the
 prioritization outputs of the connectivity scenario. Both functions are
-based on the **priorititizr** package ([Hanson et al.,
-2024](#ref-prioritizr)). The connectivity metrics are first transformed
-to rasters, following an approach similar to Marxan Connect ([Daigle et
-al., 2020](#ref-daigle2020operationalizing)). Then **priorititizr**
+based on the **priorititizr** package ([Hanson et al., 2024](#ref-prioritizr);
+[2025](#ref-hanson2025)). The connectivity metrics are first transformed to
+rasters, following an approach similar to Marxan Connect
+([Daigle et al., 2020](#ref-daigle2020operationalizing)). Then **priorititizr**
 maximizes the utility obtained from protecting both features and
 connections. Mathematically, the target of the optimization is to
 maximize U under the budget (B) limitations (eq. 2 and 3 of Nagkoulis et
@@ -268,11 +273,14 @@ cost_raster <- get_cost_raster()
 
 # Plot the cost raster with tmap
 tm_shape(cost_raster) +
-  tm_raster(title = "cost")
+  tm_raster(col.legend = tm_legend(title = "cost",
+            position = c("right", "top")))
 ```
-
+```
+## The visual variable "col" of the layer "raster" contains a unique value. Therefore a discrete scale is applied (tm_scale_discrete).
+```
 <p align="center">
-    <img src="man/figures/cost_raster.png" alt="Cost raster" width="50%"/>
+    <img src="vignettes/cost_raster.png" alt="Cost raster" width="50%"/>
 </p>
 <p class="caption" align="center">
 <span id="ref-Costraster"></span>Fig. 5: Cost raster
@@ -289,11 +297,12 @@ features <- get_features_raster()
 
 # Plot the features raster with tmap
 tm_shape(features) +
-  tm_raster(title = "f1")
+  tm_raster(col.legend = tm_legend(title = "f1",
+            position = c("right", "top")))
 ```
 
 <p align="center">
-    <img src="man/figures/features.png" alt="Features raster" width="50%"  />
+    <img src="vignettes/features.png" alt="Features raster" width="50%"  />
 </p>
 <p class="caption" align="center">
 <span id="ref-Features"></span>Fig. 6: Features raster
@@ -333,8 +342,12 @@ basic_outputs <- get_outputs(solution   = basic_solution,
 basic_outputs$tmap
 ```
 
+```
+The visual variable "col" of the layer "lines" contains a unique value. Therefore a discrete scale is applied (tm_scale_discrete).
+```
+
 <p align="center">
-    <img src="man/figures/basic_output.png" alt="Basic solution with connections shown" width="50%"  />
+    <img src="vignettes/basic_output.png" alt="Basic solution with connections shown" width="50%"  />
 </p>
 <p class="caption" align="center">
 <span id="ref-Basic"></span>Fig. 7: Basic solution with connections
@@ -361,7 +374,7 @@ connectivity_outputs$tmap
 ```
 
 <p align="center">
-    <img src="man/figures/connectivity_output.png" alt="Connectivity solution with connections shown" width="50%" />
+    <img src="vignettes/connectivity_output.png" alt="Connectivity solution with connections shown" width="50%" />
 </p>
 <p class="caption" align="center">
 <span id="ref-Connectivity"></span>Fig. 8: Connectivity solution with
@@ -384,29 +397,36 @@ print(connectivity_outputs$connectivity_table)
 Csárdi, Gábor, and Tamás Nepusz. 2006.
 “<span class="nocase" id="ref-csardi2006igraph">The igraph
 software package for complex network research</span>.” *InterJournal*
-Complex Systems: 1695. [https://igraph.org](https://igraph.org).
+Complex Systems: 1695. [https://igraph.org](https://igraph.org)
 
+<span class="nocase" id="ref-igraph"></span>
 Csárdi, Gábor, Tamás Nepusz, Vincent Traag, Szabolcs Horvát, Fabio
 Zanini, Daniel Noom, and Kirill Müller. 2024.
-*<span class="nocase" id="ref-igraph">
-igraph: Network Analysis and Visualization in
-R</span>*. [https://doi.org/10.5281/zenodo.7682609](https://doi.org/10.5281/zenodo.7682609).
+*igraph: Network Analysis and Visualization in
+R*. [https://doi.org/10.5281/zenodo.7682609](https://doi.org/10.5281/zenodo.7682609).
 
+<span class="nocase" id="ref-daigle2020operationalizing"></span>
 Daigle, Rémi M., Anna Metaxas, Arieanna C. Balbar, Jennifer McGowan,
 Eric A. Treml, Caitlin D. Kuempel, Hugh P. Possingham, and Maria Beger.
-2020. “<span class="nocase" id="ref-daigle2020operationalizing">
-Operationalizing ecological connectivity in
-spatial conservation planning with Marxan Connect</span>.” *Methods in
+2020. “Operationalizing ecological connectivity in
+spatial conservation planning with Marxan Connect.” *Methods in
 Ecology and Evolution* 11 (4): 570–79.
-https://doi.org/10.1111/2041-210X.13349.
+https://doi.org/10.1111/2041-210X.13349
 
+<span class="nocase" id="ref-prioritizr"></span>
 Hanson, Jeffrey O, Richard Schuster, Nina Morrell, Matthew
 Strimas-Mackey, Brandon P M Edwards, Matthew E Watts, Peter Arcese,
-Joseph R Bennett, and Hugh P Possingham. 2024.
-*<span class="nocase" id="ref-prioritizr">
-prioritizr: Systematic Conservation Prioritization
-in R</span>*. [https://CRAN.R-project.org/package=prioritizr](https://CRAN.R-project.org/package=prioritizr).
+Joseph R Bennett, and Hugh P Possingham. 2024. <b>prioritizr: Systematic
+Conservation Prioritization in R</b>.
+[https://CRAN.R-project.org/package=prioritizr](https://CRAN.R-project.org/package=prioritizr)
 
-Watson, Christopher G. 2024. *<span class="nocase" id="ref-brainGraph">brainGraph: Graph
-Theory Analysis of Brain MRI Data</span>*.
-[https://doi.org/10.32614/CRAN.package.brainGraph](https://doi.org/10.32614/CRAN.package.brainGraph).
+<span class="nocase" id="ref-hanson2025"></span>
+Hanson JO, Schuster R, Strimas‐Mackey M, Morrell N, Edwards BPM, Arcese P,
+Bennett JR, and Possingham HP. 2025. Systematic conservation prioritization with
+the prioritizr R package. *Conservation Biology*, 39: e14376.
+https://doi.org/10.1111/cobi.14376
+
+<span class="nocase" id="ref-brainGraph"></span>
+Watson, Christopher G. 2024. <b>brainGraph: Graph Theory Analysis of Brain MRI
+Data</b>.
+[https://doi.org/10.32614/CRAN.package.brainGraph](https://doi.org/10.32614/CRAN.package.brainGraph)

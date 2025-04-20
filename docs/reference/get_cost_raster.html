@@ -7,7 +7,7 @@
 
     <a class="navbar-brand me-2" href="../index.html">priorCON</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.1.4</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.1.5</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -48,9 +48,7 @@
 
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://r-tmap.github.io/tmap/" class="external-link">tmap</a></span><span class="op">)</span></span></span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> Breaking News: tmap 3.x is retiring. Please test v4, e.g. with</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> remotes::install_github('r-tmap/tmap')</span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/r-tmap/tmap" class="external-link">tmap</a></span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co">## Import features_raster</span></span></span>
 <span class="r-in"><span><span class="va">cost_raster</span> <span class="op">&lt;-</span> <span class="fu">get_cost_raster</span><span class="op">(</span><span class="op">)</span></span></span>
@@ -58,6 +56,11 @@
 <span class="r-in"><span><span class="co">## Plot with tmap</span></span></span>
 <span class="r-in"><span><span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_shape.html" class="external-link">tm_shape</a></span><span class="op">(</span><span class="va">cost_raster</span><span class="op">)</span> <span class="op">+</span></span></span>
 <span class="r-in"><span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_raster.html" class="external-link">tm_raster</a></span><span class="op">(</span>title <span class="op">=</span> <span class="st">"cost"</span><span class="op">)</span></span></span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">──</span> <span style="font-weight: bold;">tmap v3 code detected</span> <span style="color: #00BBBB;">───────────────────────────────────────────────────────</span></span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BB00;">[v3-&gt;v4]</span> `tm_raster()`: migrate the argument(s) related to the legend of the</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> visual variable `col` namely 'title' to 'col.legend = tm_legend(&lt;HERE&gt;)'</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> The visual variable "col" of the layer "raster" contains a unique value. Therefore a discrete scale is applied (tm_scale_discrete).</span>
 <span class="r-plt img"><img src="get_cost_raster-1.png" alt="" width="700" height="433"></span>
 </code></pre></div>
     </div>

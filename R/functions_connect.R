@@ -436,7 +436,6 @@ connectivity_scenario <- function(cost_raster, features_rasters=NULL,
   choose_cluster <- polygons_subset
   names(choose_cluster) <- paste0(pre_graphs$which_community, "_",
                                   seq_len(nlyr(choose_cluster)))
-
   if (!is.null(features_rasters)){
     stacked_f_and_cluster <- .normf(c(features_rasters, choose_cluster))
   } else {
@@ -477,6 +476,10 @@ connectivity_scenario <- function(cost_raster, features_rasters=NULL,
   solution$features_list <- pre_graphs$features_list
 
   solution$graph_list <- pre_graphs$graph_list
+
+  solution$original_connectivity_rast <- choose_cluster
+
+  solution$normalized_connectivity_rast <- .normf(choose_cluster)
 
   attr(solution, "scenario") <- "connectivity"
 
@@ -587,17 +590,20 @@ get_outputs <- function(solution, feature, pre_graphs,
   if(patch){
     output$tmap <- tm_shape(RFSP[[3]]) +
       tm_raster(col = "patches",
-                title = "")
+                col.legend = tm_legend(title = "",
+                                       position = c("right", "top")))
 
     output$solution <- RFSP[[3]]
 
   } else {
     no_patches <- RFSP[[3]] > 0
     output$tmap <- tm_shape(no_patches) +
-      tm_raster(col = "patches", palette=terrain.colors(2)[1],
-                labels = "Protected", drop.levels = TRUE,
-                title = "")
-
+      tm_raster("patches",
+                col.scale = tm_scale_categorical(values = terrain.colors(2)[1],
+                                                 labels = "Protected"),
+                col.legend = tm_legend(title = "",
+                                       position = c("right", "top"))
+                )
     output$solution <- no_patches
 
   }
@@ -605,7 +611,9 @@ get_outputs <- function(solution, feature, pre_graphs,
   output$tmap <- output$tmap +
     #tm_shape(gimi_plot[,4]) +
     tm_shape(gimi_plot) +
-    tm_lines(col = "edge weights", scale=2, palette="magma", n=10)
+    tm_lines("edge weights",
+             col.scale = tm_scale(values="magma", n=10, scale=2),
+             col.legend = tm_legend(position = c("right", "top")))
 
   output$connections <- gimi_plot
 

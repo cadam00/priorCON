@@ -98,6 +98,7 @@ test_that("normf works", {
 
   # Stack them into one SpatRaster
   r <- c(r1, r2)
+  names(r) <- c("cell", "cell")
 
   # Normalize them
   # Now both have the same values and in [0-1] scale
@@ -105,7 +106,7 @@ test_that("normf works", {
   expect_equal(terra::values(norm_r),
                matrix((rep(1:25,2) - 1) / (25 - 1),
                ncol=2,
-               dimnames=list(NULL, c("lyr.1","lyr.1"))))
+               dimnames=list(NULL, c("cell", "cell"))))
 
   # Case that max(r) == min(r)
   # It must return the input raster for the first layer
@@ -114,5 +115,5 @@ test_that("normf works", {
   expect_equal(terra::values(norm_r),
                matrix(c(rep(1,25), ((1:25) - 1) / (25 - 1)),
                ncol=2,
-               dimnames=list(NULL, c("lyr.1","lyr.1"))))
+               dimnames=list(NULL, c("cell", "cell"))))
 })
