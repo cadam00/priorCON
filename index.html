@@ -22,7 +22,7 @@
 
     <a class="navbar-brand me-2" href="index.html">priorCON</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.1.5</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.1.6</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -247,6 +247,42 @@ U = \sum_{\boldsymbol{PU_i} \, \in \,SA} -\lambda c_i + \sum_{\boldsymbol{PU_i} 
 <code class="sourceCode R"><span><span class="co">##  feature relative_held connections(%)</span></span>
 <span><span class="co">## 1     f1     0.1637209      0.3339886</span></span></code></pre></div>
 </div>
+<div class="section level3">
+<h3 id="graph-connectivity-rasters">Graph Connectivity Rasters:<a class="anchor" aria-label="anchor" href="#graph-connectivity-rasters"></a>
+</h3>
+<p>Accessing and working directly with the graph connectivity rasters used as features in the <code>connectivity_scenario</code> function is possible by two ways. The first way is after running <code>connectivity_scenario</code>, retrieving its output elements named <code>original_connectivity_rast</code>/<code>normalized_connectivity_rast</code>. The second one is computing these rasters directly from <code>get_metrics</code> output and a planning units SpatRaster object (<code>pu_raster</code>).</p>
+<div class="sourceCode" id="cb18"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># Define planning units area SpatRaster, matching the coordinates of pre_graphs</span></span>
+<span><span class="va">pu_raster</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/get_cost_raster.html">get_cost_raster</a></span><span class="op">(</span><span class="op">)</span></span>
+<span><span class="co"># Graph connectivity SpatRaster object. pre_graphs is calculated as before.</span></span>
+<span><span class="co"># It has same values with connectivity_solution$original_connectivity_rast.</span></span>
+<span><span class="va">f1_s_core</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/graph_connectivity_rasters.html">graph_connectivity_rasters</a></span><span class="op">(</span><span class="va">pu_raster</span>, <span class="va">pre_graphs</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Plot the graph connectivity SpatRaster with tmap</span></span>
+<span><span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_shape.html" class="external-link">tm_shape</a></span><span class="op">(</span><span class="va">f1_s_core</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_raster.html" class="external-link">tm_raster</a></span><span class="op">(</span>col.legend <span class="op">=</span> <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_legend.html" class="external-link">tm_legend</a></span><span class="op">(</span>title <span class="op">=</span> <span class="st">"f1 S-core"</span>,</span>
+<span>            position <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"right"</span>, <span class="st">"top"</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<p align="center">
+<img src="articles/original_connectivity.png" alt="Graph connectivity" width="50%"></p>
+<p class="caption" align="center">
+<span id="ref-OriginalConnectivity"></span>Fig. 9: Graph connectivity
+</p>
+<div class="sourceCode" id="cb19"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">max_</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/numeric.html" class="external-link">as.numeric</a></span><span class="op">(</span><span class="fu"><a href="https://rspatial.github.io/terra/reference/global.html" class="external-link">global</a></span><span class="op">(</span><span class="va">f1_s_core</span>, <span class="va">max</span>, na.rm<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="va">min_</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/numeric.html" class="external-link">as.numeric</a></span><span class="op">(</span><span class="fu"><a href="https://rspatial.github.io/terra/reference/global.html" class="external-link">global</a></span><span class="op">(</span><span class="va">f1_s_core</span>, <span class="va">min</span>, na.rm<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="va">f1_s_core_normalized</span> <span class="op">&lt;-</span> <span class="op">(</span><span class="va">f1_s_core</span> <span class="op">-</span> <span class="va">min_</span><span class="op">)</span> <span class="op">/</span> <span class="op">(</span><span class="va">max_</span> <span class="op">-</span> <span class="va">min_</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Plot normalized graph connectivity SpatRaster with tmap in [0,1] scale.</span></span>
+<span><span class="co"># It has same values with connectivity_solution$normalized_connectivity_rast.</span></span>
+<span><span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_shape.html" class="external-link">tm_shape</a></span><span class="op">(</span><span class="va">f1_s_core_normalized</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_raster.html" class="external-link">tm_raster</a></span><span class="op">(</span>col.legend <span class="op">=</span> <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_legend.html" class="external-link">tm_legend</a></span><span class="op">(</span>title <span class="op">=</span> <span class="st">"Normalized f1 S-core"</span>,</span>
+<span>            position <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"right"</span>, <span class="st">"top"</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<p align="center">
+<img src="articles/normalized_connectivity.png" alt="Normalized graph connectivity" width="50%"></p>
+<p class="caption" align="center">
+<span id="ref-NormalizedConnectivity"></span>Fig. 10: Normalized graph connectivity
+</p>
+</div>
 </div>
 <div class="section level2">
 <h2 id="references">
@@ -288,12 +324,12 @@ U = \sum_{\boldsymbol{PU_i} \, \in \,SA} -\lambda c_i + \sum_{\boldsymbol{PU_i} 
 <div class="developers">
 <h2 data-toc-skip>Developers</h2>
 <ul class="list-unstyled">
-<li>Christos Adam <br><small class="roles"> Author, maintainer </small> <a href="https://orcid.org/0009-0003-3244-7034" target="orcid.widget" aria-label="ORCID" class="external-link"><span class="fab fa-orcid orcid" aria-hidden="true"></span></a> </li>
-<li>Aggeliki Doxa <br><small class="roles"> Author </small> <a href="https://orcid.org/0000-0003-4279-1499" target="orcid.widget" aria-label="ORCID" class="external-link"><span class="fab fa-orcid orcid" aria-hidden="true"></span></a> </li>
-<li>Nikolaos Nagkoulis <br><small class="roles"> Author </small> <a href="https://orcid.org/0000-0002-1900-2634" target="orcid.widget" aria-label="ORCID" class="external-link"><span class="fab fa-orcid orcid" aria-hidden="true"></span></a> </li>
-<li>Maria Papazekou <br><small class="roles"> Author </small> <a href="https://orcid.org/0000-0001-7063-9553" target="orcid.widget" aria-label="ORCID" class="external-link"><span class="fab fa-orcid orcid" aria-hidden="true"></span></a> </li>
-<li>Antonios D. Mazaris <br><small class="roles"> Author </small> <a href="https://orcid.org/0000-0002-4961-5490" target="orcid.widget" aria-label="ORCID" class="external-link"><span class="fab fa-orcid orcid" aria-hidden="true"></span></a> </li>
-<li>Stelios Katsanevakis <br><small class="roles"> Author </small> <a href="https://orcid.org/0000-0002-5137-7540" target="orcid.widget" aria-label="ORCID" class="external-link"><span class="fab fa-orcid orcid" aria-hidden="true"></span></a> </li>
+<li>Christos Adam <br><small class="roles"> Author, maintainer </small> <a href="https://orcid.org/0009-0003-3244-7034" target="orcid.widget" aria-label="ORCID" class="external-link"><span class="fab fa-orcid orcid" aria-hidden="true"></span></a>  </li>
+<li>Aggeliki Doxa <br><small class="roles"> Author </small> <a href="https://orcid.org/0000-0003-4279-1499" target="orcid.widget" aria-label="ORCID" class="external-link"><span class="fab fa-orcid orcid" aria-hidden="true"></span></a>  </li>
+<li>Nikolaos Nagkoulis <br><small class="roles"> Author </small> <a href="https://orcid.org/0000-0002-1900-2634" target="orcid.widget" aria-label="ORCID" class="external-link"><span class="fab fa-orcid orcid" aria-hidden="true"></span></a>  </li>
+<li>Maria Papazekou <br><small class="roles"> Author </small> <a href="https://orcid.org/0000-0001-7063-9553" target="orcid.widget" aria-label="ORCID" class="external-link"><span class="fab fa-orcid orcid" aria-hidden="true"></span></a>  </li>
+<li>Antonios D. Mazaris <br><small class="roles"> Author </small> <a href="https://orcid.org/0000-0002-4961-5490" target="orcid.widget" aria-label="ORCID" class="external-link"><span class="fab fa-orcid orcid" aria-hidden="true"></span></a>  </li>
+<li>Stelios Katsanevakis <br><small class="roles"> Author </small> <a href="https://orcid.org/0000-0002-5137-7540" target="orcid.widget" aria-label="ORCID" class="external-link"><span class="fab fa-orcid orcid" aria-hidden="true"></span></a>  </li>
 </ul>
 </div>
 
@@ -301,7 +337,7 @@ U = \sum_{\boldsymbol{PU_i} \, \in \,SA} -\lambda c_i + \sum_{\boldsymbol{PU_i} 
 <h2 data-toc-skip>Dev status</h2>
 <ul class="list-unstyled">
 <li><a href="https://CRAN.R-project.org/package=priorCON" class="external-link"><img src="https://www.r-pkg.org/badges/version/priorCON" alt="CRAN status"></a></li>
-<li><a href="https://CRAN.R-project.org/package=priorCON" class="external-link"><img src="https://img.shields.io/badge/devel%20version-0.1.5-blue.svg" alt="Developmental version"></a></li>
+<li><a href="https://CRAN.R-project.org/package=priorCON" class="external-link"><img src="https://img.shields.io/badge/devel%20version-0.1.6-blue.svg" alt="Developmental version"></a></li>
 <li><a href="https://github.com/cadam00/priorCON/actions/workflows/R-CMD-check.yaml" class="external-link"><img src="https://github.com/cadam00/priorCON/actions/workflows/R-CMD-check.yaml/badge.svg" alt="R-CMD-check"></a></li>
 <li><a href="https://app.codecov.io/gh/cadam00/priorCON?branch=main" class="external-link"><img src="https://codecov.io/gh/cadam00/priorCON/branch/main/graph/badge.svg" alt="Codecov test coverage"></a></li>
 </ul>
@@ -316,7 +352,7 @@ U = \sum_{\boldsymbol{PU_i} \, \in \,SA} -\lambda c_i + \sum_{\boldsymbol{PU_i} 
 </div>
 
 <div class="pkgdown-footer-right">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.3.</p>
 </div>
 
     </footer>
