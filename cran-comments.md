@@ -1,14 +1,14 @@
-# priorCON 0.1.5
+# priorCON 0.1.6
+
+## Major changes
+
+- Add `graph_connectivity_rasters` function.
 
 ## Minor changes
 
 - Update 'tmap' code from v3 to v4.
 
-- Add 'prioritizr' updated citation.
-
-- Add connectivity raster outputs at `connectivity_solution` function.
-
-- Update tests.
+- Update Introduction.Rmd and README text.
 
 ## R CMD check results
 

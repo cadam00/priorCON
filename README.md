@@ -1,6 +1,6 @@
 <!-- badges: start -->
 [![CRAN status](https://www.r-pkg.org/badges/version/priorCON)](https://CRAN.R-project.org/package=priorCON)
-[![Developmental version](https://img.shields.io/badge/devel%20version-0.1.5-blue.svg)](https://CRAN.R-project.org/package=priorCON)
+[![Developmental version](https://img.shields.io/badge/devel%20version-0.1.6-blue.svg)](https://CRAN.R-project.org/package=priorCON)
 [![R-CMD-check](https://github.com/cadam00/priorCON/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/cadam00/priorCON/actions/workflows/R-CMD-check.yaml)
 [![Codecov test coverage](https://codecov.io/gh/cadam00/priorCON/branch/main/graph/badge.svg)](https://app.codecov.io/gh/cadam00/priorCON?branch=main)
 <!-- badges: end -->
@@ -391,6 +391,58 @@ print(connectivity_outputs$connectivity_table)
 ##  feature relative_held connections(%)
 ## 1     f1     0.1637209      0.3339886
 ```
+
+### Graph Connectivity Rasters:
+
+Accessing and working directly with the graph connectivity rasters used as
+features in the `connectivity_scenario` function is possible by two ways. The
+first way is after running `connectivity_scenario`, retrieving its output
+elements named `original_connectivity_rast`/`normalized_connectivity_rast`. The
+second one is computing these rasters directly from `get_metrics` output and a
+planning units SpatRaster object (`pu_raster`).
+
+```r
+# Define planning units area SpatRaster, matching the coordinates of pre_graphs
+pu_raster <- get_cost_raster()
+# Graph connectivity SpatRaster object. pre_graphs is calculated as before.
+# It has same values with connectivity_solution$original_connectivity_rast.
+f1_s_core <- graph_connectivity_rasters(pu_raster, pre_graphs)
+
+# Plot the graph connectivity SpatRaster with tmap
+tm_shape(f1_s_core) +
+  tm_raster(col.legend = tm_legend(title = "f1 S-core",
+            position = c("right", "top")))
+```
+
+<p align="center">
+    <img src="vignettes/original_connectivity.png" alt="Graph connectivity"
+    width="50%" />
+</p>
+<p class="caption" align="center">
+<span id="ref-OriginalConnectivity"></span>Fig. 9: Graph connectivity
+</p>
+
+
+```r
+max_ <- as.numeric(global(f1_s_core, max, na.rm=TRUE))
+min_ <- as.numeric(global(f1_s_core, min, na.rm=TRUE))
+f1_s_core_normalized <- (f1_s_core - min_) / (max_ - min_)
+
+# Plot normalized graph connectivity SpatRaster with tmap in [0,1] scale.
+# It has same values with connectivity_solution$normalized_connectivity_rast.
+tm_shape(f1_s_core_normalized) +
+  tm_raster(col.legend = tm_legend(title = "Normalized f1 S-core",
+            position = c("right", "top")))
+```
+
+<p align="center">
+    <img src="vignettes/normalized_connectivity.png" alt="Normalized graph connectivity"
+    width="50%" />
+</p>
+<p class="caption" align="center">
+<span id="ref-NormalizedConnectivity"></span>Fig. 10: Normalized graph connectivity
+</p>
+
 
 ## **References**
 

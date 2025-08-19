@@ -15,7 +15,7 @@ get_features_raster <- function()
   return(x)
 }
 
-get_metrics <- function(connect_mat, which_community="s_core"){
+get_metrics <- function(connect_mat, which_community="s_core", ...){
 
   # Future use of adjacency matrix
   # if (is.list(connect_mat) && !is.data.frame(connect_mat)){
@@ -82,7 +82,7 @@ get_metrics <- function(connect_mat, which_community="s_core"){
 
 
     result <- .get_polygons(features_list[[hh]],
-                            which_community=which_community)
+                            which_community=which_community, ...)
     memberships[[hh]] <- result[[2]]
     graph_list[[hh]] <- result[[3]]
 
@@ -93,7 +93,7 @@ get_metrics <- function(connect_mat, which_community="s_core"){
 }
 
 
-.get_polygons <- function(edge_list_i,  which_community="s_core"){
+.get_polygons <- function(edge_list_i,  which_community="s_core", ...){
 
   edge_list_i <- edge_list_i[2:4]
   colnames(edge_list_i) <- c("from","to","weight")
@@ -113,10 +113,10 @@ get_metrics <- function(connect_mat, which_community="s_core"){
 
   #s_core values
   if (which_community == "s_core"){
-    solution2 <- s_core(net_result, W=NULL)
+    solution2 <- s_core(net_result, W = NULL, ...)
   } else if (which_community == "louvain"){
 
-    clust_result_louvain <- cluster_louvain(net_result)
+    clust_result_louvain <- cluster_louvain(net_result, weights = NULL, ...)
     cs_louvain           <- sizes(clust_result_louvain)
     louvain_memb  <- membership(clust_result_louvain)
     mem_value <- rep(NA, length(louvain_memb))
@@ -129,7 +129,10 @@ get_metrics <- function(connect_mat, which_community="s_core"){
   } else if (which_community == "walktrap"){
     #https://link.springer.com/chapter/10.1007/11569596_31
     #https://iopscience.iop.org/article/10.1088/1742-5468/2008/10/P10008/pdf
-    clust_result_walk <- cluster_walktrap(net_result, steps = 4)
+    clust_result_walk <- cluster_walktrap(net_result, weights = NULL,
+                                          modularity = TRUE,
+                                          membership = TRUE,
+                                          merges = FALSE, ...)
     cs_walk <- sizes(clust_result_walk)
 
     walk_memb <- membership(clust_result_walk)
@@ -143,20 +146,20 @@ get_metrics <- function(connect_mat, which_community="s_core"){
 
   } else if (which_community == "eigen"){
 
-    solution2 <- unname(eigen_centrality(net_result)[[1]])
+    solution2 <- unname(eigen_centrality(net_result, directed=FALSE, ...)[[1]])
 
   } else if (which_community == "betw"){
 
-    solution2 <- unname(betweenness(net_result))
+    solution2 <- unname(betweenness(net_result, directed = FALSE, ...))
 
   } else if (which_community == "deg"){
 
     #degree (in-out, total for unweighted) strength is just the weighted degree
-    solution2 <- unname(strength(net_result))
+    solution2 <- unname(strength(net_result, ...))
 
   } else if (which_community == "page_rank"){
 
-    solution2 <- unname(page_rank(net_result)$vector)
+    solution2 <- unname(page_rank(net_result, vids = V(net_result), ...)$vector)
 
   } else {
 
@@ -647,4 +650,81 @@ preprocess_graphs <- function(path, ...){
     big_combined_edge_list <- rbind(big_combined_edge_list, combined_edge_list)
   }
   return(big_combined_edge_list)
+}
+
+graph_connectivity_rasters <- function(pu_raster, pre_graphs){
+  # r <- pu_raster * 0
+  single_coordinates <- do.call(rbind, pre_graphs$merged_coords)
+  single_coordinates <- cbind(c(single_coordinates$from.X,
+                                single_coordinates$to.X),
+                              c(single_coordinates$from.Y,
+                                single_coordinates$to.Y),
+                              c(single_coordinates$from,
+                                single_coordinates$to)
+  )
+  single_coordinates <- as.matrix(single_coordinates[
+    !duplicated(single_coordinates),])
+  pu_raster <- terra::rasterize(single_coordinates[,c(1,2)],
+                                pu_raster,# r,
+                                single_coordinates[,3],
+                                fun=min)
+  names(pu_raster)   <- "PUID"
+
+  polygons_subset <- pu_raster * 1
+  names(polygons_subset) <- "PUID"
+
+  rep_ncell_NA <- rep(NA, ncell(polygons_subset))
+
+  for (i in seq_len(length(pre_graphs$features_list))){
+
+    net_result <- pre_graphs$graph_list[[i]]
+
+    V_net_result_name <- V(net_result)$name
+    if (is.numeric(pu_raster$PUID[1][[1]])){
+      V_net_result_name <- as.numeric(V(net_result)$name)
+    }
+
+    values_polygons_subsetPUID <- values(pu_raster$PUID)
+
+    # Remove vertices that are absent in the PU raster
+    net_result <- delete_vertices(net_result,
+                                  V(net_result)$name[!V_net_result_name %in%
+                                                       values_polygons_subsetPUID]
+    )
+
+    V_net_result_name <- V(net_result)$name
+    if (is.numeric(pu_raster$PUID[1][[1]])){
+      V_net_result_name <- as.numeric(V(net_result)$name)
+    }
+
+    condition_raster <- pu_raster$PUID %in% V_net_result_name
+    condition_values <- values(condition_raster)
+    if (i == 1){
+      polygons_subset  <- ifel(condition_raster,
+                               pu_raster$PUID, NA)
+    } else {
+
+      add(polygons_subset)  <- ifel(condition_raster,
+                                    pu_raster$PUID, NA)
+    }
+
+    # Make clustering in the same order with PUID
+    V_corrected           <- data.frame(V_net_result_name,
+                                        seq_len(length(V_net_result_name)))
+    rownames(V_corrected) <- V_net_result_name
+    correct_order         <- V_corrected[as.character(
+      values_polygons_subsetPUID[condition_values]),2]
+
+    solution2 <- rep_ncell_NA
+    solution2[condition_values] <- pre_graphs$memberships[[i]][correct_order]
+
+    values(polygons_subset[[i]]) <- solution2
+
+    pre_graphs$graph_list[[i]] <- net_result
+
+  }
+
+  choose_cluster <- polygons_subset
+  names(choose_cluster) <- names(pre_graphs$features_list)
+  return(choose_cluster)
 }

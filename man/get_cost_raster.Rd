@@ -20,5 +20,6 @@ cost_raster <- get_cost_raster()
 
 ## Plot with tmap
 tm_shape(cost_raster) +
-  tm_raster(title = "cost")
+  tm_raster(col.legend = tm_legend(title = "cost",
+            position = c("right", "top")))
 }

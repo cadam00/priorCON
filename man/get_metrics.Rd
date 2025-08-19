@@ -2,7 +2,7 @@
 \alias{get_metrics}
 \title{Detect graph communities for each biodiversity feature.}
 \usage{
-get_metrics(connect_mat, which_community = "s_core")
+get_metrics(connect_mat, which_community = "s_core", ...)
 }
 \description{
 Detect graph communities for each biodiversity feature.
@@ -18,6 +18,10 @@ details.
 \code{"betw"}, \code{"deg"} or \code{"page_rank"}.
 The default is \code{"s_core"}.
 }
+\item{...}{
+Further arguments passed to the graph community detection algorithm. See
+details.
+}
 }
 
 \details{
@@ -27,7 +31,13 @@ user are used in this step to create graphs. The directed graphs are transformed
 to undirected. The function is based on the \pkg{igraph} package which is used
 to create clusters using Louvain and Walktrap and calculate the following
 metrics: Eigenvector Centrality, Betweenness Centrality and Degree and PageRank.
-S-core is calculated using the package \pkg{brainGraph}.
+S-core is calculated using the package \pkg{brainGraph}. Arguments added by
+\code{...} are passed to the respective original functions
+(\code{igraph::cluster_louvain}, \code{igraph::cluster_walktrap},
+\code{igraph::eigen_centrality}, \code{igraph::strength},
+\code{igraph::betweenness}, \code{igraph::page_rank},
+\code{brainGraph::s_core}), given that \code{connect_mat} is transformed to an
+undirected graph.
 
 \code{connect_mat} is either the output of \link[priorCON]{preprocess_graphs} or
 a custom edge list \code{data.frame} object, with the following
@@ -40,6 +50,7 @@ columns:
 \item{\code{to.Y}}: latitude of the destination (target).
 \item{\code{weight}}: connection weight.
 }
+
 }
 
 \value{

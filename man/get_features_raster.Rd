@@ -20,5 +20,6 @@ features_raster <- get_features_raster()
 
 ## Plot with tmap
 tm_shape(features_raster) +
-  tm_raster(title = "f1")
+  tm_raster(col.legend = tm_legend(title = "f1",
+            position = c("right", "top")))
 }

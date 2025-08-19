@@ -25,3 +25,5 @@ export("get_features_raster")
 export("get_metrics")
 export("get_outputs")
 export("preprocess_graphs")
+export("graph_connectivity_rasters")
+
