@@ -4,6 +4,9 @@
 
 - Add `graph_connectivity_rasters` function.
 
+- Now `get_metrics` is able to take ellipsis (`...`) argument, passed to graph
+connectivity functions from `igraph` and `brainGraph`.
+
 ## Minor changes
 
 - Update 'tmap' code from v3 to v4.
