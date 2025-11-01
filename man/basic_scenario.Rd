@@ -26,7 +26,7 @@ cost to be used for prioritization.
 \item{locked_in}{
 \code{SpatRaster} object used as locked in constraints, where these planning
 units are selected in the solution, e.g. current protected areas. For details,
-see \code{prioritizr::add_locked_in_constraints}.
+see \cr \code{prioritizr::add_locked_in_constraints}.
 }
 \item{locked_out}{
 \code{SpatRaster} object used as locked out constraints, where these planning

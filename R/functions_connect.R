@@ -40,7 +40,10 @@ get_metrics <- function(connect_mat, which_community="s_core", ...){
 
   graph_list <- memberships <- merged_coords <- vector("list",
                                                        length(features_list))
-  single_coordinates <- do.call(rbind, features_list)
+  # single_coordinates <- do.call(rbind, features_list)
+  single_coordinates <- {. <- features_list
+    list2DF(lapply(setNames(seq_along(.[[1]]), names(.[[1]])), \(i)
+                   unlist(lapply(., `[[`, i), FALSE, FALSE)))}
   single_coordinates <- cbind(c(single_coordinates$from.X,
                                 single_coordinates$to.X),
                               c(single_coordinates$from.Y,
@@ -49,36 +52,74 @@ get_metrics <- function(connect_mat, which_community="s_core", ...){
 
   for (hh in seq_len(length(features_list))){
 
-    from <- merge(
-      data.frame(features_list[[hh]],
-                 coordcol = paste0(features_list[[hh]][,"from.X"], " ",
-                                   features_list[[hh]][,"from.Y"]),
-                 fororder=seq_len(nrow(features_list[[hh]]))),
-      data.frame(single_coordinates,
-                 id = seq_len(nrow(single_coordinates)),
-                 coordcol = paste0(single_coordinates[,1], " ",
-                                   single_coordinates[,2])),
-      by = "coordcol", all.x=TRUE)
-    from <- from[order(from$fororder),]
+    # from <- merge(
+    #   data.frame(features_list[[hh]],
+    #              coordcol = paste0(features_list[[hh]][,"from.X"], " ",
+    #                                features_list[[hh]][,"from.Y"]),
+    #              fororder=seq_len(nrow(features_list[[hh]]))),
+    #   data.frame(single_coordinates,
+    #              id = seq_len(nrow(single_coordinates)),
+    #              coordcol = paste0(single_coordinates[,1], " ",
+    #                                single_coordinates[,2])),
+    #   by = "coordcol", all.x=TRUE)
+    # from <- from[order(from$fororder),]
+    #
+    #
+    # to   <- merge(
+    #   data.frame(features_list[[hh]],
+    #              coordcol = paste0(features_list[[hh]][,"to.X"], " ",
+    #                                features_list[[hh]][,"to.Y"]),
+    #              fororder=seq_len(nrow(features_list[[hh]]))),
+    #   data.frame(single_coordinates,
+    #              id = seq_len(nrow(single_coordinates)),
+    #              coordcol = paste0(single_coordinates[,1], " ",
+    #                                single_coordinates[,2])),
+    #   by = "coordcol", all.x=TRUE)
+    # to <- to[order(to$fororder),]
+    #
+    # merged_coords[[hh]] <- data.frame(features_list[[hh]],
+    #                                   from=from$id, to=to$id)[,c(1,7,8,2:6)]
+    # features_list[[hh]] <- data.frame(features_list[[hh]],
+    #                                   from=from$id, to=to$id)[,c(1,7,8,6)]
 
+    # # build coord_sc once
+    coord_sc <- paste(single_coordinates[,1], single_coordinates[,2])
+    # # build coord_fl
+    coord_fl <- paste(features_list[[hh]]$from.X, features_list[[hh]]$from.Y)
+    # match coordinates directly
+    from_id <- match(coord_fl, coord_sc)
+    # # build result
+    # from_id <- cbind(
+    #   features_list[[hh]],
+    #   coordcol = coord_fl,
+    #   fororder = seq_len(nrow(features_list[[hh]])),
+    #   id = idx
+    # )
 
-    to   <- merge(
-      data.frame(features_list[[hh]],
-                 coordcol = paste0(features_list[[hh]][,"to.X"], " ",
-                                   features_list[[hh]][,"to.Y"]),
-                 fororder=seq_len(nrow(features_list[[hh]]))),
-      data.frame(single_coordinates,
-                 id = seq_len(nrow(single_coordinates)),
-                 coordcol = paste0(single_coordinates[,1], " ",
-                                   single_coordinates[,2])),
-      by = "coordcol", all.x=TRUE)
-    to <- to[order(to$fororder),]
+    coords <- features_list[[hh]][, c("from.X", "from.Y")]
+    uniq_coords <- unique(coords)
+    coord_id <- match(
+      data.frame(coords),
+      data.frame(uniq_coords)
+    )
 
+    coord_sc <- paste(single_coordinates[,1], single_coordinates[,2])
+    # # build coord_fl
+    coord_fl <- paste(features_list[[hh]]$to.X, features_list[[hh]]$to.Y)
+    # # match coordinates directly
+    to_id <- match(coord_fl, coord_sc)
+    # # build result
+    # to_id <- cbind(
+    #   features_list[[hh]],
+    #   coordcol = coord_fl,
+    #   fororder = seq_len(nrow(features_list[[hh]])),
+    #   id = idx
+    # )
 
     merged_coords[[hh]] <- data.frame(features_list[[hh]],
-                                      from=from$id, to=to$id)[,c(1,7,8,2:6)]
+                                      from=from_id, to=to_id)[,c(1,7,8,2:6)]
     features_list[[hh]] <- data.frame(features_list[[hh]],
-                                     from=from$id, to=to$id)[,c(1,7,8,6)]
+                                      from=from_id, to=to_id)[,c(1,7,8,6)]
 
 
     result <- .get_polygons(features_list[[hh]],
@@ -366,7 +407,10 @@ connectivity_scenario <- function(cost_raster, features_rasters=NULL,
     stop("budget_perc must be a numeric value between 0 and 1")
 
   # r <- cost_raster * 0
-  single_coordinates <- do.call(rbind, pre_graphs$merged_coords)
+  # single_coordinates <- do.call(rbind, pre_graphs$merged_coords)
+  single_coordinates <- {. <- pre_graphs$merged_coords
+                 list2DF(lapply(setNames(seq_along(.[[1]]), names(.[[1]])), \(i)
+                                     unlist(lapply(., `[[`, i), FALSE, FALSE)))}
   single_coordinates <- cbind(c(single_coordinates$from.X,
                                 single_coordinates$to.X),
                               c(single_coordinates$from.Y,
@@ -524,7 +568,10 @@ get_outputs <- function(solution, feature, pre_graphs,
                         loose = FALSE, patch = FALSE){
 
   # r <- solution$solution * 0
-  single_coordinates <- do.call(rbind, pre_graphs$merged_coords)
+  # single_coordinates <- do.call(rbind, pre_graphs$merged_coords)
+  single_coordinates <- {. <- pre_graphs$merged_coords
+                 list2DF(lapply(setNames(seq_along(.[[1]]), names(.[[1]])), \(i)
+                                     unlist(lapply(., `[[`, i), FALSE, FALSE)))}
   single_coordinates <- cbind(c(single_coordinates$from.X,
                                 single_coordinates$to.X),
                               c(single_coordinates$from.Y,
@@ -654,7 +701,10 @@ preprocess_graphs <- function(path, ...){
 
 graph_connectivity_rasters <- function(pu_raster, pre_graphs){
   # r <- pu_raster * 0
-  single_coordinates <- do.call(rbind, pre_graphs$merged_coords)
+  # single_coordinates <- do.call(rbind, pre_graphs$merged_coords)
+  single_coordinates <- {. <- pre_graphs$merged_coords
+                 list2DF(lapply(setNames(seq_along(.[[1]]), names(.[[1]])), \(i)
+                                     unlist(lapply(., `[[`, i), FALSE, FALSE)))}
   single_coordinates <- cbind(c(single_coordinates$from.X,
                                 single_coordinates$to.X),
                               c(single_coordinates$from.Y,
@@ -689,7 +739,7 @@ graph_connectivity_rasters <- function(pu_raster, pre_graphs){
     # Remove vertices that are absent in the PU raster
     net_result <- delete_vertices(net_result,
                                   V(net_result)$name[!V_net_result_name %in%
-                                                       values_polygons_subsetPUID]
+                                                     values_polygons_subsetPUID]
     )
 
     V_net_result_name <- V(net_result)$name

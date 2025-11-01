@@ -1,17 +1,13 @@
-# priorCON 0.1.6
+# priorCON 0.1.7
 
-## Major changes
+## NOTE correction from 0.1.6 version
+> Result: NOTE
+ checkRd: (-1) preprocess_graphs.Rd:50: height/width attributes should be in
+pixels
+ checkRd: (-1) preprocess_graphs.Rd:62: height/width attributes should be in
+pixels
 
-- Add `graph_connectivity_rasters` function.
-
-- Now `get_metrics` is able to take ellipsis (`...`) argument, passed to graph
-connectivity functions from `igraph` and `brainGraph`.
-
-## Minor changes
-
-- Update 'tmap' code from v3 to v4.
-
-- Update Introduction.Rmd and README text.
+Fixed.
 
 ## R CMD check results
 

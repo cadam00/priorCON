@@ -73,8 +73,9 @@ in R. \emph{Chapman and Hall/CRC}. \doi{10.1201/9780429459016}
 
 \examples{
 # Read connectivity files from folder and combine them
-combined_edge_list <- preprocess_graphs(system.file("external", package="priorCON"),
-                                        header = FALSE, sep =";")
+combined_edge_list <- preprocess_graphs(
+                                    system.file("external", package="priorCON"),
+                                    header = FALSE, sep =";")
 
 # Set seed for reproducibility
 set.seed(42)
@@ -85,7 +86,8 @@ pre_graphs <- get_metrics(combined_edge_list, which_community = "s_core")
 cost_raster <- get_cost_raster()
 features_rasters <- get_features_raster()
 
-# Solve a prioritizr prioritization problem, by incorporating graph connectivity of the features
+# Solve a prioritizr prioritization problem, by incorporating graph connectivity
+# of the features
 connectivity_solution <- connectivity_scenario(
                            cost_raster      = cost_raster,
                            features_rasters = features_rasters,
@@ -101,8 +103,9 @@ connectivity_outputs <- get_outputs(solution   = connectivity_solution,
 # Plot tmap
 connectivity_outputs$tmap
 
-# Print summary of features and connections held percentages for connectivity scenario
+# Print summary of features and connections held percentages for connectivity
+# scenario
 print(connectivity_outputs$connectivity_table)
-##   feature relative_held connections(%)
+##   feature relative_held connections(%)
 ## 1      f1     0.1637209      0.3339886
 }

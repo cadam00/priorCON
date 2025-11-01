@@ -2,7 +2,7 @@ import(terra)
 import(highs)
 importFrom("brainGraph", "s_core")
 importFrom("grDevices", "terrain.colors")
-importFrom("stats", "complete.cases")
+importFrom("stats", "complete.cases", "setNames")
 importFrom("utils", "read.csv")
 importFrom("igraph", "graph_from_data_frame", "as_undirected", "simplify",
            "igraph_opt", "cluster_louvain", "sizes", "membership",

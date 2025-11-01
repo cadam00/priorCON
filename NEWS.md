@@ -1,3 +1,11 @@
+# priorCON 0.1.7
+
+## Minor changes
+
+- Faster `preprocess_graphs`, `get_outputs` and `graph_connectivity_rasters`.
+
+- Minor corrections in manual.
+
 # priorCON 0.1.6
 
 ## Major changes

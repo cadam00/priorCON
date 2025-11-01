@@ -47,8 +47,8 @@ connectivity dataset. This dataset can be included in a separate folder
 }
 
 \if{html}{
-  \figure{priorCON_fig3.png}{options: width="100\%"}}
-\if{latex}{\figure{priorCON_fig3.pdf}{options: width=5.5in}}
+  \figure{priorCON_fig3.png}{options: width=381}}
+\if{latex}{\figure{priorCON_fig3.pdf}{options: width=381px}}
 
 A typical Lagrangian output is a set of files representing the likelihood of a
 point moving from an origin (source) to a destination (target). This can be
@@ -59,8 +59,11 @@ the numbering of the points, in order for the algorithm to match the coordinates
 with the points.
 
 \if{html}{
-  \figure{priorCON_fig4.png}{options: width="100\%"}}
-\if{latex}{\figure{priorCON_fig4.pdf}{options: width=5.5in}}
+  \figure{priorCON_fig4.png}{options: width=381
+  alt="The 001.txt file contains the following information: Each row represents
+  the probability of movement between point 001 and any other destination
+  points."}}
+\if{latex}{\figure{priorCON_fig4.pdf}{options: width=381px}}
 }
 
 \value{
