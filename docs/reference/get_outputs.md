@@ -125,4 +125,8 @@ connectivity_outputs$tmap
 # Print summary of features and connections held percentages for connectivity
 # scenario
 print(connectivity_outputs$connectivity_table)
+#>   feature relative_held connections(%)
+#> 1      f1     0.1637209      0.3339886
+##   feature relative_held connections(%)
+## 1      f1     0.1637209      0.3339886
 ```
