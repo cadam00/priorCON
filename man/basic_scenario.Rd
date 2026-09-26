@@ -55,7 +55,7 @@ A list containing input for \link[priorCON]{get_outputs}.
 
 Hanson, Jeffrey O, Richard Schuster, Nina Morrell, Matthew Strimas-Mackey,
 Brandon P M Edwards, Matthew E Watts, Peter Arcese, Joseph Bennett, and Hugh P
-Possingham. 2025. prioritizr: Systematic Conservation Prioritization in R.
+Possingham. 2026. prioritizr: Systematic Conservation Prioritization in R.
 \href{https://CRAN.R-project.org/package=prioritizr}{
 https://CRAN.R-project.org/package=prioritizr}.
 

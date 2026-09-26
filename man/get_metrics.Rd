@@ -71,10 +71,10 @@ Network Research. \emph{InterJournal Complex Systems}: 1695.
 \href{https://igraph.org}{https://igraph.org}.
 
 Csárdi, Gábor, Tamás Nepusz, Vincent Traag, Szabolcs Horvát, Fabio Zanini,
-Daniel Noom, and Kirill Müller. 2024. igraph: Network Analysis and Visualization
+Daniel Noom, and Kirill Müller. 2026. igraph: Network Analysis and Visualization
 in R. \doi{10.5281/zenodo.7682609}.
 
-Watson, Christopher G. 2024. brainGraph: Graph Theory Analysis of Brain MRI
+Watson, Christopher G. 2026. brainGraph: Graph Theory Analysis of Brain MRI
 Data. \doi{10.32614/CRAN.package.brainGraph}.
 }
 

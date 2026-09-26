@@ -7,8 +7,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <title>Introduction to priorCON • priorCON</title>
 <script src="../deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<link href="../deps/bootstrap-5.3.1/bootstrap.min.css" rel="stylesheet">
-<script src="../deps/bootstrap-5.3.1/bootstrap.bundle.min.js"></script><link href="../deps/font-awesome-6.5.2/css/all.min.css" rel="stylesheet">
+<link href="../deps/bootstrap-5.3.8/bootstrap.min.css" rel="stylesheet">
+<script src="../deps/bootstrap-5.3.8/bootstrap.bundle.min.js"></script><link href="../deps/font-awesome-6.5.2/css/all.min.css" rel="stylesheet">
 <link href="../deps/font-awesome-6.5.2/css/v4-shims.min.css" rel="stylesheet">
 <script src="../deps/headroom-0.11.0/headroom.min.js"></script><script src="../deps/headroom-0.11.0/jQuery.headroom.min.js"></script><script src="../deps/bootstrap-toc-1.0.1/bootstrap-toc.min.js"></script><script src="../deps/clipboard.js-2.0.11/clipboard.min.js"></script><script src="../deps/search-1.0.0/autocomplete.jquery.min.js"></script><script src="../deps/search-1.0.0/fuse.min.js"></script><script src="../deps/search-1.0.0/mark.min.js"></script><!-- pkgdown --><script src="../pkgdown.js"></script><meta property="og:title" content="Introduction to priorCON">
 </head>
@@ -20,7 +20,7 @@
 
     <a class="navbar-brand me-2" href="../index.html">priorCON</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.1.7</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.1.8</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -81,7 +81,7 @@ individual planning units, <strong>priorCON</strong> focuses on clusters
 of features that exhibit strong ecological linkages. The
 <strong>priorCON</strong> package is built upon the
 <strong>prioritizr</strong> package (<a href="#ref-prioritizr">Hanson et
-al., 2024</a>; <a href="#ref-hanson2025">2025</a>), using commercial and
+al., 2026</a>; <a href="#ref-hanson2025">2025</a>), using commercial and
 open-source exact algorithm solvers that ensure optimal solutions to
 prioritization problems.</p>
 <p><strong>Features of priorCON</strong></p>
@@ -251,15 +251,15 @@ skipped.</p>
 metrics values. The edge lists created from the previous step, or
 inserted directly from the user are used in this step to create graphs.
 The directed graphs are transformed to undirected. The function is based
-on the <strong>igraph</strong> package (<a href="#ref-csardi2006igraph">Csárdi and Nepusz, 2006</a>; <a href="#ref-igraph">Csárdi et al., 2024</a>) which is used to create
+on the <strong>igraph</strong> package (<a href="#ref-csardi2006igraph">Csárdi and Nepusz, 2006</a>; <a href="#ref-igraph">Csárdi et al., 2026</a>) which is used to create
 clusters using Louvain and Walktrap and calculate the following metrics:
 Eigenvector Centrality, Betweenness Centrality, Degree and PageRank.
-S-core is calculated using the package <strong>brainGraph</strong> (<a href="#ref-brainGraph">Watson, 2024</a>). The user can choose between
+S-core is calculated using the package <strong>brainGraph</strong> (<a href="#ref-brainGraph">Watson, 2026</a>). The user can choose between
 these options to create the respective outputs. <code>'s_core'</code>,
 <code>'louvain'</code>, <code>'walktrap'</code>, <code>'eigen'</code>,
 <code>'betw'</code>, <code>'deg'</code> or <code>'page_rank'</code>.</p>
 <p>Detailed information on the theory and equations of the used graph
-metrics are provided in Nagkoulis et al.(2024; subm Methods in Ecology
+metrics are provided in Nagkoulis et al.(2026; subm Methods in Ecology
 and Evolution).</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Set seed for reproducibility</span></span>
@@ -280,36 +280,36 @@ both functions, if they wish to compare the results obtained from the
 two scenarios, i.e. with and without connectivity. Alternatively, only
 the <code><a href="../reference/connectivity_scenario.html">connectivity_scenario()</a></code> function can be run to obtain
 the prioritization outputs of the connectivity scenario. Both functions
-are based on the <strong>priorititizr</strong> package (<a href="#ref-prioritizr">Hanson et al., 2024</a>; <a href="#ref-hanson2025">2025</a>). The connectivity metrics are first
+are based on the <strong>priorititizr</strong> package (<a href="#ref-prioritizr">Hanson et al., 2026</a>; <a href="#ref-hanson2025">2025</a>). The connectivity metrics are first
 transformed to rasters, following an approach similar to Marxan Connect
 (<a href="#ref-daigle2020operationalizing">Daigle et al., 2020</a>).
 Then <strong>priorititizr</strong> maximizes the utility obtained from
 protecting both features and connections. Mathematically, the target of
 the optimization is to maximize U under the budget (B) limitations (eq.
-2 and 3 of Nagkoulis et al. (2024)):</p>
-<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>U</mi><mo>=</mo><munder><mo>∑</mo><mrow><mrow><mi>𝐏</mi><msub><mi>𝐔</mi><mi>𝐢</mi></msub></mrow><mspace width="0.167em"></mspace><mo>∈</mo><mspace width="0.167em"></mspace><mi>S</mi><mi>A</mi></mrow></munder><mo>−</mo><mi>λ</mi><msub><mi>c</mi><mi>i</mi></msub><mo>+</mo><munder><mo>∑</mo><mrow><mrow><mi>𝐏</mi><msub><mi>𝐔</mi><mi>𝐢</mi></msub></mrow><mspace width="0.167em"></mspace><mo>∈</mo><mspace width="0.167em"></mspace><mi>S</mi><mi>A</mi></mrow></munder><munderover><mo>∑</mo><mrow><mi>j</mi><mo>=</mo><mn>1</mn></mrow><mi>J</mi></munderover><msub><mi>μ</mi><mi>j</mi></msub><msub><mi>f</mi><mi>j</mi></msub><mo>+</mo><munder><mo>∑</mo><mrow><mrow><mi>𝐏</mi><msub><mi>𝐔</mi><mi>𝐢</mi></msub></mrow><mspace width="0.167em"></mspace><mo>∈</mo><mspace width="0.167em"></mspace><mi>S</mi><mi>A</mi></mrow></munder><munderover><mo>∑</mo><mrow><mi>j</mi><mo>=</mo><mn>1</mn></mrow><mi>J</mi></munderover><msub><mi>μ</mi><mi>j</mi></msub><msub><mi>M</mi><mi>j</mi></msub><mo>,</mo></mrow><annotation encoding="application/x-tex">
+2 and 3 of Nagkoulis et al. (2026)):</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>U</mi><mo>=</mo><munder><mo>∑</mo><mrow><mrow><mi mathvariant="bold-italic">𝑷</mi><msub><mi mathvariant="bold-italic">𝑼</mi><mi mathvariant="bold-italic">𝒊</mi></msub></mrow><mspace width="0.167em"></mspace><mo>∈</mo><mspace width="0.167em"></mspace><mi>S</mi><mi>A</mi></mrow></munder><mo>−</mo><mi>λ</mi><msub><mi>c</mi><mi>i</mi></msub><mo>+</mo><munder><mo>∑</mo><mrow><mrow><mi mathvariant="bold-italic">𝑷</mi><msub><mi mathvariant="bold-italic">𝑼</mi><mi mathvariant="bold-italic">𝒊</mi></msub></mrow><mspace width="0.167em"></mspace><mo>∈</mo><mspace width="0.167em"></mspace><mi>S</mi><mi>A</mi></mrow></munder><munderover><mo>∑</mo><mrow><mi>j</mi><mo>=</mo><mn>1</mn></mrow><mi>J</mi></munderover><msub><mi>μ</mi><mi>j</mi></msub><msub><mi>f</mi><mi>j</mi></msub><mo>+</mo><munder><mo>∑</mo><mrow><mrow><mi mathvariant="bold-italic">𝑷</mi><msub><mi mathvariant="bold-italic">𝑼</mi><mi mathvariant="bold-italic">𝒊</mi></msub></mrow><mspace width="0.167em"></mspace><mo>∈</mo><mspace width="0.167em"></mspace><mi>S</mi><mi>A</mi></mrow></munder><munderover><mo>∑</mo><mrow><mi>j</mi><mo>=</mo><mn>1</mn></mrow><mi>J</mi></munderover><msub><mi>μ</mi><mi>j</mi></msub><msub><mi>M</mi><mi>j</mi></msub><mo>,</mo></mrow><annotation encoding="application/x-tex">
 U = \sum_{\boldsymbol{PU_i} \, \in \,SA} -\lambda c_i + \sum_{\boldsymbol{PU_i} \, \in \,SA} \sum_{j=1}^J \mu_j f_j + \sum_{\boldsymbol{PU_i} \, \in \,SA} \sum_{j=1}^J \mu_j M_j,
 </annotation></semantics></math></p>
-<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><munder><mo>∑</mo><mrow><mrow><mi>𝐏</mi><msub><mi>𝐔</mi><mi>𝐢</mi></msub></mrow><mspace width="0.167em"></mspace><mo>∈</mo><mspace width="0.167em"></mspace><mi>S</mi><mi>A</mi></mrow></munder><msub><mi>c</mi><mi>i</mi></msub><mo>≤</mo><mi>B</mi></mrow><annotation encoding="application/x-tex">
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><munder><mo>∑</mo><mrow><mrow><mi mathvariant="bold-italic">𝑷</mi><msub><mi mathvariant="bold-italic">𝑼</mi><mi mathvariant="bold-italic">𝒊</mi></msub></mrow><mspace width="0.167em"></mspace><mo>∈</mo><mspace width="0.167em"></mspace><mi>S</mi><mi>A</mi></mrow></munder><msub><mi>c</mi><mi>i</mi></msub><mo>≤</mo><mi>B</mi></mrow><annotation encoding="application/x-tex">
 \sum_{\boldsymbol{PU_i} \, \in \, SA} c_i \leq B
 </annotation></semantics></math></p>
 <p>A set of planning units
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>𝐀</mi><mo>=</mo><mrow><mo stretchy="true" form="prefix">(</mo><msub><mrow><mi>𝐏</mi><mi>𝐔</mi></mrow><mn>1</mn></msub><mo>,</mo><msub><mrow><mi>𝐏</mi><mi>𝐔</mi></mrow><mn>2</mn></msub><mo>,</mo><mi>.</mi><mi>.</mi><mi>.</mi><mo>,</mo><mrow><mi>𝐏</mi><msub><mi>𝐔</mi><mi>𝐢</mi></msub></mrow><mo>,</mo><mi>.</mi><mi>.</mi><mi>.</mi><mo>,</mo><mrow><mi>𝐏</mi><msub><mi>𝐔</mi><mi>𝐢</mi></msub></mrow><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">\boldsymbol{A}=(\boldsymbol{PU}_1, \boldsymbol{PU}_2, ..., \boldsymbol{PU_i}, ..., \boldsymbol{PU_i})</annotation></semantics></math>
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="bold-italic">𝑨</mi><mo>=</mo><mo stretchy="false" form="prefix">(</mo><msub><mrow><mi mathvariant="bold-italic">𝑷</mi><mi mathvariant="bold-italic">𝑼</mi></mrow><mn>1</mn></msub><mo>,</mo><msub><mrow><mi mathvariant="bold-italic">𝑷</mi><mi mathvariant="bold-italic">𝑼</mi></mrow><mn>2</mn></msub><mo>,</mo><mi>.</mi><mi>.</mi><mi>.</mi><mo>,</mo><mrow><mi mathvariant="bold-italic">𝑷</mi><msub><mi mathvariant="bold-italic">𝑼</mi><mi mathvariant="bold-italic">𝒊</mi></msub></mrow><mo>,</mo><mi>.</mi><mi>.</mi><mi>.</mi><mo>,</mo><mrow><mi mathvariant="bold-italic">𝑷</mi><msub><mi mathvariant="bold-italic">𝑼</mi><mi mathvariant="bold-italic">𝒊</mi></msub></mrow><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">\boldsymbol{A}=(\boldsymbol{PU}_1, \boldsymbol{PU}_2, ..., \boldsymbol{PU_i}, ..., \boldsymbol{PU_i})</annotation></semantics></math>
 is considered to be protected when
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mi>𝐏</mi><msub><mi>𝐔</mi><mi>𝐢</mi></msub></mrow><mspace width="0.167em"></mspace><mo>∈</mo><mspace width="0.167em"></mspace><mi>S</mi><mi>A</mi></mrow><annotation encoding="application/x-tex">\boldsymbol{PU_i} \, \in \, SA</annotation></semantics></math>.
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mi mathvariant="bold-italic">𝑷</mi><msub><mi mathvariant="bold-italic">𝑼</mi><mi mathvariant="bold-italic">𝒊</mi></msub></mrow><mspace width="0.167em"></mspace><mo>∈</mo><mspace width="0.167em"></mspace><mi>S</mi><mi>A</mi></mrow><annotation encoding="application/x-tex">\boldsymbol{PU_i} \, \in \, SA</annotation></semantics></math>.
 The protection of any
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>𝐏</mi><msub><mi>𝐔</mi><mi>𝐢</mi></msub></mrow><annotation encoding="application/x-tex">\boldsymbol{PU_i}</annotation></semantics></math>
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="bold-italic">𝑷</mi><msub><mi mathvariant="bold-italic">𝑼</mi><mi mathvariant="bold-italic">𝒊</mi></msub></mrow><annotation encoding="application/x-tex">\boldsymbol{PU_i}</annotation></semantics></math>
 results in a cost
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>c</mi><mi>i</mi></msub><annotation encoding="application/x-tex">c_i</annotation></semantics></math>.
 A finite set of features
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>𝐅</mi><mo>=</mo><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>F</mi><mn>1</mn></msub><mo>,</mo><msub><mi>F</mi><mn>2</mn></msub><mo>,</mo><mi>.</mi><mi>.</mi><mi>.</mi><mo>,</mo><msub><mi>F</mi><mi>j</mi></msub><mo>,</mo><mi>.</mi><mi>.</mi><mi>.</mi><mo>,</mo><msub><mi>F</mi><mi>J</mi></msub><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">\boldsymbol{F}=(F_1, F_2, ... , F_j, ..., F_J)</annotation></semantics></math>
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="bold-italic">𝑭</mi><mo>=</mo><mo stretchy="false" form="prefix">(</mo><msub><mi>F</mi><mn>1</mn></msub><mo>,</mo><msub><mi>F</mi><mn>2</mn></msub><mo>,</mo><mi>.</mi><mi>.</mi><mi>.</mi><mo>,</mo><msub><mi>F</mi><mi>j</mi></msub><mo>,</mo><mi>.</mi><mi>.</mi><mi>.</mi><mo>,</mo><msub><mi>F</mi><mi>J</mi></msub><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">\boldsymbol{F}=(F_1, F_2, ... , F_j, ..., F_J)</annotation></semantics></math>
 is also distributed in
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>A</mi><annotation encoding="application/x-tex">A</annotation></semantics></math>,
 suggesting that these features can be spatially mapped within the PUs.
 Each
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>P</mi><mi>U</mi></mrow><annotation encoding="application/x-tex">PU</annotation></semantics></math>
 is thus defined as a spatial object containing the following properties:
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mi>𝐏</mi><msub><mi>𝐔</mi><mi>𝐢</mi></msub></mrow><mo>=</mo><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>f</mi><mn>1</mn></msub><mo>,</mo><msub><mi>f</mi><mn>2</mn></msub><mo>,</mo><mi>.</mi><mi>.</mi><mi>.</mi><mo>,</mo><msub><mi>f</mi><mi>j</mi></msub><mo>,</mo><mi>.</mi><mi>.</mi><mi>.</mi><mo>,</mo><msub><mi>f</mi><mi>J</mi></msub><mo>,</mo><msub><mi>c</mi><mi>i</mi></msub><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">\boldsymbol{PU_i}=(f_1, f_2, ..., f_j, ..., f_J, c_i)</annotation></semantics></math>,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mi mathvariant="bold-italic">𝑷</mi><msub><mi mathvariant="bold-italic">𝑼</mi><mi mathvariant="bold-italic">𝒊</mi></msub></mrow><mo>=</mo><mo stretchy="false" form="prefix">(</mo><msub><mi>f</mi><mn>1</mn></msub><mo>,</mo><msub><mi>f</mi><mn>2</mn></msub><mo>,</mo><mi>.</mi><mi>.</mi><mi>.</mi><mo>,</mo><msub><mi>f</mi><mi>j</mi></msub><mo>,</mo><mi>.</mi><mi>.</mi><mi>.</mi><mo>,</mo><msub><mi>f</mi><mi>J</mi></msub><mo>,</mo><msub><mi>c</mi><mi>i</mi></msub><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">\boldsymbol{PU_i}=(f_1, f_2, ..., f_j, ..., f_J, c_i)</annotation></semantics></math>,
 where
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>f</mi><mi>j</mi></msub><annotation encoding="application/x-tex">f_j</annotation></semantics></math>
 indicates the quantity of
@@ -321,9 +321,9 @@ We use the annotation
 for the values of the metric for every feature
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>j</mi><annotation encoding="application/x-tex">j</annotation></semantics></math>.
 By inserting metrics into the analysis, each PU’s
-(<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>𝐏</mi><msub><mi>𝐔</mi><mi>𝐢</mi></msub></mrow><annotation encoding="application/x-tex">\boldsymbol{PU_i}</annotation></semantics></math>)
+(<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="bold-italic">𝑷</mi><msub><mi mathvariant="bold-italic">𝑼</mi><mi mathvariant="bold-italic">𝒊</mi></msub></mrow><annotation encoding="application/x-tex">\boldsymbol{PU_i}</annotation></semantics></math>)
 properties are extended and can be expressed as follows:
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mi>𝐏</mi><msub><mi>𝐔</mi><mi>𝐢</mi></msub></mrow><mo>=</mo><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>f</mi><mn>1</mn></msub><mo>,</mo><msub><mi>f</mi><mn>2</mn></msub><mo>,</mo><mi>.</mi><mi>.</mi><mi>.</mi><mo>,</mo><msub><mi>f</mi><mi>j</mi></msub><mo>,</mo><mi>.</mi><mi>.</mi><mi>.</mi><mo>,</mo><msub><mi>f</mi><mi>J</mi></msub><mo>,</mo><msub><mi>M</mi><mn>1</mn></msub><mo>,</mo><msub><mi>M</mi><mn>2</mn></msub><mo>,</mo><mi>.</mi><mi>.</mi><mi>.</mi><mo>,</mo><msub><mi>M</mi><mi>j</mi></msub><mo>,</mo><mi>.</mi><mi>.</mi><mi>.</mi><mo>,</mo><msub><mi>M</mi><mi>J</mi></msub><mo>,</mo><msub><mi>c</mi><mi>i</mi></msub><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">\boldsymbol{PU_i} = (f_1, f_2, ..., f_j, ..., f_J, M_1, M_2, ..., M_j, ..., M_J, c_i)</annotation></semantics></math>.</p>
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mi mathvariant="bold-italic">𝑷</mi><msub><mi mathvariant="bold-italic">𝑼</mi><mi mathvariant="bold-italic">𝒊</mi></msub></mrow><mo>=</mo><mo stretchy="false" form="prefix">(</mo><msub><mi>f</mi><mn>1</mn></msub><mo>,</mo><msub><mi>f</mi><mn>2</mn></msub><mo>,</mo><mi>.</mi><mi>.</mi><mi>.</mi><mo>,</mo><msub><mi>f</mi><mi>j</mi></msub><mo>,</mo><mi>.</mi><mi>.</mi><mi>.</mi><mo>,</mo><msub><mi>f</mi><mi>J</mi></msub><mo>,</mo><msub><mi>M</mi><mn>1</mn></msub><mo>,</mo><msub><mi>M</mi><mn>2</mn></msub><mo>,</mo><mi>.</mi><mi>.</mi><mi>.</mi><mo>,</mo><msub><mi>M</mi><mi>j</mi></msub><mo>,</mo><mi>.</mi><mi>.</mi><mi>.</mi><mo>,</mo><msub><mi>M</mi><mi>J</mi></msub><mo>,</mo><msub><mi>c</mi><mi>i</mi></msub><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">\boldsymbol{PU_i} = (f_1, f_2, ..., f_j, ..., f_J, M_1, M_2, ..., M_j, ..., M_J, c_i)</annotation></semantics></math>.</p>
 <p>The first input that can be given to the algorithm is a typical cost
 layer representing the cost of protecting each single planning unit.
 This cost layer is inserted to <strong>prioritizr</strong>. If such a
@@ -486,7 +486,7 @@ complex network research</span>.” <em>InterJournal</em> Complex Systems:
 1695. <a href="https://igraph.org" class="external-link">https://igraph.org</a></p>
 <p><span id="ref-igraph" class="nocase"></span> Csárdi, Gábor, Tamás
 Nepusz, Vincent Traag, Szabolcs Horvát, Fabio Zanini, Daniel Noom, and
-Kirill Müller. 2024. <em>igraph: Network Analysis and Visualization in
+Kirill Müller. 2026. <em>igraph: Network Analysis and Visualization in
 R</em>. <a href="https://doi.org/10.5281/zenodo.7682609" class="external-link">https://doi.org/10.5281/zenodo.7682609</a></p>
 <p><span id="ref-daigle2020operationalizing" class="nocase"></span>
 Daigle, Rémi M., Anna Metaxas, Arieanna C. Balbar, Jennifer McGowan,
@@ -497,14 +497,14 @@ planning with Marxan Connect.” <em>Methods in Ecology and Evolution</em>
 <p><span id="ref-prioritizr" class="nocase"></span> Hanson, Jeffrey O,
 Richard Schuster, Nina Morrell, Matthew Strimas-Mackey, Brandon P M
 Edwards, Matthew E Watts, Peter Arcese, Joseph R Bennett, and Hugh P
-Possingham. 2024. <b>prioritizr: Systematic Conservation Prioritization
+Possingham. 2026. <b>prioritizr: Systematic Conservation Prioritization
 in R</b>. <a href="https://CRAN.R-project.org/package=prioritizr" class="external-link">https://CRAN.R-project.org/package=prioritizr</a></p>
 <p><span id="ref-hanson2025" class="nocase"></span> Hanson JO, Schuster
 R, Strimas‐Mackey M, Morrell N, Edwards BPM, Arcese P, Bennett JR, and
 Possingham HP. 2025. Systematic conservation prioritization with the
 prioritizr R package. <em>Conservation Biology</em>, 39: e14376. <a href="https://doi.org/10.1111/cobi.14376" class="external-link uri">https://doi.org/10.1111/cobi.14376</a></p>
 <p><span id="ref-brainGraph" class="nocase"></span> Watson, Christopher
-G. 2024. <b>brainGraph: Graph Theory Analysis of Brain MRI Data</b>. <a href="https://doi.org/10.32614/CRAN.package.brainGraph" class="external-link">https://doi.org/10.32614/CRAN.package.brainGraph</a></p>
+G. 2026. <b>brainGraph: Graph Theory Analysis of Brain MRI Data</b>. <a href="https://doi.org/10.32614/CRAN.package.brainGraph" class="external-link">https://doi.org/10.32614/CRAN.package.brainGraph</a></p>
 </div>
 </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
@@ -518,7 +518,7 @@ G. 2024. <b>brainGraph: Graph Theory Analysis of Brain MRI Data</b>. <a href="ht
 </div>
 
 <div class="pkgdown-footer-right">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.3.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.2.1.</p>
 </div>
 
     </footer>
