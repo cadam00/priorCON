@@ -92,11 +92,4 @@ combined_edge_list <- preprocess_graphs(system.file("external",
                                         package="priorCON"),
                                         header = FALSE, sep =";")
 head(combined_edge_list)
-#>   feature   from.X   from.Y     to.X     to.Y weight
-#> 1      f1 22.62309 40.30342 22.62309 40.30342  0.000
-#> 2      f1 22.62309 40.30342 22.62309 40.39144  0.000
-#> 3      f1 22.62309 40.30342 22.62309 40.41341  0.000
-#> 4      f1 22.62309 40.30342 22.62309 40.43537  0.005
-#> 5      f1 22.62309 40.30342 22.62309 40.45731  0.000
-#> 6      f1 22.62309 40.30342 22.65266 40.30342  0.000
 ```
