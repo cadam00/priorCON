@@ -1,3 +1,10 @@
+# priorCON 0.1.8
+
+## Minor changes
+
+- Replaced the deprecated `add_max_utility_objective` function with its new name
+`add_max_wtd_sum_objective`, complying with `prioritizr` version 9.0.1 (#2).
+
 # priorCON 0.1.7
 
 ## Minor changes

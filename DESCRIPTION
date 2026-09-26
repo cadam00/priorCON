@@ -1,7 +1,7 @@
 Package: priorCON
 Type: Package
 Title: Graph Community Detection Methods into Systematic Conservation Planning
-Version: 0.1.7
+Version: 0.1.8
 Authors@R: c(person("Christos", "Adam", role = c("aut", "cre"),
              email = "econp266@econ.soc.uoc.gr",
              comment = c(ORCID = "0009-0003-3244-7034")),
@@ -39,7 +39,7 @@ BugReports: https://github.com/cadam00/priorCON/issues
 LazyData: true
 Imports:
     utils,
-    prioritizr (>= 8.0.6),
+    prioritizr (>= 9.0.1),
     terra (>= 1.8.21),
     highs (>= 0.1.10),
     tmap (>= 4.0),

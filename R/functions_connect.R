@@ -371,7 +371,7 @@ basic_scenario <- function(cost_raster, features_rasters, budget_perc,
 
   p0 <-
     problem(cost_raster, stacked_f) |>
-    add_max_utility_objective(available_budget) |>
+    add_max_wtd_sum_objective(available_budget) |>
     add_binary_decisions() |>
     add_relative_targets(0.17) |>
     add_default_solver(verbose=FALSE)
@@ -495,7 +495,7 @@ connectivity_scenario <- function(cost_raster, features_rasters=NULL,
   available_budget <- budget_perc*total_budget
   p_cluster <-
     problem(cost_raster, stacked_f_and_cluster) |>
-    add_max_utility_objective(available_budget) |>
+    add_max_wtd_sum_objective(available_budget) |>
     add_binary_decisions() |>
     add_relative_targets(0.17) |>
     add_default_solver(verbose=FALSE)

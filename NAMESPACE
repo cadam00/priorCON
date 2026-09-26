@@ -12,7 +12,7 @@ importFrom("sf", "st_sfc", "st_crs", "st_as_sf", "st_cast", "st_combine",
            "st_crs<-")
 importFrom("tmap", "tm_shape", "tm_raster", "tm_lines", "tm_legend",
            "tm_scale_categorical", "tm_scale")
-importFrom("prioritizr", "problem", "add_max_utility_objective",
+importFrom("prioritizr", "problem", "add_max_wtd_sum_objective",
            "add_binary_decisions", "add_relative_targets", "add_default_solver",
            "eval_target_coverage_summary", "add_locked_in_constraints",
            "add_locked_out_constraints")

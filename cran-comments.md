@@ -1,13 +1,9 @@
-# priorCON 0.1.7
+# priorCON 0.1.8
 
-## NOTE correction from 0.1.6 version
-> Result: NOTE
- checkRd: (-1) preprocess_graphs.Rd:50: height/width attributes should be in
-pixels
- checkRd: (-1) preprocess_graphs.Rd:62: height/width attributes should be in
-pixels
+## Minor changes
 
-Fixed.
+- Replaced the deprecated `add_max_utility_objective` function with its new name
+`add_max_wtd_sum_objective`, complying with `prioritizr` version 9.0.1 (#2).
 
 ## R CMD check results
 
