@@ -8,6 +8,8 @@
   new name `add_max_wtd_sum_objective`, complying with `prioritizr`
   version 9.0.1 ([\#2](https://github.com/cadam00/priorCON/issues/2)).
 
+- Updated references.
+
 ## priorCON 0.1.7
 
 CRAN release: 2025-11-03

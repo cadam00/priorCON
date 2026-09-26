@@ -62,7 +62,7 @@ A list containing input for
 
 Hanson, Jeffrey O, Richard Schuster, Nina Morrell, Matthew
 Strimas-Mackey, Brandon P M Edwards, Matthew E Watts, Peter Arcese,
-Joseph Bennett, and Hugh P Possingham. 2025. prioritizr: Systematic
+Joseph Bennett, and Hugh P Possingham. 2026. prioritizr: Systematic
 Conservation Prioritization in R.
 <https://CRAN.R-project.org/package=prioritizr>.
 

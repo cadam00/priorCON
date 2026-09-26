@@ -15,7 +15,7 @@ on the protection of areas with high ecological connectivity. Unlike
 traditional approaches that prioritize individual planning units,
 **priorCON** focuses on clusters of features that exhibit strong
 ecological linkages. The **priorCON** package is built upon the
-**prioritizr** package ([Hanson et al., 2024](#ref-prioritizr);
+**prioritizr** package ([Hanson et al., 2026](#ref-prioritizr);
 [2025](#ref-hanson2025)), using commercial and open-source exact
 algorithm solvers that ensure optimal solutions to prioritization
 problems.
@@ -212,16 +212,16 @@ the previous step, or inserted directly from the user are used in this
 step to create graphs. The directed graphs are transformed to
 undirected. The function is based on the **igraph** package ([Csárdi and
 Nepusz, 2006](#ref-csardi2006igraph); [Csárdi et al.,
-2024](#ref-igraph)) which is used to create clusters using Louvain and
+2026](#ref-igraph)) which is used to create clusters using Louvain and
 Walktrap and calculate the following metrics: Eigenvector Centrality,
 Betweenness Centrality, Degree and PageRank. S-core is calculated using
-the package **brainGraph** ([Watson, 2024](#ref-brainGraph)). The user
+the package **brainGraph** ([Watson, 2026](#ref-brainGraph)). The user
 can choose between these options to create the respective outputs.
 `'s_core'`, `'louvain'`, `'walktrap'`, `'eigen'`, `'betw'`, `'deg'` or
 `'page_rank'`.
 
 Detailed information on the theory and equations of the used graph
-metrics are provided in Nagkoulis et al.(2024; subm Methods in Ecology
+metrics are provided in Nagkoulis et al.(2026; subm Methods in Ecology
 and Evolution).
 
 ``` r
@@ -248,14 +248,14 @@ connectivity. Alternatively, only the
 [`connectivity_scenario()`](https://cadam00.github.io/priorCON/reference/connectivity_scenario.md)
 function can be run to obtain the prioritization outputs of the
 connectivity scenario. Both functions are based on the **priorititizr**
-package ([Hanson et al., 2024](#ref-prioritizr);
+package ([Hanson et al., 2026](#ref-prioritizr);
 [2025](#ref-hanson2025)). The connectivity metrics are first transformed
 to rasters, following an approach similar to Marxan Connect ([Daigle et
 al., 2020](#ref-daigle2020operationalizing)). Then **priorititizr**
 maximizes the utility obtained from protecting both features and
 connections. Mathematically, the target of the optimization is to
 maximize U under the budget (B) limitations (eq. 2 and 3 of Nagkoulis et
-al. (2024)):
+al. (2026)):
 
 ``` math
 U = \sum_{\boldsymbol{PU_i} \, \in \,SA} -\lambda c_i + \sum_{\boldsymbol{PU_i} \, \in \,SA} \sum_{j=1}^J \mu_j f_j + \sum_{\boldsymbol{PU_i} \, \in \,SA} \sum_{j=1}^J \mu_j M_j,
@@ -464,7 +464,7 @@ complex network research.” *InterJournal* Complex Systems: 1695.
 <https://igraph.org>
 
 Csárdi, Gábor, Tamás Nepusz, Vincent Traag, Szabolcs Horvát, Fabio
-Zanini, Daniel Noom, and Kirill Müller. 2024. *igraph: Network Analysis
+Zanini, Daniel Noom, and Kirill Müller. 2026. *igraph: Network Analysis
 and Visualization in R*. <https://doi.org/10.5281/zenodo.7682609>.
 
 Daigle, Rémi M., Anna Metaxas, Arieanna C. Balbar, Jennifer McGowan,
@@ -475,7 +475,7 @@ planning with Marxan Connect.” *Methods in Ecology and Evolution* 11
 
 Hanson, Jeffrey O, Richard Schuster, Nina Morrell, Matthew
 Strimas-Mackey, Brandon P M Edwards, Matthew E Watts, Peter Arcese,
-Joseph R Bennett, and Hugh P Possingham. 2024. **prioritizr: Systematic
+Joseph R Bennett, and Hugh P Possingham. 2026. **prioritizr: Systematic
 Conservation Prioritization in R**.
 <https://CRAN.R-project.org/package=prioritizr>
 
@@ -484,7 +484,7 @@ P, Bennett JR, and Possingham HP. 2025. Systematic conservation
 prioritization with the prioritizr R package. *Conservation Biology*,
 39: e14376. <https://doi.org/10.1111/cobi.14376>
 
-Watson, Christopher G. 2024. **brainGraph: Graph Theory Analysis of
+Watson, Christopher G. 2026. **brainGraph: Graph Theory Analysis of
 Brain MRI Data**. <https://doi.org/10.32614/CRAN.package.brainGraph>
 
 # Package index
