@@ -1,3 +1,10 @@
+# priorCON 0.1.9
+
+## Minor changes
+
+- Fixed the invalid indentation of a line in a double-quoted scalar in
+Introduction.Rmd.
+
 # priorCON 0.1.8
 
 ## Minor changes

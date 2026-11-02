@@ -1,11 +1,9 @@
-# priorCON 0.1.8
+# priorCON 0.1.9
 
 ## Minor changes
 
-- Replaced the deprecated `add_max_utility_objective` function with its new name
-`add_max_wtd_sum_objective`, complying with `prioritizr` version 9.0.1 (#2).
-
-- Updated references.
+- Fixed the invalid indentation of a line in a double-quoted scalar in
+Introduction.Rmd.
 
 ## R CMD check results
 

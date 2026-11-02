@@ -25,13 +25,13 @@ Source:
 
 Adam C, Doxa A, Nagkoulis N, Papazekou M, Mazaris A, Katsanevakis S
 (2026). *priorCON: Graph Community Detection Methods into Systematic
-Conservation Planning*. R package version 0.1.8,
+Conservation Planning*. R package version 0.1.9,
 <https://github.com/cadam00/priorCON>.
 
     @Manual{,
       title = {priorCON: Graph Community Detection Methods into Systematic Conservation Planning},
       author = {Christos Adam and Aggeliki Doxa and Nikolaos Nagkoulis and Maria Papazekou and Antonios D. Mazaris and Stelios Katsanevakis},
       year = {2026},
-      note = {R package version 0.1.8},
+      note = {R package version 0.1.9},
       url = {https://github.com/cadam00/priorCON},
     }
